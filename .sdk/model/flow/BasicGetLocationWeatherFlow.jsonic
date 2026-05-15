@@ -1,0 +1,32 @@
+# BasicGetLocationWeatherFlow
+
+main: kit: flow: BasicGetLocationWeatherFlow:
+{
+  entity: "get_location_weather",
+  kind: "basic",
+  name: "BasicGetLocationWeatherFlow",
+  step: [
+    {
+      input: {
+        ref: "get_location_weather_ref01",
+        srcdatavar: "get_location_weather_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "get_location_weather01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_location_weather_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetLocationWeatherFlow"
+}

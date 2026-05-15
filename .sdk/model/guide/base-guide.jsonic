@@ -1,0 +1,33 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: get_current_location_weather: {
+    path: "/": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_location_weather: {
+    path: "/{location}": {
+      rename: param: "location": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: help: {
+    path: "/:help": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: location: {
+    path: "/{location}.png": {
+      op: load: method: *GET
+    }
+  }
+
+}

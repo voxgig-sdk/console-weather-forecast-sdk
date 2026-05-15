@@ -1,0 +1,517 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Console Weather Forecast",
+    "description": "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for graphical viewers.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/chubin/wttr.in"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://github.com/chubin/wttr.in/blob/master/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://wttr.in",
+      "description": "Main wttr.in server"
+    },
+    {
+      "url": "https://v2.wttr.in",
+      "description": "Data-rich output format (v2)"
+    },
+    {
+      "url": "https://v2d.wttr.in",
+      "description": "Data-rich output format (v2 day mode with Nerd Fonts)"
+    },
+    {
+      "url": "https://v2n.wttr.in",
+      "description": "Data-rich output format (v2 night mode with Nerd Fonts)"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get weather forecast for current location",
+        "description": "Returns weather forecast for the current location based on IP address",
+        "operationId": "getCurrentLocationWeather",
+        "parameters": [
+          {
+            "name": "u",
+            "in": "query",
+            "description": "Use USCS units (used by default in US)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "m",
+            "in": "query",
+            "description": "Use metric (SI) units (used by default everywhere except US)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "M",
+            "in": "query",
+            "description": "Use metric (SI) units, but show wind speed in m/s",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format for one-line display. Supports formats 1-4 or custom format using %-notation",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "format1": {
+                "value": "1",
+                "summary": "Current weather: 🌦 +11⁰C"
+              },
+              "format2": {
+                "value": "2",
+                "summary": "Weather with details: 🌦 🌡️+11°C 🌬️↓4km/h"
+              },
+              "format3": {
+                "value": "3",
+                "summary": "Location and weather: Nuremberg: 🌦 +11⁰C"
+              },
+              "format4": {
+                "value": "4",
+                "summary": "Location and weather with details: Nuremberg: 🌦 🌡️+11°C 🌬️↓4km/h"
+              },
+              "custom": {
+                "value": "%l:+%c+%t",
+                "summary": "Custom format using %-notation"
+              }
+            }
+          },
+          {
+            "name": "T",
+            "in": "query",
+            "description": "Force plain text output (disables colors)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "d",
+            "in": "query",
+            "description": "Restrict output to glyphs available in standard console fonts",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language for the output",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "french": {
+                "value": "fr"
+              },
+              "german": {
+                "value": "de"
+              },
+              "ukrainian": {
+                "value": "uk"
+              }
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "Update period in seconds for automatic queries",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful weather forecast response",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "ANSI-formatted weather forecast for terminal display"
+                },
+                "example": "Weather for City: Paris, France\n\n     \\   /     Clear\n      .-.      10 – 11 °C\n   ― (   ) ―   ↑ 11 km/h\n      `-'      10 km\n     /   \\     0.0 mm"
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "description": "HTML-formatted weather forecast for web browsers"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "JSON-formatted weather data"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{location}": {
+      "get": {
+        "summary": "Get weather forecast for specific location",
+        "description": "Returns weather forecast for the specified location. Location can be a city name, airport code (3-letter IATA), IP address, domain name (prefixed with @), or special location (prefixed with ~)",
+        "operationId": "getLocationWeather",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "description": "Location name (e.g., 'London', 'Salt+Lake+City'), airport code (e.g., 'muc', 'ham'), IP address, domain name (e.g., '@github.com'), or special location (e.g., '~Eiffel+Tower')",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "city": {
+                "value": "London",
+                "summary": "City name"
+              },
+              "multiword": {
+                "value": "Salt+Lake+City",
+                "summary": "Multi-word city name"
+              },
+              "airport": {
+                "value": "muc",
+                "summary": "Airport IATA code"
+              },
+              "domain": {
+                "value": "@github.com",
+                "summary": "Domain name"
+              },
+              "special": {
+                "value": "~Eiffel+Tower",
+                "summary": "Special location/landmark"
+              },
+              "multiple": {
+                "value": "Nuremberg:Hamburg:Berlin",
+                "summary": "Multiple locations separated by colon"
+              }
+            }
+          },
+          {
+            "name": "u",
+            "in": "query",
+            "description": "Use USCS units (used by default in US)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "m",
+            "in": "query",
+            "description": "Use metric (SI) units (used by default everywhere except US)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "M",
+            "in": "query",
+            "description": "Use metric (SI) units, but show wind speed in m/s",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format for one-line display. Supports formats 1-4 or custom format using %-notation (c=condition, C=condition name, x=plain symbol, h=humidity, t=temperature, f=feels like, w=wind, l=location, m=moon phase, M=moon day, p=precipitation, P=pressure, u=UV index, D=dawn, S=sunrise, z=zenith, s=sunset, d=dusk, T=current time, Z=timezone)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "T",
+            "in": "query",
+            "description": "Force plain text output (disables colors)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "d",
+            "in": "query",
+            "description": "Restrict output to glyphs available in standard console fonts",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ""
+              ]
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language for the output",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "description": "Update period in seconds for automatic queries with multiple locations",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful weather forecast response",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "ANSI-formatted weather forecast for terminal display"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "description": "HTML-formatted weather forecast for web browsers"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "JSON-formatted weather data"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        }
+      }
+    },
+    "/{location}.png": {
+      "get": {
+        "summary": "Get weather forecast as PNG image",
+        "description": "Returns weather forecast as a PNG image for the specified location. Options are separated by underscores instead of query parameters",
+        "operationId": "getLocationWeatherPNG",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "description": "Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "simple": {
+                "value": "Paris.png",
+                "summary": "Simple PNG for Paris"
+              },
+              "withOptions": {
+                "value": "Paris_0tqp_lang=fr.png",
+                "summary": "PNG with options"
+              },
+              "transparent": {
+                "value": "Oymyakon_tqp0.png",
+                "summary": "Transparent PNG"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PNG image of weather forecast",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        }
+      }
+    },
+    "/:help": {
+      "get": {
+        "summary": "Get detailed help information",
+        "description": "Returns detailed help and documentation about using the wttr.in service",
+        "operationId": "getHelp",
+        "responses": {
+          "200": {
+            "description": "Help documentation",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "Detailed help text"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "description": "HTML-formatted help documentation"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeatherCondition": {
+        "type": "object",
+        "description": "Weather condition information",
+        "properties": {
+          "condition": {
+            "type": "string",
+            "description": "Weather condition emoji or text"
+          },
+          "conditionName": {
+            "type": "string",
+            "description": "Textual name of weather condition"
+          },
+          "temperature": {
+            "type": "string",
+            "description": "Current temperature"
+          },
+          "feelsLike": {
+            "type": "string",
+            "description": "Feels like temperature"
+          },
+          "humidity": {
+            "type": "string",
+            "description": "Humidity percentage"
+          },
+          "wind": {
+            "type": "string",
+            "description": "Wind speed and direction"
+          },
+          "precipitation": {
+            "type": "string",
+            "description": "Precipitation in mm/3 hours"
+          },
+          "pressure": {
+            "type": "string",
+            "description": "Atmospheric pressure in hPa"
+          },
+          "uvIndex": {
+            "type": "string",
+            "description": "UV index (1-12)"
+          },
+          "moonPhase": {
+            "type": "string",
+            "description": "Moon phase emoji"
+          },
+          "moonDay": {
+            "type": "string",
+            "description": "Moon day number"
+          }
+        }
+      },
+      "AstronomicalTimes": {
+        "type": "object",
+        "description": "Astronomical time information",
+        "properties": {
+          "dawn": {
+            "type": "string",
+            "description": "Dawn time in local timezone"
+          },
+          "sunrise": {
+            "type": "string",
+            "description": "Sunrise time in local timezone"
+          },
+          "zenith": {
+            "type": "string",
+            "description": "Solar zenith time in local timezone"
+          },
+          "sunset": {
+            "type": "string",
+            "description": "Sunset time in local timezone"
+          },
+          "dusk": {
+            "type": "string",
+            "description": "Dusk time in local timezone"
+          },
+          "currentTime": {
+            "type": "string",
+            "description": "Current local time"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "Local timezone"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "wttr.in GitHub Repository",
+    "url": "https://github.com/chubin/wttr.in"
+  }
+}

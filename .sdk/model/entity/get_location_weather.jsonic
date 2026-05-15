@@ -1,0 +1,116 @@
+# Entity: get_location_weather
+
+main: kit: entity: get_location_weather: {
+
+  alias: field: {}
+
+  name: "get_location_weather"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "London"
+                kind: "param"
+                name: "id"
+                orig: "location"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "d"
+                orig: "d"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "m"
+                orig: "m"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "m"
+                orig: "m"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "period"
+                orig: "period"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "t"
+                orig: "t"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "u"
+                orig: "u"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{location}"
+          parts: [
+            "{id}"
+          ]
+          rename: {
+            param: {
+              location: "id"
+            }
+          }
+          select: {
+            exist: [
+              "d"
+              "format"
+              "id"
+              "lang"
+              "m"
+              "period"
+              "t"
+              "u"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

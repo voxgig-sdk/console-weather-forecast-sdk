@@ -1,0 +1,29 @@
+# Entity: help
+
+main: kit: entity: help: {
+
+  alias: field: {}
+
+  name: "help"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/:help"
+          parts: [
+            ":help"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

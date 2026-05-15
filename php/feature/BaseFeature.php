@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// ConsoleWeatherForecast SDK base feature
+
+class ConsoleWeatherForecastBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(ConsoleWeatherForecastContext $ctx, array $options): void {}
+    public function PostConstruct(ConsoleWeatherForecastContext $ctx): void {}
+    public function PostConstructEntity(ConsoleWeatherForecastContext $ctx): void {}
+    public function SetData(ConsoleWeatherForecastContext $ctx): void {}
+    public function GetData(ConsoleWeatherForecastContext $ctx): void {}
+    public function GetMatch(ConsoleWeatherForecastContext $ctx): void {}
+    public function SetMatch(ConsoleWeatherForecastContext $ctx): void {}
+    public function PrePoint(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreSpec(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreRequest(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreResponse(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreResult(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreDone(ConsoleWeatherForecastContext $ctx): void {}
+    public function PreUnexpected(ConsoleWeatherForecastContext $ctx): void {}
+}

@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "location": {
+      "LOCATION00": {
+        "location": "LOCATION01"
+      },
+      "LOCATION01": {
+        "location": "LOCATION01"
+      },
+      "LOCATION02": {
+        "location": "LOCATION01"
+      }
+    }
+  },
+  "new": {
+    "location": {
+      "location_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,39 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://github.com/chubin/wttr.in"
+      }
+      description: "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for graphical viewers."
+      license: {
+        name: "Apache 2.0"
+        url: "https://github.com/chubin/wttr.in/blob/master/LICENSE"
+      }
+      servers: [
+        {
+          description: "Main wttr.in server"
+          url: "https://wttr.in"
+        }
+        {
+          description: "Data-rich output format (v2)"
+          url: "https://v2.wttr.in"
+        }
+        {
+          description: "Data-rich output format (v2 day mode with Nerd Fonts)"
+          url: "https://v2d.wttr.in"
+        }
+        {
+          description: "Data-rich output format (v2 night mode with Nerd Fonts)"
+          url: "https://v2n.wttr.in"
+        }
+      ]
+      title: "Console Weather Forecast"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

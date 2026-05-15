@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "help": {
+      "HELP00": {},
+      "HELP01": {},
+      "HELP02": {}
+    }
+  },
+  "new": {
+    "help": {
+      "help_ref01": {}
+    }
+  }
+}

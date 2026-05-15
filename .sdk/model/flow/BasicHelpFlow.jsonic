@@ -1,0 +1,28 @@
+# BasicHelpFlow
+
+main: kit: flow: BasicHelpFlow:
+{
+  entity: "help",
+  kind: "basic",
+  name: "BasicHelpFlow",
+  step: [
+    {
+      input: {
+        ref: "help_ref01",
+        srcdatavar: "help_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-help_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHelpFlow"
+}

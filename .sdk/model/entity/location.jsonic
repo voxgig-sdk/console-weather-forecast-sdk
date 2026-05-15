@@ -1,0 +1,46 @@
+# Entity: location
+
+main: kit: entity: location: {
+
+  alias: field: {}
+
+  name: "location"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "Paris.png"
+                kind: "param"
+                name: "location"
+                orig: "location"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{location}.png"
+          parts: [
+            "{location}.png"
+          ]
+          select: {
+            exist: [
+              "location"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

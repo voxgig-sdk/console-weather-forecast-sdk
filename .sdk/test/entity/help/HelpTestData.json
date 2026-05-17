@@ -1,9 +1,15 @@
 {
   "existing": {
     "help": {
-      "HELP00": {},
-      "HELP01": {},
-      "HELP02": {}
+      "HELP00": {
+        "id": "HELP00"
+      },
+      "HELP01": {
+        "id": "HELP01"
+      },
+      "HELP02": {
+        "id": "HELP02"
+      }
     }
   },
   "new": {

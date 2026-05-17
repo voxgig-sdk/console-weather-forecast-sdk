@@ -2,13 +2,16 @@
   "existing": {
     "location": {
       "LOCATION00": {
-        "location": "LOCATION01"
+        "location": "LOCATION01",
+        "id": "LOCATION00"
       },
       "LOCATION01": {
-        "location": "LOCATION01"
+        "location": "LOCATION01",
+        "id": "LOCATION01"
       },
       "LOCATION02": {
-        "location": "LOCATION01"
+        "location": "LOCATION01",
+        "id": "LOCATION02"
       }
     }
   },

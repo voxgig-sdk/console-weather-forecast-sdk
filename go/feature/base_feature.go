@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/console-weather-forecast-sdk/core"
+	"github.com/voxgig-sdk/console-weather-forecast-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/console-weather-forecast-sdk"
-	"github.com/voxgig-sdk/console-weather-forecast-sdk/core"
+	sdk "github.com/voxgig-sdk/console-weather-forecast-sdk/go"
+	"github.com/voxgig-sdk/console-weather-forecast-sdk/go/core"
 )
 
 func TestLocationDirect(t *testing.T) {

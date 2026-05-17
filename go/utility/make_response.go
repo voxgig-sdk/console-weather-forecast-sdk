@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/console-weather-forecast-sdk/core"
+import "github.com/voxgig-sdk/console-weather-forecast-sdk/go/core"
 
 func makeResponseUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["response"] != nil {

@@ -1,9 +1,15 @@
 {
   "existing": {
     "get_current_location_weather": {
-      "GET_CURRENT_LOCATION_WEATHER00": {},
-      "GET_CURRENT_LOCATION_WEATHER01": {},
-      "GET_CURRENT_LOCATION_WEATHER02": {}
+      "GET_CURRENT_LOCATION_WEATHER00": {
+        "id": "GET_CURRENT_LOCATION_WEATHER00"
+      },
+      "GET_CURRENT_LOCATION_WEATHER01": {
+        "id": "GET_CURRENT_LOCATION_WEATHER01"
+      },
+      "GET_CURRENT_LOCATION_WEATHER02": {
+        "id": "GET_CURRENT_LOCATION_WEATHER02"
+      }
     }
   },
   "new": {

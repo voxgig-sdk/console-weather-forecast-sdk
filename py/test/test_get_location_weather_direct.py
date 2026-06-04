@@ -66,14 +66,12 @@ def _get_location_weather_direct_setup(mockres):
     env = runner.env_override({
         "CONSOLEWEATHERFORECAST_TEST_GET_LOCATION_WEATHER_ENTID": {},
         "CONSOLEWEATHERFORECAST_TEST_LIVE": "FALSE",
-        "CONSOLEWEATHERFORECAST_APIKEY": "NONE",
     })
 
     live = env.get("CONSOLEWEATHERFORECAST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("CONSOLEWEATHERFORECAST_APIKEY"),
         }
         client = ConsoleWeatherForecastSDK(merged_opts)
         return {

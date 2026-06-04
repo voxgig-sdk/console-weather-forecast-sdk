@@ -85,7 +85,6 @@ function get_location_weather_basic_setup($extra)
         "CONSOLEWEATHERFORECAST_TEST_GET_LOCATION_WEATHER_ENTID" => $idmap,
         "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
         "CONSOLEWEATHERFORECAST_TEST_EXPLAIN" => "FALSE",
-        "CONSOLEWEATHERFORECAST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function get_location_weather_basic_setup($extra)
     if ($env["CONSOLEWEATHERFORECAST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["CONSOLEWEATHERFORECAST_APIKEY"],
             ],
             $extra ?? [],
         ]);

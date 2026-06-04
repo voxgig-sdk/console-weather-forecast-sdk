@@ -99,14 +99,12 @@ func helpDirectSetup(mockres any) *helpDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CONSOLEWEATHERFORECAST_TEST_HELP_ENTID": map[string]any{},
 		"CONSOLEWEATHERFORECAST_TEST_LIVE":    "FALSE",
-		"CONSOLEWEATHERFORECAST_APIKEY":       "NONE",
 	})
 
 	live := env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["CONSOLEWEATHERFORECAST_APIKEY"],
 		}
 		client := sdk.NewConsoleWeatherForecastSDK(mergedOpts)
 

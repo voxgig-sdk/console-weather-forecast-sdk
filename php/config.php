@@ -20,9 +20,6 @@ class ConsoleWeatherForecastConfig
             ],
             "options" => [
                 "base" => "https://wttr.in",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

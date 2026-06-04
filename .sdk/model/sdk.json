@@ -32,7 +32,20 @@
           }
         ],
         "title": "Console Weather Forecast",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Console-friendly weather forecasts you can curl from a terminal, with ANSI, plain text, HTML, PNG, JSON, or Prometheus output",
+        "homepage": "https://wttr.in",
+        "docs_url": "https://github.com/chubin/wttr.in",
+        "license_short": "Apache License 2.0",
+        "license_md": "- Source code is released under the Apache License 2.0.\n- Weather data is sourced from upstream providers (notably the [wego](https://github.com/schachmat/wego) weather client) and remains subject to their own terms.\n- Attribution to the upstream project ([chubin/wttr.in](https://github.com/chubin/wttr.in)) is appreciated when redistributing output.",
+        "about_md": "[wttr.in](https://wttr.in) is a console-oriented weather forecast service created by [Igor Chubin](https://github.com/chubin). It is designed to be queried with command-line HTTP clients such as `curl`, `httpie`, or `wget`, and it picks an output representation based on the User-Agent: ANSI-coloured text for terminals, HTML for browsers, or PNG for graphical viewers.\n\nWhat you get from the API:\n- Current conditions plus a multi-day forecast broken down by morning, noon, evening, and night.\n- Temperature, wind speed and direction, precipitation, visibility, and humidity, in USCS or metric units (`?u`, `?m`, `?M`).\n- Multiple output formats: ANSI, plain text (`?T`), PNG (append `.png`), JSON (`?format=j1` / `j2`), one-line summaries (`?format=1..4`), Prometheus metrics (`?format=p1`), and data-rich or map views (`?format=v2`, `v3`).\n- Moon phase queries via `/Moon` or `/Moon@YYYY-MM-DD`.\n- Localised output in around 74 languages via `?lang=` or language subdomains like `de.wttr.in`.\n\nLocations can be supplied as a city name (`/London`), a 3-letter IATA airport code (`/muc`), a landmark (`/Eiffel+Tower`), a domain prefixed with `@` (`/@github.com`), or an IP address. Omitting the location returns weather for the caller's detected location. The service does not require an API key, CORS is enabled, and a fallback domain `wttr.is` is available.",
+        "entity_desc": {
+          "get_current_location_weather": "Weather for the caller's auto-detected location, returned by requesting the API root `/` (with optional `?format=` to pick text, JSON, or Prometheus output).",
+          "get_location_weather": "Weather for an explicit place at `/{location}` — accepts city names, IATA codes, landmarks, `@domain` lookups, or IP addresses, with units and formatting controlled via query parameters such as `?m`, `?u`, `?lang=`, and `?format=`.",
+          "help": "The built-in usage reference served at `/:help`, documenting URL patterns, query flags, and output formats.",
+          "location": "A resolvable place identifier used as the path segment in `/{location}` requests — covering cities, airports, landmarks, geographic coordinates, and special targets like `Moon`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -40,7 +53,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "get_current_location_weather": {

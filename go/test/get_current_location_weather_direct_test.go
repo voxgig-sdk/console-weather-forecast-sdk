@@ -99,14 +99,12 @@ func get_current_location_weatherDirectSetup(mockres any) *get_current_location_
 	env := envOverride(map[string]any{
 		"CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID": map[string]any{},
 		"CONSOLEWEATHERFORECAST_TEST_LIVE":    "FALSE",
-		"CONSOLEWEATHERFORECAST_APIKEY":       "NONE",
 	})
 
 	live := env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["CONSOLEWEATHERFORECAST_APIKEY"],
 		}
 		client := sdk.NewConsoleWeatherForecastSDK(mergedOpts)
 

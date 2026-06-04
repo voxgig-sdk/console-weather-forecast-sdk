@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { ConsoleWeatherForecastSDK } from 'console-weather-forecast'
 
-const client = new ConsoleWeatherForecastSDK({
-  apikey: process.env.CONSOLE-WEATHER-FORECAST_APIKEY,
-})
+const client = new ConsoleWeatherForecastSDK({})
 ```
 
 ### 3. Load a getcurrentlocationweather
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ConsoleWeatherForecastSDK({ apikey: '...' })
+const client = new ConsoleWeatherForecastSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new ConsoleWeatherForecastSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CONSOLE-WEATHER-FORECAST_TEST_LIVE=TRUE
-CONSOLE-WEATHER-FORECAST_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new ConsoleWeatherForecastSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new ConsoleWeatherForecastSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

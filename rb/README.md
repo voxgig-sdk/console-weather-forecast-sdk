@@ -10,13 +10,13 @@ The Ruby SDK for the ConsoleWeatherForecast API — an entity-oriented client us
 
 ## Install
 ```bash
-gem install console-weather-forecast-sdk
+gem install voxgig-sdk-console-weather-forecast
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "console-weather-forecast-sdk"
+gem "voxgig-sdk-console-weather-forecast"
 ```
 
 Then run:

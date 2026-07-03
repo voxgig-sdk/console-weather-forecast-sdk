@@ -10,7 +10,7 @@ The TypeScript SDK for the ConsoleWeatherForecast API — a type-safe, entity-or
 
 ## Install
 ```bash
-npm install console-weather-forecast
+npm install @voxgig-sdk/console-weather-forecast
 ```
 ## Tutorial: your first API call
 

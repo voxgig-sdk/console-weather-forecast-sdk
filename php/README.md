@@ -10,7 +10,7 @@ The PHP SDK for the ConsoleWeatherForecast API — an entity-oriented client usi
 
 ## Install
 ```bash
-composer require voxgig/console-weather-forecast-sdk
+composer require voxgig-sdk/console-weather-forecast
 ```
 
 

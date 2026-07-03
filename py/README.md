@@ -10,7 +10,7 @@ The Python SDK for the ConsoleWeatherForecast API — an entity-oriented client 
 
 ## Install
 ```bash
-pip install console-weather-forecast-sdk
+pip install voxgig-sdk-console-weather-forecast
 ```
 
 Or install from source:

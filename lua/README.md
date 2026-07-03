@@ -10,7 +10,7 @@ The Lua SDK for the ConsoleWeatherForecast API — an entity-oriented client usi
 
 ## Install
 ```bash
-luarocks install console-weather-forecast-sdk
+luarocks install voxgig-sdk-console-weather-forecast
 ```
 
 If the module is not yet published, add the source directory to

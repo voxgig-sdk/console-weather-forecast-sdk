@@ -1,58 +1,13 @@
 {
-  "name": "console-weather-forecast",
-  "origin": "voxgig-sdk",
   "def": "console-weather-forecast_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "url": "https://github.com/chubin/wttr.in"
-        },
-        "description": "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for graphical viewers.",
-        "license": {
-          "name": "Apache 2.0",
-          "url": "https://github.com/chubin/wttr.in/blob/master/LICENSE"
-        },
-        "servers": [
-          {
-            "description": "Main wttr.in server",
-            "url": "https://wttr.in"
-          },
-          {
-            "description": "Data-rich output format (v2)",
-            "url": "https://v2.wttr.in"
-          },
-          {
-            "description": "Data-rich output format (v2 day mode with Nerd Fonts)",
-            "url": "https://v2d.wttr.in"
-          },
-          {
-            "description": "Data-rich output format (v2 night mode with Nerd Fonts)",
-            "url": "https://v2n.wttr.in"
-          }
-        ],
-        "title": "Console Weather Forecast",
-        "version": "1.0.0",
-        "tagline": "Console-friendly weather forecasts you can curl from a terminal, with ANSI, plain text, HTML, PNG, JSON, or Prometheus output",
-        "homepage": "https://wttr.in",
-        "docs_url": "https://github.com/chubin/wttr.in",
-        "license_short": "Apache License 2.0",
-        "license_md": "- Source code is released under the Apache License 2.0.\n- Weather data is sourced from upstream providers (notably the [wego](https://github.com/schachmat/wego) weather client) and remains subject to their own terms.\n- Attribution to the upstream project ([chubin/wttr.in](https://github.com/chubin/wttr.in)) is appreciated when redistributing output.",
-        "about_md": "[wttr.in](https://wttr.in) is a console-oriented weather forecast service created by [Igor Chubin](https://github.com/chubin). It is designed to be queried with command-line HTTP clients such as `curl`, `httpie`, or `wget`, and it picks an output representation based on the User-Agent: ANSI-coloured text for terminals, HTML for browsers, or PNG for graphical viewers.\n\nWhat you get from the API:\n- Current conditions plus a multi-day forecast broken down by morning, noon, evening, and night.\n- Temperature, wind speed and direction, precipitation, visibility, and humidity, in USCS or metric units (`?u`, `?m`, `?M`).\n- Multiple output formats: ANSI, plain text (`?T`), PNG (append `.png`), JSON (`?format=j1` / `j2`), one-line summaries (`?format=1..4`), Prometheus metrics (`?format=p1`), and data-rich or map views (`?format=v2`, `v3`).\n- Moon phase queries via `/Moon` or `/Moon@YYYY-MM-DD`.\n- Localised output in around 74 languages via `?lang=` or language subdomains like `de.wttr.in`.\n\nLocations can be supplied as a city name (`/London`), a 3-letter IATA airport code (`/muc`), a landmark (`/Eiffel+Tower`), a domain prefixed with `@` (`/@github.com`), or an IP address. Omitting the location returns weather for the caller's detected location. The service does not require an API key, CORS is enabled, and a fallback domain `wttr.is` is available.",
-        "entity_desc": {
-          "get_current_location_weather": "Weather for the caller's auto-detected location, returned by requesting the API root `/` (with optional `?format=` to pick text, JSON, or Prometheus output).",
-          "get_location_weather": "Weather for an explicit place at `/{location}` — accepts city names, IATA codes, landmarks, `@domain` lookups, or IP addresses, with units and formatting controlled via query parameters such as `?m`, `?u`, `?lang=`, and `?format=`.",
-          "help": "The built-in usage reference served at `/:help`, documenting URL patterns, query flags, and output formats.",
-          "location": "A resolvable place identifier used as the path segment in `/{location}` requests — covering cities, airports, landmarks, geographic coordinates, and special targets like `Moon`."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -61,91 +16,99 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "get_current_location_weather": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "get_current_location_weather",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "d",
                         "orig": "d",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "1",
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "fr",
                         "kind": "query",
                         "name": "lang",
                         "orig": "lang",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "m",
                         "orig": "m",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "m",
                         "orig": "m",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "period",
                         "orig": "period",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "t",
                         "orig": "t",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "u",
                         "orig": "u",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
                   "method": "GET",
                   "orig": "/",
+                  "parts": [],
                   "select": {
                     "exist": [
                       "d",
@@ -160,106 +123,105 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "parts": []
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "get_location_weather": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "get_location_weather",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "London",
                         "kind": "param",
                         "name": "id",
                         "orig": "location",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "d",
                         "orig": "d",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "lang",
                         "orig": "lang",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "m",
                         "orig": "m",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "m",
                         "orig": "m",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "period",
                         "orig": "period",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "t",
                         "orig": "t",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "u",
                         "orig": "u",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -288,72 +250,72 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "help": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "help",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/:help",
                   "parts": [
                     ":help"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "location": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "location",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "Paris.png",
                         "kind": "param",
                         "name": "location",
                         "orig": "location",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -370,15 +332,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
@@ -386,9 +344,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -396,6 +351,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -404,25 +367,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -438,20 +387,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -466,28 +427,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicGetCurrentLocationWeatherFlow": {
+          "active": true,
           "entity": "get_current_location_weather",
+          "key$": "BasicGetCurrentLocationWeatherFlow",
           "kind": "basic",
           "name": "BasicGetCurrentLocationWeatherFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "get_current_location_weather_ref01",
                 "srcdatavar": "get_current_location_weather_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -495,23 +462,21 @@
                     "mark": "Mark01-get_current_location_weather_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGetCurrentLocationWeatherFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGetLocationWeatherFlow": {
+          "active": true,
           "entity": "get_location_weather",
+          "key$": "BasicGetLocationWeatherFlow",
           "kind": "basic",
           "name": "BasicGetLocationWeatherFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "get_location_weather_ref01",
                 "srcdatavar": "get_location_weather_ref01_data",
@@ -521,6 +486,7 @@
                 "id": "get_location_weather01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -528,28 +494,29 @@
                     "mark": "Mark01-get_location_weather_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGetLocationWeatherFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicHelpFlow": {
+          "active": true,
           "entity": "help",
+          "key$": "BasicHelpFlow",
           "kind": "basic",
           "name": "BasicHelpFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "help_ref01",
                 "srcdatavar": "help_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -557,23 +524,21 @@
                     "mark": "Mark01-help_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicHelpFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicLocationFlow": {
+          "active": true,
           "entity": "location",
+          "key$": "BasicLocationFlow",
           "kind": "basic",
           "name": "BasicLocationFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "location_ref01",
                 "srcdatavar": "location_ref01_data",
@@ -583,6 +548,7 @@
                 "location": "location01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -590,27 +556,68 @@
                     "mark": "Mark01-location_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicLocationFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "url": "https://github.com/chubin/wttr.in"
+        },
+        "description": "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for graphical viewers.",
+        "license": {
+          "name": "Apache 2.0",
+          "url": "https://github.com/chubin/wttr.in/blob/master/LICENSE"
+        },
+        "servers": [
+          {
+            "description": "Main wttr.in server",
+            "url": "https://wttr.in"
+          },
+          {
+            "description": "Data-rich output format (v2)",
+            "url": "https://v2.wttr.in"
+          },
+          {
+            "description": "Data-rich output format (v2 day mode with Nerd Fonts)",
+            "url": "https://v2d.wttr.in"
+          },
+          {
+            "description": "Data-rich output format (v2 night mode with Nerd Fonts)",
+            "url": "https://v2n.wttr.in"
+          }
+        ],
+        "title": "Console Weather Forecast",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "console-weather-forecast"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "console-weather-forecast"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -625,19 +632,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "console-weather-forecast"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -652,138 +659,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "console-weather-forecast"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "console-weather-forecast"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "console-weather-forecast"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "console-weather-forecast"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "console-weather-forecast"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "console-weather-forecast"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "console-weather-forecast"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "console-weather-forecast"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "console-weather-forecast"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "console-weather-forecast",
+  "origin": "voxgig-sdk"
 }

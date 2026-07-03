@@ -91,6 +91,7 @@ function get_current_location_weather_basic_setup(extra)
     ["CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID"] = idmap,
     ["CONSOLEWEATHERFORECAST_TEST_LIVE"] = "FALSE",
     ["CONSOLEWEATHERFORECAST_TEST_EXPLAIN"] = "FALSE",
+    ["CONSOLEWEATHERFORECAST_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function get_current_location_weather_basic_setup(extra)
   if env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["CONSOLEWEATHERFORECAST_APIKEY"],
       },
       extra or {},
     })

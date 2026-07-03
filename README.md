@@ -1,21 +1,8 @@
 # ConsoleWeatherForecast SDK
 
-Console-friendly weather forecasts you can curl from a terminal, with ANSI, plain text, HTML, PNG, JSON, or Prometheus output
+Console Weather Forecast client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Console Weather Forecast
-
-[wttr.in](https://wttr.in) is a console-oriented weather forecast service created by [Igor Chubin](https://github.com/chubin). It is designed to be queried with command-line HTTP clients such as `curl`, `httpie`, or `wget`, and it picks an output representation based on the User-Agent: ANSI-coloured text for terminals, HTML for browsers, or PNG for graphical viewers.
-
-What you get from the API:
-- Current conditions plus a multi-day forecast broken down by morning, noon, evening, and night.
-- Temperature, wind speed and direction, precipitation, visibility, and humidity, in USCS or metric units (`?u`, `?m`, `?M`).
-- Multiple output formats: ANSI, plain text (`?T`), PNG (append `.png`), JSON (`?format=j1` / `j2`), one-line summaries (`?format=1..4`), Prometheus metrics (`?format=p1`), and data-rich or map views (`?format=v2`, `v3`).
-- Moon phase queries via `/Moon` or `/Moon@YYYY-MM-DD`.
-- Localised output in around 74 languages via `?lang=` or language subdomains like `de.wttr.in`.
-
-Locations can be supplied as a city name (`/London`), a 3-letter IATA airport code (`/muc`), a landmark (`/Eiffel+Tower`), a domain prefixed with `@` (`/@github.com`), or an IP address. Omitting the location returns weather for the caller's detected location. The service does not require an API key, CORS is enabled, and a fallback domain `wttr.is` is available.
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install console-weather-forecast-sdk
 luarocks install console-weather-forecast-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ConsoleWeatherForecastSDK } from 'console-weather-forecast'
 
-const client = new ConsoleWeatherForecastSDK({})
+const client = new ConsoleWeatherForecastSDK({
+  apikey: process.env.CONSOLE-WEATHER-FORECAST_APIKEY,
+})
 
+// Load getcurrentlocationweather data
+const getcurrentlocationweather = await client.GetCurrentLocationWeather().load({})
+console.log(getcurrentlocationweather.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetCurrentLocationWeather** | Weather for the caller's auto-detected location, returned by requesting the API root `/` (with optional `?format=` to pick text, JSON, or Prometheus output). | `/` |
-| **GetLocationWeather** | Weather for an explicit place at `/{location}` — accepts city names, IATA codes, landmarks, `@domain` lookups, or IP addresses, with units and formatting controlled via query parameters such as `?m`, `?u`, `?lang=`, and `?format=`. | `/{location}` |
-| **Help** | The built-in usage reference served at `/:help`, documenting URL patterns, query flags, and output formats. | `/:help` |
-| **Location** | A resolvable place identifier used as the path segment in `/{location}` requests — covering cities, airports, landmarks, geographic coordinates, and special targets like `Moon`. | `/{location}.png` |
+| **GetCurrentLocationWeather** |  | `/` |
+| **GetLocationWeather** |  | `/{location}` |
+| **Help** |  | `/:help` |
+| **Location** |  | `/{location}.png` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from consoleweatherforecast_sdk import ConsoleWeatherForecastSDK
 
-client = ConsoleWeatherForecastSDK({})
+client = ConsoleWeatherForecastSDK({
+    "apikey": os.environ.get("CONSOLE-WEATHER-FORECAST_APIKEY"),
+})
 
 
 # Load a specific getcurrentlocationweather
-getcurrentlocationweather, err = client.GetCurrentLocationWeather(None).load(
-    {"id": "example_id"}, None
-)
+getcurrentlocationweather, err = client.GetCurrentLocationWeather().load({"id": "example_id"})
+print(getcurrentlocationweather)
 ```
 
 ### PHP
@@ -129,13 +122,14 @@ getcurrentlocationweather, err = client.GetCurrentLocationWeather(None).load(
 <?php
 require_once 'consoleweatherforecast_sdk.php';
 
-$client = new ConsoleWeatherForecastSDK([]);
+$client = new ConsoleWeatherForecastSDK([
+    "apikey" => getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
+]);
 
 
 // Load a specific getcurrentlocationweather
-[$getcurrentlocationweather, $err] = $client->GetCurrentLocationWeather(null)->load(
-    ["id" => "example_id"], null
-);
+[$getcurrentlocationweather, $err] = $client->GetCurrentLocationWeather()->load(["id" => "example_id"]);
+print_r($getcurrentlocationweather);
 ```
 
 ### Golang
@@ -143,8 +137,13 @@ $client = new ConsoleWeatherForecastSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/console-weather-forecast-sdk/go"
 
-client := sdk.NewConsoleWeatherForecastSDK(map[string]any{})
+client := sdk.NewConsoleWeatherForecastSDK(map[string]any{
+    "apikey": os.Getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
+})
 
+// Load getcurrentlocationweather data
+getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(map[string]any{}, nil)
+fmt.Println(getcurrentlocationweather)
 ```
 
 ### Ruby
@@ -152,13 +151,14 @@ client := sdk.NewConsoleWeatherForecastSDK(map[string]any{})
 ```ruby
 require_relative "ConsoleWeatherForecast_sdk"
 
-client = ConsoleWeatherForecastSDK.new({})
+client = ConsoleWeatherForecastSDK.new({
+  "apikey" => ENV["CONSOLE-WEATHER-FORECAST_APIKEY"],
+})
 
 
 # Load a specific getcurrentlocationweather
-getcurrentlocationweather, err = client.GetCurrentLocationWeather(nil).load(
-  { "id" => "example_id" }, nil
-)
+getcurrentlocationweather, err = client.GetCurrentLocationWeather().load({ "id" => "example_id" })
+puts getcurrentlocationweather
 ```
 
 ### Lua
@@ -166,13 +166,14 @@ getcurrentlocationweather, err = client.GetCurrentLocationWeather(nil).load(
 ```lua
 local sdk = require("console-weather-forecast_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
+})
 
 
 -- Load a specific getcurrentlocationweather
-local getcurrentlocationweather, err = client:GetCurrentLocationWeather(nil):load(
-  { id = "example_id" }, nil
-)
+local getcurrentlocationweather, err = client:GetCurrentLocationWeather():load({ id = "example_id" })
+print(getcurrentlocationweather)
 ```
 
 ## Unit testing in offline mode
@@ -191,25 +192,21 @@ const result = await client.GetCurrentLocationWeather().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ConsoleWeatherForecastSDK.test(None, None)
-result, err = client.GetCurrentLocationWeather(None).load(
-    {"id": "test01"}, None
-)
+client = ConsoleWeatherForecastSDK.test()
+result, err = client.GetCurrentLocationWeather().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ConsoleWeatherForecastSDK::test(null, null);
-[$result, $err] = $client->GetCurrentLocationWeather(null)->load(
-    ["id" => "test01"], null
-);
+$client = ConsoleWeatherForecastSDK::test();
+[$result, $err] = $client->GetCurrentLocationWeather()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetCurrentLocationWeather(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -218,19 +215,15 @@ result, err := client.GetCurrentLocationWeather(nil).Load(
 ### Ruby
 
 ```ruby
-client = ConsoleWeatherForecastSDK.test(nil, nil)
-result, err = client.GetCurrentLocationWeather(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ConsoleWeatherForecastSDK.test
+result, err = client.GetCurrentLocationWeather().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetCurrentLocationWeather(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetCurrentLocationWeather():load({ id = "test01" })
 ```
 
 ## How it works
@@ -334,15 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Console Weather Forecast
-
-- Upstream: [https://wttr.in](https://wttr.in)
-- API docs: [https://github.com/chubin/wttr.in](https://github.com/chubin/wttr.in)
-
-- Source code is released under the Apache License 2.0.
-- Weather data is sourced from upstream providers (notably the [wego](https://github.com/schachmat/wego) weather client) and remains subject to their own terms.
-- Attribution to the upstream project ([chubin/wttr.in](https://github.com/chubin/wttr.in)) is appreciated when redistributing output.
 
 ---
 

@@ -91,6 +91,7 @@ def _location_basic_setup(extra):
         "CONSOLEWEATHERFORECAST_TEST_LOCATION_ENTID": idmap,
         "CONSOLEWEATHERFORECAST_TEST_LIVE": "FALSE",
         "CONSOLEWEATHERFORECAST_TEST_EXPLAIN": "FALSE",
+        "CONSOLEWEATHERFORECAST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _location_basic_setup(extra):
     if env.get("CONSOLEWEATHERFORECAST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("CONSOLEWEATHERFORECAST_APIKEY"),
             },
             extra or {},
         ])

@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID': {},
     'CONSOLEWEATHERFORECAST_TEST_LIVE': 'FALSE',
+    'CONSOLEWEATHERFORECAST_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.CONSOLEWEATHERFORECAST_TEST_LIVE
 
   if (live) {
     const client = new ConsoleWeatherForecastSDK({
+      apikey: env.CONSOLEWEATHERFORECAST_APIKEY,
     })
 
     let idmap: any = env['CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID']

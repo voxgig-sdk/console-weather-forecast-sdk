@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -106,7 +106,7 @@ local get_current_location_weather = client:GetCurrentLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCurrentLocationWeather(nil):load({ id = "get_current_location_weather_id" }, nil)
+local result, err = client:GetCurrentLocationWeather():load({ id = "get_current_location_weather_id" })
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ local get_location_weather = client:GetLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetLocationWeather(nil):load({ id = "get_location_weather_id" }, nil)
+local result, err = client:GetLocationWeather():load({ id = "get_location_weather_id" })
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ local help = client:Help(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Help(nil):load({ id = "help_id" }, nil)
+local result, err = client:Help():load({ id = "help_id" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ local location = client:Location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location(nil):load({ id = "location_id" }, nil)
+local result, err = client:Location():load({ id = "location_id" })
 ```
 
 ### Common Methods

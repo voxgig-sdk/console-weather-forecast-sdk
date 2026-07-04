@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:get_current_location_weather():list() / client:get_current_location_weather():load({ id = ... })
+function ConsoleWeatherForecastSDK:get_current_location_weather(data)
+  local EntityMod = require("entity.get_current_location_weather_entity")
+  if data == nil then
+    if self._get_current_location_weather == nil then
+      self._get_current_location_weather = EntityMod.new(self, nil)
+    end
+    return self._get_current_location_weather
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_current_location_weather() instead.
 function ConsoleWeatherForecastSDK:GetCurrentLocationWeather(data)
   local EntityMod = require("entity.get_current_location_weather_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:get_location_weather():list() / client:get_location_weather():load({ id = ... })
+function ConsoleWeatherForecastSDK:get_location_weather(data)
+  local EntityMod = require("entity.get_location_weather_entity")
+  if data == nil then
+    if self._get_location_weather == nil then
+      self._get_location_weather = EntityMod.new(self, nil)
+    end
+    return self._get_location_weather
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_location_weather() instead.
 function ConsoleWeatherForecastSDK:GetLocationWeather(data)
   local EntityMod = require("entity.get_location_weather_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:help():list() / client:help():load({ id = ... })
+function ConsoleWeatherForecastSDK:help(data)
+  local EntityMod = require("entity.help_entity")
+  if data == nil then
+    if self._help == nil then
+      self._help = EntityMod.new(self, nil)
+    end
+    return self._help
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:help() instead.
 function ConsoleWeatherForecastSDK:Help(data)
   local EntityMod = require("entity.help_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
+function ConsoleWeatherForecastSDK:location(data)
+  local EntityMod = require("entity.location_entity")
+  if data == nil then
+    if self._location == nil then
+      self._location = EntityMod.new(self, nil)
+    end
+    return self._location
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:location() instead.
 function ConsoleWeatherForecastSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   return EntityMod.new(self, data)

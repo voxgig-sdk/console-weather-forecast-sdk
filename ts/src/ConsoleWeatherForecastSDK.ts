@@ -5,6 +5,8 @@ import { GetLocationWeatherEntity } from './entity/GetLocationWeatherEntity'
 import { HelpEntity } from './entity/HelpEntity'
 import { LocationEntity } from './entity/LocationEntity'
 
+export type * from './ConsoleWeatherForecastTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -205,24 +207,56 @@ class ConsoleWeatherForecastSDK {
 
 
 
+  _get_current_location_weather?: GetCurrentLocationWeatherEntity
+
+  // Idiomatic facade: `client.get_current_location_weather.list()` / `client.get_current_location_weather.load({ id })`.
+  get get_current_location_weather(): GetCurrentLocationWeatherEntity {
+    return (this._get_current_location_weather ??= new GetCurrentLocationWeatherEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_current_location_weather` instead. */
   GetCurrentLocationWeather(data?: any) {
     const self = this
     return new GetCurrentLocationWeatherEntity(self,data)
   }
 
 
+  _get_location_weather?: GetLocationWeatherEntity
+
+  // Idiomatic facade: `client.get_location_weather.list()` / `client.get_location_weather.load({ id })`.
+  get get_location_weather(): GetLocationWeatherEntity {
+    return (this._get_location_weather ??= new GetLocationWeatherEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_location_weather` instead. */
   GetLocationWeather(data?: any) {
     const self = this
     return new GetLocationWeatherEntity(self,data)
   }
 
 
+  _help?: HelpEntity
+
+  // Idiomatic facade: `client.help.list()` / `client.help.load({ id })`.
+  get help(): HelpEntity {
+    return (this._help ??= new HelpEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.help` instead. */
   Help(data?: any) {
     const self = this
     return new HelpEntity(self,data)
   }
 
 
+  _location?: LocationEntity
+
+  // Idiomatic facade: `client.location.list()` / `client.location.load({ id })`.
+  get location(): LocationEntity {
+    return (this._location ??= new LocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.location` instead. */
   Location(data?: any) {
     const self = this
     return new LocationEntity(self,data)

@@ -15,9 +15,6 @@ module ConsoleWeatherForecastConfig
       },
       "options" => {
         "base" => "https://wttr.in",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -157,6 +154,7 @@ module ConsoleWeatherForecastConfig
                         "orig" => "location",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -313,6 +311,7 @@ module ConsoleWeatherForecastConfig
                         "orig" => "location",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

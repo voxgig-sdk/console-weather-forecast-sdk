@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -66,9 +65,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -82,14 +83,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -97,17 +98,17 @@ same parameters as `direct()`.
 ## GetCurrentLocationWeatherEntity
 
 ```ruby
-get_current_location_weather = client.GetCurrentLocationWeather
+get_current_location_weather = client.get_current_location_weather
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GetCurrentLocationWeather.load({ "id" => "get_current_location_weather_id" })
+result = client.get_current_location_weather.load({ "id" => "get_current_location_weather_id" })
 ```
 
 ### Common Methods
@@ -143,17 +144,17 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```ruby
-get_location_weather = client.GetLocationWeather
+get_location_weather = client.get_location_weather
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GetLocationWeather.load({ "id" => "get_location_weather_id" })
+result = client.get_location_weather.load({ "id" => "get_location_weather_id" })
 ```
 
 ### Common Methods
@@ -189,17 +190,17 @@ Return the entity name.
 ## HelpEntity
 
 ```ruby
-help = client.Help
+help = client.help
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Help.load({ "id" => "help_id" })
+result = client.help.load({ "id" => "help_id" })
 ```
 
 ### Common Methods
@@ -235,17 +236,17 @@ Return the entity name.
 ## LocationEntity
 
 ```ruby
-location = client.Location
+location = client.location
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Location.load({ "id" => "location_id" })
+result = client.location.load({ "id" => "location_id" })
 ```
 
 ### Common Methods

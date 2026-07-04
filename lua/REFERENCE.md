@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## GetCurrentLocationWeatherEntity
 
 ```lua
-local get_current_location_weather = client:GetCurrentLocationWeather(nil)
+local get_current_location_weather = client:get_current_location_weather(nil)
 ```
 
 ### Operations
@@ -106,7 +105,7 @@ local get_current_location_weather = client:GetCurrentLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCurrentLocationWeather():load({ id = "get_current_location_weather_id" })
+local result, err = client:get_current_location_weather():load({ id = "get_current_location_weather_id" })
 ```
 
 ### Common Methods
@@ -142,7 +141,7 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```lua
-local get_location_weather = client:GetLocationWeather(nil)
+local get_location_weather = client:get_location_weather(nil)
 ```
 
 ### Operations
@@ -152,7 +151,7 @@ local get_location_weather = client:GetLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetLocationWeather():load({ id = "get_location_weather_id" })
+local result, err = client:get_location_weather():load({ id = "get_location_weather_id" })
 ```
 
 ### Common Methods
@@ -188,7 +187,7 @@ Return the entity name.
 ## HelpEntity
 
 ```lua
-local help = client:Help(nil)
+local help = client:help(nil)
 ```
 
 ### Operations
@@ -198,7 +197,7 @@ local help = client:Help(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Help():load({ id = "help_id" })
+local result, err = client:help():load({ id = "help_id" })
 ```
 
 ### Common Methods
@@ -234,7 +233,7 @@ Return the entity name.
 ## LocationEntity
 
 ```lua
-local location = client:Location(nil)
+local location = client:location(nil)
 ```
 
 ### Operations
@@ -244,7 +243,7 @@ local location = client:Location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location():load({ id = "location_id" })
+local result, err = client:location():load({ id = "location_id" })
 ```
 
 ### Common Methods

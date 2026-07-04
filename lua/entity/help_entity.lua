@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HelpLoadMatch
+---@param ctrl? table
+---@return Help
+---@return string? err
 function HelpEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

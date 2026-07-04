@@ -42,8 +42,7 @@ class GetCurrentLocationWeatherEntityTest < Minitest::Test
     # LOAD
     get_current_location_weather_ref01_ent = client.GetCurrentLocationWeather(nil)
     get_current_location_weather_ref01_match_dt0 = {}
-    get_current_location_weather_ref01_data_dt0_loaded, err = get_current_location_weather_ref01_ent.load(get_current_location_weather_ref01_match_dt0, nil)
-    assert_nil err
+    get_current_location_weather_ref01_data_dt0_loaded = get_current_location_weather_ref01_ent.load(get_current_location_weather_ref01_match_dt0, nil)
     assert !get_current_location_weather_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def get_current_location_weather_basic_setup(extra)
     "CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID" => idmap,
     "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
     "CONSOLEWEATHERFORECAST_TEST_EXPLAIN" => "FALSE",
-    "CONSOLEWEATHERFORECAST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def get_current_location_weather_basic_setup(extra)
   if env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CONSOLEWEATHERFORECAST_APIKEY"],
       },
       extra || {},
     ])

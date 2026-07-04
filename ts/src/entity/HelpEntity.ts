@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Help,
+  HelpLoadMatch,
+} from '../ConsoleWeatherForecastTypes'
 
 // TODO: needs Entity superclass
-class HelpEntity extends ConsoleWeatherForecastEntityBase {
+class HelpEntity extends ConsoleWeatherForecastEntityBase<Help> {
 
   constructor(client: ConsoleWeatherForecastSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class HelpEntity extends ConsoleWeatherForecastEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HelpLoadMatch, ctrl?: Control): Promise<Help> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class HelpEntity extends ConsoleWeatherForecastEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Help> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

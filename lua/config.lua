@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://wttr.in",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -156,6 +153,7 @@ local function make_config()
                       ["orig"] = "location",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -312,6 +310,7 @@ local function make_config()
                       ["orig"] = "location",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },

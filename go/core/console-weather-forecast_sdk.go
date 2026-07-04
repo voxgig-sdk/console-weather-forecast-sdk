@@ -245,21 +245,33 @@ func (sdk *ConsoleWeatherForecastSDK) Direct(fetchargs map[string]any) (map[stri
 }
 
 
+// GetCurrentLocationWeather returns a GetCurrentLocationWeather entity bound to this client.
+// Idiomatic usage: client.GetCurrentLocationWeather(nil).List(nil, nil) or
+// client.GetCurrentLocationWeather(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ConsoleWeatherForecastSDK) GetCurrentLocationWeather(data map[string]any) ConsoleWeatherForecastEntity {
 	return NewGetCurrentLocationWeatherEntityFunc(sdk, data)
 }
 
 
+// GetLocationWeather returns a GetLocationWeather entity bound to this client.
+// Idiomatic usage: client.GetLocationWeather(nil).List(nil, nil) or
+// client.GetLocationWeather(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ConsoleWeatherForecastSDK) GetLocationWeather(data map[string]any) ConsoleWeatherForecastEntity {
 	return NewGetLocationWeatherEntityFunc(sdk, data)
 }
 
 
+// Help returns a Help entity bound to this client.
+// Idiomatic usage: client.Help(nil).List(nil, nil) or
+// client.Help(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ConsoleWeatherForecastSDK) Help(data map[string]any) ConsoleWeatherForecastEntity {
 	return NewHelpEntityFunc(sdk, data)
 }
 
 
+// Location returns a Location entity bound to this client.
+// Idiomatic usage: client.Location(nil).List(nil, nil) or
+// client.Location(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ConsoleWeatherForecastSDK) Location(data map[string]any) ConsoleWeatherForecastEntity {
 	return NewLocationEntityFunc(sdk, data)
 }

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetLocationWeatherLoadMatch
+---@param ctrl? table
+---@return GetLocationWeather
+---@return string? err
 function GetLocationWeatherEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

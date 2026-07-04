@@ -49,8 +49,7 @@ class TestHelpEntity:
         # LOAD
         help_ref01_ent = client.Help(None)
         help_ref01_match_dt0 = {}
-        help_ref01_data_dt0_loaded, err = help_ref01_ent.load(help_ref01_match_dt0, None)
-        assert err is None
+        help_ref01_data_dt0_loaded = help_ref01_ent.load(help_ref01_match_dt0, None)
         assert help_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _help_basic_setup(extra):
         "CONSOLEWEATHERFORECAST_TEST_HELP_ENTID": idmap,
         "CONSOLEWEATHERFORECAST_TEST_LIVE": "FALSE",
         "CONSOLEWEATHERFORECAST_TEST_EXPLAIN": "FALSE",
-        "CONSOLEWEATHERFORECAST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _help_basic_setup(extra):
     if env.get("CONSOLEWEATHERFORECAST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CONSOLEWEATHERFORECAST_APIKEY"),
             },
             extra or {},
         ])

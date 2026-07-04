@@ -9,9 +9,12 @@ The TypeScript SDK for the ConsoleWeatherForecast API — a type-safe, entity-or
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/console-weather-forecast
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ConsoleWeatherForecastSDK } from 'console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
 
-const client = new ConsoleWeatherForecastSDK({
-  apikey: process.env.CONSOLE-WEATHER-FORECAST_APIKEY,
-})
+const client = new ConsoleWeatherForecastSDK()
 ```
 
 ### 3. Load a getcurrentlocationweather
 
 ```ts
-const result = await client.GetCurrentLocationWeather().load({ id: 'example_id' })
+const result = await client.getcurrentlocationweather.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ConsoleWeatherForecastSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.getcurrentlocationweather.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ConsoleWeatherForecastSDK({ apikey: '...' })
+const client = new ConsoleWeatherForecastSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.getcurrentlocationweather
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ConsoleWeatherForecastSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ConsoleWeatherForecastSDK({
 Create a `.env.local` file at the project root:
 
 ```
-CONSOLE-WEATHER-FORECAST_TEST_LIVE=TRUE
-CONSOLE-WEATHER-FORECAST_APIKEY=<your-key>
+CONSOLE_WEATHER_FORECAST_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ConsoleWeatherForecastSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ConsoleWeatherForecastSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -295,7 +292,7 @@ API path: `/{location}.png`
 
 ### GetCurrentLocationWeather
 
-Create an instance: `const get_current_location_weather = client.GetCurrentLocationWeather()`
+Create an instance: `const get_current_location_weather = client.get_current_location_weather`
 
 #### Operations
 
@@ -306,13 +303,13 @@ Create an instance: `const get_current_location_weather = client.GetCurrentLocat
 #### Example: Load
 
 ```ts
-const get_current_location_weather = await client.GetCurrentLocationWeather().load({ id: 'get_current_location_weather_id' })
+const get_current_location_weather = await client.get_current_location_weather.load({ id: 'get_current_location_weather_id' })
 ```
 
 
 ### GetLocationWeather
 
-Create an instance: `const get_location_weather = client.GetLocationWeather()`
+Create an instance: `const get_location_weather = client.get_location_weather`
 
 #### Operations
 
@@ -323,13 +320,13 @@ Create an instance: `const get_location_weather = client.GetLocationWeather()`
 #### Example: Load
 
 ```ts
-const get_location_weather = await client.GetLocationWeather().load({ id: 'get_location_weather_id' })
+const get_location_weather = await client.get_location_weather.load({ id: 'get_location_weather_id' })
 ```
 
 
 ### Help
 
-Create an instance: `const help = client.Help()`
+Create an instance: `const help = client.help`
 
 #### Operations
 
@@ -340,13 +337,13 @@ Create an instance: `const help = client.Help()`
 #### Example: Load
 
 ```ts
-const help = await client.Help().load({ id: 'help_id' })
+const help = await client.help.load({ id: 'help_id' })
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -357,7 +354,7 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 
@@ -418,7 +415,7 @@ console-weather-forecast/
 Import the SDK from the package root:
 
 ```ts
-import { ConsoleWeatherForecastSDK } from 'console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
 ```
 
 ### Entity state
@@ -428,11 +425,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const getcurrentlocationweather = client.getcurrentlocationweather
+await getcurrentlocationweather.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// getcurrentlocationweather.data() now returns the loaded getcurrentlocationweather data
+// getcurrentlocationweather.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

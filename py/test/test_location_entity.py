@@ -49,8 +49,7 @@ class TestLocationEntity:
         # LOAD
         location_ref01_ent = client.Location(None)
         location_ref01_match_dt0 = {}
-        location_ref01_data_dt0_loaded, err = location_ref01_ent.load(location_ref01_match_dt0, None)
-        assert err is None
+        location_ref01_data_dt0_loaded = location_ref01_ent.load(location_ref01_match_dt0, None)
         assert location_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _location_basic_setup(extra):
         "CONSOLEWEATHERFORECAST_TEST_LOCATION_ENTID": idmap,
         "CONSOLEWEATHERFORECAST_TEST_LIVE": "FALSE",
         "CONSOLEWEATHERFORECAST_TEST_EXPLAIN": "FALSE",
-        "CONSOLEWEATHERFORECAST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _location_basic_setup(extra):
     if env.get("CONSOLEWEATHERFORECAST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CONSOLEWEATHERFORECAST_APIKEY"),
             },
             extra or {},
         ])

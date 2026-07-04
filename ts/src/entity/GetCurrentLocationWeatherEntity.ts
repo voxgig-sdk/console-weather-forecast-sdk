@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetCurrentLocationWeather,
+  GetCurrentLocationWeatherLoadMatch,
+} from '../ConsoleWeatherForecastTypes'
 
 // TODO: needs Entity superclass
-class GetCurrentLocationWeatherEntity extends ConsoleWeatherForecastEntityBase {
+class GetCurrentLocationWeatherEntity extends ConsoleWeatherForecastEntityBase<GetCurrentLocationWeather> {
 
   constructor(client: ConsoleWeatherForecastSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetCurrentLocationWeatherEntity extends ConsoleWeatherForecastEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetCurrentLocationWeatherLoadMatch, ctrl?: Control): Promise<GetCurrentLocationWeather> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetCurrentLocationWeatherEntity extends ConsoleWeatherForecastEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetCurrentLocationWeather> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

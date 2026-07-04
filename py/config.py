@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://wttr.in",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -157,6 +154,7 @@ def make_config():
                       "orig": "location",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -313,6 +311,7 @@ def make_config():
                       "orig": "location",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

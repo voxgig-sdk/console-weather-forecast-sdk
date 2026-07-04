@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `ConsoleWeatherForecastSDK.test()`.
 ## GetCurrentLocationWeatherEntity
 
 ```ts
-const get_current_location_weather = client.GetCurrentLocationWeather()
+const get_current_location_weather = client.get_current_location_weather
 ```
 
 ### Operations
@@ -156,7 +155,7 @@ const get_current_location_weather = client.GetCurrentLocationWeather()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetCurrentLocationWeather().load({ id: 'get_current_location_weather_id' })
+const result = await client.get_current_location_weather.load({ id: 'get_current_location_weather_id' })
 ```
 
 ### Common Methods
@@ -190,7 +189,7 @@ Return a copy of the entity options.
 ## GetLocationWeatherEntity
 
 ```ts
-const get_location_weather = client.GetLocationWeather()
+const get_location_weather = client.get_location_weather
 ```
 
 ### Operations
@@ -200,7 +199,7 @@ const get_location_weather = client.GetLocationWeather()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetLocationWeather().load({ id: 'get_location_weather_id' })
+const result = await client.get_location_weather.load({ id: 'get_location_weather_id' })
 ```
 
 ### Common Methods
@@ -234,7 +233,7 @@ Return a copy of the entity options.
 ## HelpEntity
 
 ```ts
-const help = client.Help()
+const help = client.help
 ```
 
 ### Operations
@@ -244,7 +243,7 @@ const help = client.Help()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Help().load({ id: 'help_id' })
+const result = await client.help.load({ id: 'help_id' })
 ```
 
 ### Common Methods
@@ -278,7 +277,7 @@ Return a copy of the entity options.
 ## LocationEntity
 
 ```ts
-const location = client.Location()
+const location = client.location
 ```
 
 ### Operations
@@ -288,7 +287,7 @@ const location = client.Location()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load({ id: 'location_id' })
+const result = await client.location.load({ id: 'location_id' })
 ```
 
 ### Common Methods

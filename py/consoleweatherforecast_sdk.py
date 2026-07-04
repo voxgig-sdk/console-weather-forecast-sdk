@@ -144,16 +144,23 @@ class ConsoleWeatherForecastSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class ConsoleWeatherForecastSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,30 +212,74 @@ class ConsoleWeatherForecastSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def get_current_location_weather(self):
+        """Idiomatic facade: client.get_current_location_weather.list() / client.get_current_location_weather.load({"id": ...})."""
+        from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
+        cached = getattr(self, "_get_current_location_weather", None)
+        if cached is None:
+            cached = GetCurrentLocationWeatherEntity(self, None)
+            self._get_current_location_weather = cached
+        return cached
 
     def GetCurrentLocationWeather(self, data=None):
+        # Deprecated: use client.get_current_location_weather instead.
         from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
         return GetCurrentLocationWeatherEntity(self, data)
 
 
+    @property
+    def get_location_weather(self):
+        """Idiomatic facade: client.get_location_weather.list() / client.get_location_weather.load({"id": ...})."""
+        from entity.get_location_weather_entity import GetLocationWeatherEntity
+        cached = getattr(self, "_get_location_weather", None)
+        if cached is None:
+            cached = GetLocationWeatherEntity(self, None)
+            self._get_location_weather = cached
+        return cached
+
     def GetLocationWeather(self, data=None):
+        # Deprecated: use client.get_location_weather instead.
         from entity.get_location_weather_entity import GetLocationWeatherEntity
         return GetLocationWeatherEntity(self, data)
 
 
+    @property
+    def help(self):
+        """Idiomatic facade: client.help.list() / client.help.load({"id": ...})."""
+        from entity.help_entity import HelpEntity
+        cached = getattr(self, "_help", None)
+        if cached is None:
+            cached = HelpEntity(self, None)
+            self._help = cached
+        return cached
+
     def Help(self, data=None):
+        # Deprecated: use client.help instead.
         from entity.help_entity import HelpEntity
         return HelpEntity(self, data)
 
 
+    @property
+    def location(self):
+        """Idiomatic facade: client.location.list() / client.location.load({"id": ...})."""
+        from entity.location_entity import LocationEntity
+        cached = getattr(self, "_location", None)
+        if cached is None:
+            cached = LocationEntity(self, None)
+            self._location = cached
+        return cached
+
     def Location(self, data=None):
+        # Deprecated: use client.location instead.
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 

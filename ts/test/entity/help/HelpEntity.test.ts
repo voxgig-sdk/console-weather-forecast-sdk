@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'CONSOLE_WEATHER_FORECAST_TEST_HELP_ENTID': idmap,
     'CONSOLE_WEATHER_FORECAST_TEST_LIVE': 'FALSE',
     'CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN': 'FALSE',
-    'CONSOLE_WEATHER_FORECAST_APIKEY': 'NONE',
   })
 
   idmap = env['CONSOLE_WEATHER_FORECAST_TEST_HELP_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ConsoleWeatherForecastSDK(merge([
       {
-        apikey: env.CONSOLE_WEATHER_FORECAST_APIKEY,
       },
       extra
     ]))

@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -66,9 +65,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -81,11 +80,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -93,17 +92,17 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## GetCurrentLocationWeatherEntity
 
 ```python
-get_current_location_weather = client.GetCurrentLocationWeather()
+get_current_location_weather = client.get_current_location_weather
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetCurrentLocationWeather().load({"id": "get_current_location_weather_id"})
+result = client.get_current_location_weather.load({"id": "get_current_location_weather_id"})
 ```
 
 ### Common Methods
@@ -138,17 +137,17 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```python
-get_location_weather = client.GetLocationWeather()
+get_location_weather = client.get_location_weather
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetLocationWeather().load({"id": "get_location_weather_id"})
+result = client.get_location_weather.load({"id": "get_location_weather_id"})
 ```
 
 ### Common Methods
@@ -183,17 +182,17 @@ Return the entity name.
 ## HelpEntity
 
 ```python
-help = client.Help()
+help = client.help
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Help().load({"id": "help_id"})
+result = client.help.load({"id": "help_id"})
 ```
 
 ### Common Methods
@@ -228,17 +227,17 @@ Return the entity name.
 ## LocationEntity
 
 ```python
-location = client.Location()
+location = client.location
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Location().load({"id": "location_id"})
+result = client.location.load({"id": "location_id"})
 ```
 
 ### Common Methods

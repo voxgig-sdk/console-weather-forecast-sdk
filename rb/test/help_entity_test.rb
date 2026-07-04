@@ -42,8 +42,7 @@ class HelpEntityTest < Minitest::Test
     # LOAD
     help_ref01_ent = client.Help(nil)
     help_ref01_match_dt0 = {}
-    help_ref01_data_dt0_loaded, err = help_ref01_ent.load(help_ref01_match_dt0, nil)
-    assert_nil err
+    help_ref01_data_dt0_loaded = help_ref01_ent.load(help_ref01_match_dt0, nil)
     assert !help_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def help_basic_setup(extra)
     "CONSOLEWEATHERFORECAST_TEST_HELP_ENTID" => idmap,
     "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
     "CONSOLEWEATHERFORECAST_TEST_EXPLAIN" => "FALSE",
-    "CONSOLEWEATHERFORECAST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def help_basic_setup(extra)
   if env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CONSOLEWEATHERFORECAST_APIKEY"],
       },
       extra || {},
     ])

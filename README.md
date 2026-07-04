@@ -10,26 +10,24 @@ This is an unofficial SDK for the Console Weather Forecast public API, generated
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/console-weather-forecast` | `npm install @voxgig-sdk/console-weather-forecast` |
-| Python | `voxgig-sdk-console-weather-forecast` | `pip install voxgig-sdk-console-weather-forecast` |
-| PHP | `voxgig-sdk/console-weather-forecast` | `composer require voxgig-sdk/console-weather-forecast` |
-| Golang | `github.com/voxgig-sdk/console-weather-forecast-sdk/go` | `go get github.com/voxgig-sdk/console-weather-forecast-sdk/go` |
-| Ruby | `voxgig-sdk-console-weather-forecast` | `gem install voxgig-sdk-console-weather-forecast` |
-| Lua | `voxgig-sdk-console-weather-forecast` | `luarocks install voxgig-sdk-console-weather-forecast` |
+| TypeScript | `@voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| Python | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| PHP | `voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/console-weather-forecast-sdk/go` | `go get github.com/voxgig-sdk/console-weather-forecast-sdk/go@latest` |
+| Ruby | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| Lua | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { ConsoleWeatherForecastSDK } from 'console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
 
-const client = new ConsoleWeatherForecastSDK({
-  apikey: process.env.CONSOLE-WEATHER-FORECAST_APIKEY,
-})
+const client = new ConsoleWeatherForecastSDK()
 
 // Load getcurrentlocationweather data
-const getcurrentlocationweather = await client.GetCurrentLocationWeather().load({})
+const getcurrentlocationweather = await client.getcurrentlocationweather.load({})
 console.log(getcurrentlocationweather.data)
 ```
 
@@ -71,10 +69,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetCurrentLocationWeather** |  | `/` |
-| **GetLocationWeather** |  | `/{location}` |
-| **Help** |  | `/:help` |
-| **Location** |  | `/{location}.png` |
+| **GetCurrentLocationWeather** | The GetCurrentLocationWeather entity (load). | `/` |
+| **GetLocationWeather** | The GetLocationWeather entity (load). | `/{location}` |
+| **Help** | The Help entity (load). | `/:help` |
+| **Location** | The Location entity (load). | `/{location}.png` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -84,16 +82,13 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from consoleweatherforecast_sdk import ConsoleWeatherForecastSDK
 
-client = ConsoleWeatherForecastSDK({
-    "apikey": os.environ.get("CONSOLE-WEATHER-FORECAST_APIKEY"),
-})
+client = ConsoleWeatherForecastSDK()
 
 
 # Load a specific getcurrentlocationweather
-getcurrentlocationweather, err = client.GetCurrentLocationWeather().load({"id": "example_id"})
+getcurrentlocationweather = client.getcurrentlocationweather.load({"id": "example_id"})
 print(getcurrentlocationweather)
 ```
 
@@ -103,13 +98,11 @@ print(getcurrentlocationweather)
 <?php
 require_once 'consoleweatherforecast_sdk.php';
 
-$client = new ConsoleWeatherForecastSDK([
-    "apikey" => getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
-]);
+$client = new ConsoleWeatherForecastSDK();
 
 
 // Load a specific getcurrentlocationweather
-[$getcurrentlocationweather, $err] = $client->GetCurrentLocationWeather()->load(["id" => "example_id"]);
+$getcurrentlocationweather = $client->getcurrentlocationweather()->load(["id" => "example_id"]);
 print_r($getcurrentlocationweather);
 ```
 
@@ -118,9 +111,7 @@ print_r($getcurrentlocationweather);
 ```go
 import sdk "github.com/voxgig-sdk/console-weather-forecast-sdk/go"
 
-client := sdk.NewConsoleWeatherForecastSDK(map[string]any{
-    "apikey": os.Getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
-})
+client := sdk.New()
 
 // Load getcurrentlocationweather data
 getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(map[string]any{}, nil)
@@ -132,13 +123,11 @@ fmt.Println(getcurrentlocationweather)
 ```ruby
 require_relative "ConsoleWeatherForecast_sdk"
 
-client = ConsoleWeatherForecastSDK.new({
-  "apikey" => ENV["CONSOLE-WEATHER-FORECAST_APIKEY"],
-})
+client = ConsoleWeatherForecastSDK.new
 
 
 # Load a specific getcurrentlocationweather
-getcurrentlocationweather, err = client.GetCurrentLocationWeather().load({ "id" => "example_id" })
+getcurrentlocationweather = client.getcurrentlocationweather.load({ "id" => "example_id" })
 puts getcurrentlocationweather
 ```
 
@@ -147,13 +136,11 @@ puts getcurrentlocationweather
 ```lua
 local sdk = require("console-weather-forecast_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("CONSOLE-WEATHER-FORECAST_APIKEY"),
-})
+local client = sdk.new()
 
 
 -- Load a specific getcurrentlocationweather
-local getcurrentlocationweather, err = client:GetCurrentLocationWeather():load({ id = "example_id" })
+local getcurrentlocationweather, err = client:getcurrentlocationweather():load({ id = "example_id" })
 print(getcurrentlocationweather)
 ```
 
@@ -166,7 +153,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ConsoleWeatherForecastSDK.test()
-const result = await client.GetCurrentLocationWeather().load({ id: 'test01' })
+const result = await client.getcurrentlocationweather.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -174,14 +161,14 @@ const result = await client.GetCurrentLocationWeather().load({ id: 'test01' })
 
 ```python
 client = ConsoleWeatherForecastSDK.test()
-result, err = client.GetCurrentLocationWeather().load({"id": "test01"})
+result = client.getcurrentlocationweather.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = ConsoleWeatherForecastSDK::test();
-[$result, $err] = $client->GetCurrentLocationWeather()->load(["id" => "test01"]);
+$result = $client->getcurrentlocationweather()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -197,14 +184,14 @@ result, err := client.GetCurrentLocationWeather(nil).Load(
 
 ```ruby
 client = ConsoleWeatherForecastSDK.test
-result, err = client.GetCurrentLocationWeather().load({ "id" => "test01" })
+result = client.getcurrentlocationweather.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:GetCurrentLocationWeather():load({ id = "test01" })
+local result, err = client:getcurrentlocationweather():load({ id = "test01" })
 ```
 
 ## How it works
@@ -257,7 +244,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -266,7 +253,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -284,7 +271,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

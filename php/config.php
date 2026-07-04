@@ -20,9 +20,6 @@ class ConsoleWeatherForecastConfig
             ],
             "options" => [
                 "base" => "https://wttr.in",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -162,6 +159,7 @@ class ConsoleWeatherForecastConfig
                         'orig' => 'location',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -318,6 +316,7 @@ class ConsoleWeatherForecastConfig
                         'orig' => 'location',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

@@ -103,7 +103,7 @@ class ConsoleWeatherForecastSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class ConsoleWeatherForecastSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class ConsoleWeatherForecastSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,45 +216,89 @@ class ConsoleWeatherForecastSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function GetCurrentLocationWeather($data = null)
+    private $_get_current_location_weather = null;
+
+    // Idiomatic facade: $client->get_current_location_weather()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetCurrentLocationWeather() (PHP method
+    // names are case-insensitive).
+    public function get_current_location_weather($data = null)
     {
         require_once __DIR__ . '/entity/get_current_location_weather_entity.php';
+        if ($data === null) {
+            if ($this->_get_current_location_weather === null) {
+                $this->_get_current_location_weather = new GetCurrentLocationWeatherEntity($this, null);
+            }
+            return $this->_get_current_location_weather;
+        }
         return new GetCurrentLocationWeatherEntity($this, $data);
     }
 
 
-    public function GetLocationWeather($data = null)
+    private $_get_location_weather = null;
+
+    // Idiomatic facade: $client->get_location_weather()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetLocationWeather() (PHP method
+    // names are case-insensitive).
+    public function get_location_weather($data = null)
     {
         require_once __DIR__ . '/entity/get_location_weather_entity.php';
+        if ($data === null) {
+            if ($this->_get_location_weather === null) {
+                $this->_get_location_weather = new GetLocationWeatherEntity($this, null);
+            }
+            return $this->_get_location_weather;
+        }
         return new GetLocationWeatherEntity($this, $data);
     }
 
 
-    public function Help($data = null)
+    private $_help = null;
+
+    // Idiomatic facade: $client->help()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Help() (PHP method
+    // names are case-insensitive).
+    public function help($data = null)
     {
         require_once __DIR__ . '/entity/help_entity.php';
+        if ($data === null) {
+            if ($this->_help === null) {
+                $this->_help = new HelpEntity($this, null);
+            }
+            return $this->_help;
+        }
         return new HelpEntity($this, $data);
     }
 
 
-    public function Location($data = null)
+    private $_location = null;
+
+    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Location() (PHP method
+    // names are case-insensitive).
+    public function location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
+        if ($data === null) {
+            if ($this->_location === null) {
+                $this->_location = new LocationEntity($this, null);
+            }
+            return $this->_location;
+        }
         return new LocationEntity($this, $data);
     }
 

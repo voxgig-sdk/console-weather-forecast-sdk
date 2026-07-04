@@ -85,6 +85,27 @@ func (e *GetCurrentLocationWeatherEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an GetCurrentLocationWeather; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *GetCurrentLocationWeatherEntity) DataTyped(data ...GetCurrentLocationWeather) GetCurrentLocationWeather {
+	if len(data) > 0 {
+		return typedFrom[GetCurrentLocationWeather](e.Data(asMap(data[0])))
+	}
+	return typedFrom[GetCurrentLocationWeather](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through GetCurrentLocationWeather (all fields
+// optional at the wire level).
+func (e *GetCurrentLocationWeatherEntity) MatchTyped(match ...GetCurrentLocationWeather) GetCurrentLocationWeather {
+	if len(match) > 0 {
+		return typedFrom[GetCurrentLocationWeather](e.Match(asMap(match[0])))
+	}
+	return typedFrom[GetCurrentLocationWeather](e.Match())
+}
+
 
 func (e *GetCurrentLocationWeatherEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *GetCurrentLocationWeatherEntity) Load(reqmatch map[string]any, ctrl map
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// GetCurrentLocationWeatherLoadMatch and returns an GetCurrentLocationWeather. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *GetCurrentLocationWeatherEntity) LoadTyped(reqmatch GetCurrentLocationWeatherLoadMatch, ctrl map[string]any) (GetCurrentLocationWeather, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return GetCurrentLocationWeather{}, err
+	}
+	return typedFrom[GetCurrentLocationWeather](res), nil
 }
 
 

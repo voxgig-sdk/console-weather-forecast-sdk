@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://wttr.in',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -192,7 +188,8 @@ class Config {
                     "name": "id",
                     "orig": "location",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -348,7 +345,8 @@ class Config {
                     "name": "location",
                     "orig": "location",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

@@ -49,8 +49,7 @@ class LocationEntityTest extends TestCase
         // LOAD
         $location_ref01_ent = $client->Location(null);
         $location_ref01_match_dt0 = [];
-        [$location_ref01_data_dt0_loaded, $err] = $location_ref01_ent->load($location_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $location_ref01_data_dt0_loaded = $location_ref01_ent->load($location_ref01_match_dt0, null);
         $this->assertNotNull($location_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function location_basic_setup($extra)
         "CONSOLEWEATHERFORECAST_TEST_LOCATION_ENTID" => $idmap,
         "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
         "CONSOLEWEATHERFORECAST_TEST_EXPLAIN" => "FALSE",
-        "CONSOLEWEATHERFORECAST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function location_basic_setup($extra)
     if ($env["CONSOLEWEATHERFORECAST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["CONSOLEWEATHERFORECAST_APIKEY"],
             ],
             $extra ?? [],
         ]);

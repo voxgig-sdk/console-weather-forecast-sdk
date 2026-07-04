@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GetCurrentLocationWeatherEntity
 
 ```python
-get_current_location_weather = client.get_current_location_weather
+get_current_location_weather = client.GetCurrentLocationWeather()
 ```
 
 ### Operations
@@ -102,7 +102,7 @@ get_current_location_weather = client.get_current_location_weather
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_current_location_weather.load({"id": "get_current_location_weather_id"})
+result = client.GetCurrentLocationWeather().load({"id": "get_current_location_weather_id"})
 ```
 
 ### Common Methods
@@ -137,7 +137,7 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```python
-get_location_weather = client.get_location_weather
+get_location_weather = client.GetLocationWeather()
 ```
 
 ### Operations
@@ -147,7 +147,7 @@ get_location_weather = client.get_location_weather
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_location_weather.load({"id": "get_location_weather_id"})
+result = client.GetLocationWeather().load({"id": "get_location_weather_id"})
 ```
 
 ### Common Methods
@@ -182,7 +182,7 @@ Return the entity name.
 ## HelpEntity
 
 ```python
-help = client.help
+help = client.Help()
 ```
 
 ### Operations
@@ -192,7 +192,7 @@ help = client.help
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.help.load({"id": "help_id"})
+result = client.Help().load({"id": "help_id"})
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ Return the entity name.
 ## LocationEntity
 
 ```python
-location = client.location
+location = client.Location()
 ```
 
 ### Operations
@@ -237,7 +237,7 @@ location = client.location
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.location.load({"id": "location_id"})
+result = client.Location().load({"id": "location_id"})
 ```
 
 ### Common Methods

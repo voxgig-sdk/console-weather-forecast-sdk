@@ -26,9 +26,9 @@ import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
 
 const client = new ConsoleWeatherForecastSDK()
 
-// Load getcurrentlocationweather data
-const getcurrentlocationweather = await client.getcurrentlocationweather.load({})
-console.log(getcurrentlocationweather.data)
+// Load getcurrentlocationweather data (returns a GetCurrentLocationWeather)
+const getcurrentlocationweather = await client.GetCurrentLocationWeather().load()
+console.log(getcurrentlocationweather)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from consoleweatherforecast_sdk import ConsoleWeatherForecastSDK
 client = ConsoleWeatherForecastSDK()
 
 
-# Load a specific getcurrentlocationweather
-getcurrentlocationweather = client.getcurrentlocationweather.load({"id": "example_id"})
+# Load a specific getcurrentlocationweather (returns the record, raises on error)
+getcurrentlocationweather = client.GetCurrentLocationWeather().load({"id": "example_id"})
 print(getcurrentlocationweather)
 ```
 
@@ -101,8 +101,8 @@ require_once 'consoleweatherforecast_sdk.php';
 $client = new ConsoleWeatherForecastSDK();
 
 
-// Load a specific getcurrentlocationweather
-$getcurrentlocationweather = $client->getcurrentlocationweather()->load(["id" => "example_id"]);
+// Load a specific getcurrentlocationweather (returns the bare record; throws on error)
+$getcurrentlocationweather = $client->GetCurrentLocationWeather()->load(["id" => "example_id"]);
 print_r($getcurrentlocationweather);
 ```
 
@@ -126,8 +126,8 @@ require_relative "ConsoleWeatherForecast_sdk"
 client = ConsoleWeatherForecastSDK.new
 
 
-# Load a specific getcurrentlocationweather
-getcurrentlocationweather = client.getcurrentlocationweather.load({ "id" => "example_id" })
+# Load a specific getcurrentlocationweather (returns the bare record; raises on error)
+getcurrentlocationweather = client.GetCurrentLocationWeather.load({ "id" => "example_id" })
 puts getcurrentlocationweather
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific getcurrentlocationweather
-local getcurrentlocationweather, err = client:getcurrentlocationweather():load({ id = "example_id" })
+local getcurrentlocationweather, err = client:GetCurrentLocationWeather():load({ id = "example_id" })
 print(getcurrentlocationweather)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ConsoleWeatherForecastSDK.test()
-const result = await client.getcurrentlocationweather.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getcurrentlocationweather = await client.GetCurrentLocationWeather().load({ id: 'test01' })
+// getcurrentlocationweather is a bare GetCurrentLocationWeather populated with mock data
+console.log(getcurrentlocationweather)
 ```
 
 ### Python
 
 ```python
 client = ConsoleWeatherForecastSDK.test()
-result = client.getcurrentlocationweather.load({"id": "test01"})
+getcurrentlocationweather = client.GetCurrentLocationWeather().load({"id": "test01"})
+print(getcurrentlocationweather)
 ```
 
 ### PHP
 
 ```php
-$client = ConsoleWeatherForecastSDK::test();
-$result = $client->getcurrentlocationweather()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ConsoleWeatherForecastSDK::test([
+    "entity" => ["getcurrentlocationweather" => ["test01" => ["id" => "test01"]]],
+]);
+$getcurrentlocationweather = $client->GetCurrentLocationWeather()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.GetCurrentLocationWeather(nil).Load(
 ### Ruby
 
 ```ruby
-client = ConsoleWeatherForecastSDK.test
-result = client.getcurrentlocationweather.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ConsoleWeatherForecastSDK.test({
+  "entity" => { "getcurrentlocationweather" => { "test01" => { "id" => "test01" } } },
+})
+getcurrentlocationweather = client.GetCurrentLocationWeather.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getcurrentlocationweather():load({ id = "test01" })
+local result, err = client:GetCurrentLocationWeather():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

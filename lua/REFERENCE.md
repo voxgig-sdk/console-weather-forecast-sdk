@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## GetCurrentLocationWeatherEntity
 
 ```lua
-local get_current_location_weather = client:get_current_location_weather(nil)
+local get_current_location_weather = client:GetCurrentLocationWeather(nil)
 ```
 
 ### Operations
@@ -105,7 +105,7 @@ local get_current_location_weather = client:get_current_location_weather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_current_location_weather():load({ id = "get_current_location_weather_id" })
+local result, err = client:GetCurrentLocationWeather():load({ id = "get_current_location_weather_id" })
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```lua
-local get_location_weather = client:get_location_weather(nil)
+local get_location_weather = client:GetLocationWeather(nil)
 ```
 
 ### Operations
@@ -151,7 +151,7 @@ local get_location_weather = client:get_location_weather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_location_weather():load({ id = "get_location_weather_id" })
+local result, err = client:GetLocationWeather():load({ id = "get_location_weather_id" })
 ```
 
 ### Common Methods
@@ -187,7 +187,7 @@ Return the entity name.
 ## HelpEntity
 
 ```lua
-local help = client:help(nil)
+local help = client:Help(nil)
 ```
 
 ### Operations
@@ -197,7 +197,7 @@ local help = client:help(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:help():load({ id = "help_id" })
+local result, err = client:Help():load({ id = "help_id" })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return the entity name.
 ## LocationEntity
 
 ```lua
-local location = client:location(nil)
+local location = client:Location(nil)
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ local location = client:location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:location():load({ id = "location_id" })
+local result, err = client:Location():load({ id = "location_id" })
 ```
 
 ### Common Methods

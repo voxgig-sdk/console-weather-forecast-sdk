@@ -145,7 +145,7 @@ Alias for `ConsoleWeatherForecastSDK.test()`.
 ## GetCurrentLocationWeatherEntity
 
 ```ts
-const get_current_location_weather = client.get_current_location_weather
+const get_current_location_weather = client.GetCurrentLocationWeather()
 ```
 
 ### Operations
@@ -155,7 +155,7 @@ const get_current_location_weather = client.get_current_location_weather
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_current_location_weather.load({ id: 'get_current_location_weather_id' })
+const result = await client.GetCurrentLocationWeather().load({ id: 'get_current_location_weather_id' })
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Return a copy of the entity options.
 ## GetLocationWeatherEntity
 
 ```ts
-const get_location_weather = client.get_location_weather
+const get_location_weather = client.GetLocationWeather()
 ```
 
 ### Operations
@@ -199,7 +199,7 @@ const get_location_weather = client.get_location_weather
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_location_weather.load({ id: 'get_location_weather_id' })
+const result = await client.GetLocationWeather().load({ id: 'get_location_weather_id' })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return a copy of the entity options.
 ## HelpEntity
 
 ```ts
-const help = client.help
+const help = client.Help()
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ const help = client.help
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.help.load({ id: 'help_id' })
+const result = await client.Help().load({ id: 'help_id' })
 ```
 
 ### Common Methods
@@ -277,7 +277,7 @@ Return a copy of the entity options.
 ## LocationEntity
 
 ```ts
-const location = client.location
+const location = client.Location()
 ```
 
 ### Operations
@@ -287,7 +287,7 @@ const location = client.location
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.location.load({ id: 'location_id' })
+const result = await client.Location().load({ id: 'location_id' })
 ```
 
 ### Common Methods

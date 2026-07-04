@@ -33,9 +33,10 @@ $client = new ConsoleWeatherForecastSDK();
 
 ```php
 try {
-    $result = $client->getcurrentlocationweather()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare GetCurrentLocationWeather record (throws on error).
+    $getcurrentlocationweather = $client->GetCurrentLocationWeather()->load(["id" => "example_id"]);
+    print_r($getcurrentlocationweather);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ConsoleWeatherForecastSDK::test();
+$client = ConsoleWeatherForecastSDK::test([
+    "entity" => ["getcurrentlocationweather" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->getcurrentlocationweather()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$getcurrentlocationweather = $client->GetCurrentLocationWeather()->load(["id" => "test01"]);
+print_r($getcurrentlocationweather);
 ```
 
 ### Use a custom fetch function
@@ -252,7 +257,7 @@ API path: `/{location}.png`
 
 ### GetCurrentLocationWeather
 
-Create an instance: `const get_current_location_weather = client.get_current_location_weather`
+Create an instance: `$get_current_location_weather = $client->GetCurrentLocationWeather();`
 
 #### Operations
 
@@ -262,14 +267,15 @@ Create an instance: `const get_current_location_weather = client.get_current_loc
 
 #### Example: Load
 
-```ts
-const get_current_location_weather = await client.get_current_location_weather.load({ id: 'get_current_location_weather_id' })
+```php
+// load() returns the bare GetCurrentLocationWeather record (throws on error).
+$get_current_location_weather = $client->GetCurrentLocationWeather()->load(["id" => "get_current_location_weather_id"]);
 ```
 
 
 ### GetLocationWeather
 
-Create an instance: `const get_location_weather = client.get_location_weather`
+Create an instance: `$get_location_weather = $client->GetLocationWeather();`
 
 #### Operations
 
@@ -279,14 +285,15 @@ Create an instance: `const get_location_weather = client.get_location_weather`
 
 #### Example: Load
 
-```ts
-const get_location_weather = await client.get_location_weather.load({ id: 'get_location_weather_id' })
+```php
+// load() returns the bare GetLocationWeather record (throws on error).
+$get_location_weather = $client->GetLocationWeather()->load(["id" => "get_location_weather_id"]);
 ```
 
 
 ### Help
 
-Create an instance: `const help = client.help`
+Create an instance: `$help = $client->Help();`
 
 #### Operations
 
@@ -296,14 +303,15 @@ Create an instance: `const help = client.help`
 
 #### Example: Load
 
-```ts
-const help = await client.help.load({ id: 'help_id' })
+```php
+// load() returns the bare Help record (throws on error).
+$help = $client->Help()->load(["id" => "help_id"]);
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `$location = $client->Location();`
 
 #### Operations
 
@@ -313,8 +321,9 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```php
+// load() returns the bare Location record (throws on error).
+$location = $client->Location()->load(["id" => "location_id"]);
 ```
 
 
@@ -389,7 +398,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getcurrentlocationweather = $client->getcurrentlocationweather();
+$getcurrentlocationweather = $client->GetCurrentLocationWeather();
 $getcurrentlocationweather->load(["id" => "example_id"]);
 
 // $getcurrentlocationweather->dataGet() now returns the loaded getcurrentlocationweather data

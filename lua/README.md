@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a getcurrentlocationweather
 
 ```lua
-local result, err = client:getcurrentlocationweather():load({ id = "example_id" })
+local getcurrentlocationweather, err = client:GetCurrentLocationWeather():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(getcurrentlocationweather)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:getcurrentlocationweather():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:GetCurrentLocationWeather():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -186,17 +186,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local get_current_location_weather, err = client:GetCurrentLocationWeather():load({ id = "example_id" })
+    if err then error(err) end
+    -- get_current_location_weather is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -243,7 +248,7 @@ API path: `/{location}.png`
 
 ### GetCurrentLocationWeather
 
-Create an instance: `const get_current_location_weather = client.get_current_location_weather`
+Create an instance: `local get_current_location_weather = client:GetCurrentLocationWeather(nil)`
 
 #### Operations
 
@@ -253,14 +258,14 @@ Create an instance: `const get_current_location_weather = client.get_current_loc
 
 #### Example: Load
 
-```ts
-const get_current_location_weather = await client.get_current_location_weather.load({ id: 'get_current_location_weather_id' })
+```lua
+local get_current_location_weather, err = client:GetCurrentLocationWeather():load({ id = "get_current_location_weather_id" })
 ```
 
 
 ### GetLocationWeather
 
-Create an instance: `const get_location_weather = client.get_location_weather`
+Create an instance: `local get_location_weather = client:GetLocationWeather(nil)`
 
 #### Operations
 
@@ -270,14 +275,14 @@ Create an instance: `const get_location_weather = client.get_location_weather`
 
 #### Example: Load
 
-```ts
-const get_location_weather = await client.get_location_weather.load({ id: 'get_location_weather_id' })
+```lua
+local get_location_weather, err = client:GetLocationWeather():load({ id = "get_location_weather_id" })
 ```
 
 
 ### Help
 
-Create an instance: `const help = client.help`
+Create an instance: `local help = client:Help(nil)`
 
 #### Operations
 
@@ -287,14 +292,14 @@ Create an instance: `const help = client.help`
 
 #### Example: Load
 
-```ts
-const help = await client.help.load({ id: 'help_id' })
+```lua
+local help, err = client:Help():load({ id = "help_id" })
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `local location = client:Location(nil)`
 
 #### Operations
 
@@ -304,8 +309,8 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```lua
+local location, err = client:Location():load({ id = "location_id" })
 ```
 
 
@@ -380,7 +385,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local getcurrentlocationweather = client:getcurrentlocationweather()
+local getcurrentlocationweather = client:GetCurrentLocationWeather()
 getcurrentlocationweather:load({ id = "example_id" })
 
 -- getcurrentlocationweather:data_get() now returns the loaded getcurrentlocationweather data

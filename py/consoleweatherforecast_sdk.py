@@ -220,73 +220,33 @@ class ConsoleWeatherForecastSDK:
         }
 
 
-    @property
-    def get_current_location_weather(self):
-        """Idiomatic facade: client.get_current_location_weather.list() / client.get_current_location_weather.load({"id": ...})."""
-        from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
-        cached = getattr(self, "_get_current_location_weather", None)
-        if cached is None:
-            cached = GetCurrentLocationWeatherEntity(self, None)
-            self._get_current_location_weather = cached
-        return cached
-
-    def GetCurrentLocationWeather(self, data=None):
-        # Deprecated: use client.get_current_location_weather instead.
+    def GetCurrentLocationWeather(self, data=None) -> "GetCurrentLocationWeatherEntity":
+        """Entity factory: client.GetCurrentLocationWeather().list({}) / client.GetCurrentLocationWeather().load({"id": ...})."""
         from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
         return GetCurrentLocationWeatherEntity(self, data)
 
 
-    @property
-    def get_location_weather(self):
-        """Idiomatic facade: client.get_location_weather.list() / client.get_location_weather.load({"id": ...})."""
-        from entity.get_location_weather_entity import GetLocationWeatherEntity
-        cached = getattr(self, "_get_location_weather", None)
-        if cached is None:
-            cached = GetLocationWeatherEntity(self, None)
-            self._get_location_weather = cached
-        return cached
-
-    def GetLocationWeather(self, data=None):
-        # Deprecated: use client.get_location_weather instead.
+    def GetLocationWeather(self, data=None) -> "GetLocationWeatherEntity":
+        """Entity factory: client.GetLocationWeather().list({}) / client.GetLocationWeather().load({"id": ...})."""
         from entity.get_location_weather_entity import GetLocationWeatherEntity
         return GetLocationWeatherEntity(self, data)
 
 
-    @property
-    def help(self):
-        """Idiomatic facade: client.help.list() / client.help.load({"id": ...})."""
-        from entity.help_entity import HelpEntity
-        cached = getattr(self, "_help", None)
-        if cached is None:
-            cached = HelpEntity(self, None)
-            self._help = cached
-        return cached
-
-    def Help(self, data=None):
-        # Deprecated: use client.help instead.
+    def Help(self, data=None) -> "HelpEntity":
+        """Entity factory: client.Help().list({}) / client.Help().load({"id": ...})."""
         from entity.help_entity import HelpEntity
         return HelpEntity(self, data)
 
 
-    @property
-    def location(self):
-        """Idiomatic facade: client.location.list() / client.location.load({"id": ...})."""
-        from entity.location_entity import LocationEntity
-        cached = getattr(self, "_location", None)
-        if cached is None:
-            cached = LocationEntity(self, None)
-            self._location = cached
-        return cached
-
-    def Location(self, data=None):
-        # Deprecated: use client.location instead.
+    def Location(self, data=None) -> "LocationEntity":
+        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ConsoleWeatherForecastSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class ConsoleWeatherForecastSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
+    from entity.get_location_weather_entity import GetLocationWeatherEntity
+    from entity.help_entity import HelpEntity
+    from entity.location_entity import LocationEntity

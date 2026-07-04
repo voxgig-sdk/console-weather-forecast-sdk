@@ -208,52 +208,28 @@ class ConsoleWeatherForecastSDK
   end
 
 
-  # Idiomatic facade: client.get_current_location_weather.list / client.get_current_location_weather.load({ "id" => ... })
-  def get_current_location_weather
-    require_relative 'entity/get_current_location_weather_entity'
-    @get_current_location_weather ||= GetCurrentLocationWeatherEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_current_location_weather instead.
+  # Canonical facade: client.GetCurrentLocationWeather.list / client.GetCurrentLocationWeather.load({ "id" => ... })
   def GetCurrentLocationWeather(data = nil)
     require_relative 'entity/get_current_location_weather_entity'
     GetCurrentLocationWeatherEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_location_weather.list / client.get_location_weather.load({ "id" => ... })
-  def get_location_weather
-    require_relative 'entity/get_location_weather_entity'
-    @get_location_weather ||= GetLocationWeatherEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_location_weather instead.
+  # Canonical facade: client.GetLocationWeather.list / client.GetLocationWeather.load({ "id" => ... })
   def GetLocationWeather(data = nil)
     require_relative 'entity/get_location_weather_entity'
     GetLocationWeatherEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.help.list / client.help.load({ "id" => ... })
-  def help
-    require_relative 'entity/help_entity'
-    @help ||= HelpEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.help instead.
+  # Canonical facade: client.Help.list / client.Help.load({ "id" => ... })
   def Help(data = nil)
     require_relative 'entity/help_entity'
     HelpEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.location.list / client.location.load({ "id" => ... })
-  def location
-    require_relative 'entity/location_entity'
-    @location ||= LocationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.location instead.
+  # Canonical facade: client.Location.list / client.Location.load({ "id" => ... })
   def Location(data = nil)
     require_relative 'entity/location_entity'
     LocationEntity.new(self, data)

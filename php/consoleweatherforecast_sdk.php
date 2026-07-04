@@ -233,10 +233,10 @@ class ConsoleWeatherForecastSDK
 
     private $_get_current_location_weather = null;
 
-    // Idiomatic facade: $client->get_current_location_weather()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetCurrentLocationWeather() (PHP method
-    // names are case-insensitive).
-    public function get_current_location_weather($data = null)
+    // Canonical facade: $client->GetCurrentLocationWeather()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_current_location_weather()
+    // resolves here too.
+    public function GetCurrentLocationWeather($data = null)
     {
         require_once __DIR__ . '/entity/get_current_location_weather_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ConsoleWeatherForecastSDK
 
     private $_get_location_weather = null;
 
-    // Idiomatic facade: $client->get_location_weather()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetLocationWeather() (PHP method
-    // names are case-insensitive).
-    public function get_location_weather($data = null)
+    // Canonical facade: $client->GetLocationWeather()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_location_weather()
+    // resolves here too.
+    public function GetLocationWeather($data = null)
     {
         require_once __DIR__ . '/entity/get_location_weather_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class ConsoleWeatherForecastSDK
 
     private $_help = null;
 
-    // Idiomatic facade: $client->help()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Help() (PHP method
-    // names are case-insensitive).
-    public function help($data = null)
+    // Canonical facade: $client->Help()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->help()
+    // resolves here too.
+    public function Help($data = null)
     {
         require_once __DIR__ . '/entity/help_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class ConsoleWeatherForecastSDK
 
     private $_location = null;
 
-    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Location() (PHP method
-    // names are case-insensitive).
-    public function location($data = null)
+    // Canonical facade: $client->Location()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->location()
+    // resolves here too.
+    public function Location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
         if ($data === null) {

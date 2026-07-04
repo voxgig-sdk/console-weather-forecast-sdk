@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## GetCurrentLocationWeatherEntity
 
 ```ruby
-get_current_location_weather = client.get_current_location_weather
+get_current_location_weather = client.GetCurrentLocationWeather
 ```
 
 ### Operations
@@ -108,7 +108,7 @@ get_current_location_weather = client.get_current_location_weather
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_current_location_weather.load({ "id" => "get_current_location_weather_id" })
+result = client.GetCurrentLocationWeather.load({ "id" => "get_current_location_weather_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```ruby
-get_location_weather = client.get_location_weather
+get_location_weather = client.GetLocationWeather
 ```
 
 ### Operations
@@ -154,7 +154,7 @@ get_location_weather = client.get_location_weather
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_location_weather.load({ "id" => "get_location_weather_id" })
+result = client.GetLocationWeather.load({ "id" => "get_location_weather_id" })
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ Return the entity name.
 ## HelpEntity
 
 ```ruby
-help = client.help
+help = client.Help
 ```
 
 ### Operations
@@ -200,7 +200,7 @@ help = client.help
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.help.load({ "id" => "help_id" })
+result = client.Help.load({ "id" => "help_id" })
 ```
 
 ### Common Methods
@@ -236,7 +236,7 @@ Return the entity name.
 ## LocationEntity
 
 ```ruby
-location = client.location
+location = client.Location
 ```
 
 ### Operations
@@ -246,7 +246,7 @@ location = client.location
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.location.load({ "id" => "location_id" })
+result = client.Location.load({ "id" => "location_id" })
 ```
 
 ### Common Methods

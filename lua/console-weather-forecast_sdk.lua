@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:get_current_location_weather():list() / client:get_current_location_weather():load({ id = ... })
-function ConsoleWeatherForecastSDK:get_current_location_weather(data)
+-- Idiomatic facade: client:GetCurrentLocationWeather():list() / client:GetCurrentLocationWeather():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ConsoleWeatherForecastSDK:GetCurrentLocationWeather(data)
   local EntityMod = require("entity.get_current_location_weather_entity")
   if data == nil then
     if self._get_current_location_weather == nil then
@@ -256,15 +257,10 @@ function ConsoleWeatherForecastSDK:get_current_location_weather(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_current_location_weather() instead.
-function ConsoleWeatherForecastSDK:GetCurrentLocationWeather(data)
-  local EntityMod = require("entity.get_current_location_weather_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_location_weather():list() / client:get_location_weather():load({ id = ... })
-function ConsoleWeatherForecastSDK:get_location_weather(data)
+-- Idiomatic facade: client:GetLocationWeather():list() / client:GetLocationWeather():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ConsoleWeatherForecastSDK:GetLocationWeather(data)
   local EntityMod = require("entity.get_location_weather_entity")
   if data == nil then
     if self._get_location_weather == nil then
@@ -275,15 +271,10 @@ function ConsoleWeatherForecastSDK:get_location_weather(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_location_weather() instead.
-function ConsoleWeatherForecastSDK:GetLocationWeather(data)
-  local EntityMod = require("entity.get_location_weather_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:help():list() / client:help():load({ id = ... })
-function ConsoleWeatherForecastSDK:help(data)
+-- Idiomatic facade: client:Help():list() / client:Help():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ConsoleWeatherForecastSDK:Help(data)
   local EntityMod = require("entity.help_entity")
   if data == nil then
     if self._help == nil then
@@ -294,15 +285,10 @@ function ConsoleWeatherForecastSDK:help(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:help() instead.
-function ConsoleWeatherForecastSDK:Help(data)
-  local EntityMod = require("entity.help_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
-function ConsoleWeatherForecastSDK:location(data)
+-- Idiomatic facade: client:Location():list() / client:Location():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ConsoleWeatherForecastSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   if data == nil then
     if self._location == nil then
@@ -310,12 +296,6 @@ function ConsoleWeatherForecastSDK:location(data)
     end
     return self._location
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:location() instead.
-function ConsoleWeatherForecastSDK:Location(data)
-  local EntityMod = require("entity.location_entity")
   return EntityMod.new(self, data)
 end
 

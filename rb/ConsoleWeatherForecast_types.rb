@@ -12,7 +12,7 @@
 class GetCurrentLocationWeather
 end
 
-# Match filter for GetCurrentLocationWeather#load (any subset of GetCurrentLocationWeather fields).
+# Request payload for GetCurrentLocationWeather#load.
 class GetCurrentLocationWeatherLoadMatch
 end
 
@@ -33,7 +33,7 @@ GetLocationWeatherLoadMatch = Struct.new(
 class Help
 end
 
-# Match filter for Help#load (any subset of Help fields).
+# Request payload for Help#load.
 class HelpLoadMatch
 end
 

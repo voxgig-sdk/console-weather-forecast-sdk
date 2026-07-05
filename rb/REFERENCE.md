@@ -8,7 +8,7 @@ Complete API reference for the ConsoleWeatherForecast Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'console-weather-forecast_sdk'
+require_relative 'ConsoleWeatherForecast_sdk'
 
 client = ConsoleWeatherForecastSDK.new(options)
 ```
@@ -108,7 +108,7 @@ get_current_location_weather = client.GetCurrentLocationWeather
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetCurrentLocationWeather.load({ "id" => "get_current_location_weather_id" })
+result = client.GetCurrentLocationWeather.load()
 ```
 
 ### Common Methods
@@ -200,7 +200,7 @@ help = client.Help
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Help.load({ "id" => "help_id" })
+result = client.Help.load()
 ```
 
 ### Common Methods
@@ -246,7 +246,7 @@ location = client.Location
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Location.load({ "id" => "location_id" })
+result = client.Location.load()
 ```
 
 ### Common Methods

@@ -221,25 +221,25 @@ class ConsoleWeatherForecastSDK:
 
 
     def GetCurrentLocationWeather(self, data=None) -> "GetCurrentLocationWeatherEntity":
-        """Entity factory: client.GetCurrentLocationWeather().list({}) / client.GetCurrentLocationWeather().load({"id": ...})."""
+        """Entity factory: client.GetCurrentLocationWeather().list() / client.GetCurrentLocationWeather().load({"id": ...})."""
         from entity.get_current_location_weather_entity import GetCurrentLocationWeatherEntity
         return GetCurrentLocationWeatherEntity(self, data)
 
 
     def GetLocationWeather(self, data=None) -> "GetLocationWeatherEntity":
-        """Entity factory: client.GetLocationWeather().list({}) / client.GetLocationWeather().load({"id": ...})."""
+        """Entity factory: client.GetLocationWeather().list() / client.GetLocationWeather().load({"id": ...})."""
         from entity.get_location_weather_entity import GetLocationWeatherEntity
         return GetLocationWeatherEntity(self, data)
 
 
     def Help(self, data=None) -> "HelpEntity":
-        """Entity factory: client.Help().list({}) / client.Help().load({"id": ...})."""
+        """Entity factory: client.Help().list() / client.Help().load({"id": ...})."""
         from entity.help_entity import HelpEntity
         return HelpEntity(self, data)
 
 
     def Location(self, data=None) -> "LocationEntity":
-        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
+        """Entity factory: client.Location().list() / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 

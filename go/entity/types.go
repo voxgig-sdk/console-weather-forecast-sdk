@@ -12,8 +12,7 @@ import "encoding/json"
 type GetCurrentLocationWeather struct {
 }
 
-// GetCurrentLocationWeatherLoadMatch mirrors the get_current_location_weather fields as an all-optional match
-// filter (Go analog of Partial<GetCurrentLocationWeather>).
+// GetCurrentLocationWeatherLoadMatch is the typed request payload for GetCurrentLocationWeather.LoadTyped.
 type GetCurrentLocationWeatherLoadMatch struct {
 }
 
@@ -30,8 +29,7 @@ type GetLocationWeatherLoadMatch struct {
 type Help struct {
 }
 
-// HelpLoadMatch mirrors the help fields as an all-optional match
-// filter (Go analog of Partial<Help>).
+// HelpLoadMatch is the typed request payload for Help.LoadTyped.
 type HelpLoadMatch struct {
 }
 

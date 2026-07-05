@@ -105,7 +105,7 @@ local get_current_location_weather = client:GetCurrentLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetCurrentLocationWeather():load({ id = "get_current_location_weather_id" })
+local result, err = client:GetCurrentLocationWeather():load()
 ```
 
 ### Common Methods
@@ -197,7 +197,7 @@ local help = client:Help(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Help():load({ id = "help_id" })
+local result, err = client:Help():load()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ local location = client:Location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location():load({ id = "location_id" })
+local result, err = client:Location():load()
 ```
 
 ### Common Methods

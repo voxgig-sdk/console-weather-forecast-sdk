@@ -155,7 +155,7 @@ const get_current_location_weather = client.GetCurrentLocationWeather()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetCurrentLocationWeather().load({ id: 'get_current_location_weather_id' })
+const result = await client.GetCurrentLocationWeather().load()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ const help = client.Help()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Help().load({ id: 'help_id' })
+const result = await client.Help().load()
 ```
 
 ### Common Methods
@@ -287,7 +287,7 @@ const location = client.Location()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load({ id: 'location_id' })
+const result = await client.Location().load()
 ```
 
 ### Common Methods

@@ -17,7 +17,7 @@ class GetCurrentLocationWeather
 {
 }
 
-/** Match filter for GetCurrentLocationWeather#load (any subset of GetCurrentLocationWeather fields). */
+/** Request payload for GetCurrentLocationWeather#load. */
 class GetCurrentLocationWeatherLoadMatch
 {
 }
@@ -38,7 +38,7 @@ class Help
 {
 }
 
-/** Match filter for Help#load (any subset of Help fields). */
+/** Request payload for Help#load. */
 class HelpLoadMatch
 {
 }

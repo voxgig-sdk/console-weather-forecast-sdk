@@ -8,7 +8,7 @@ Complete API reference for the ConsoleWeatherForecast PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/console-weather-forecast_sdk.php';
+require_once __DIR__ . '/consoleweatherforecast_sdk.php';
 
 $client = new ConsoleWeatherForecastSDK($options);
 ```
@@ -57,11 +57,11 @@ Create a new `HelpEntity` instance. Pass `null` for no initial data.
 
 Create a new `LocationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ConsoleWeatherForecastUtility`
 
 Return a copy of the SDK utility object.
 
@@ -107,24 +107,24 @@ $get_current_location_weather = $client->GetCurrentLocationWeather();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GetCurrentLocationWeather()->load(["id" => "get_current_location_weather_id"]);
+$result = $client->GetCurrentLocationWeather()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -133,7 +133,7 @@ Set the entity match criteria.
 Create a new `GetCurrentLocationWeatherEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -158,19 +158,19 @@ $result = $client->GetLocationWeather()->load(["id" => "get_location_weather_id"
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -179,7 +179,7 @@ Set the entity match criteria.
 Create a new `GetLocationWeatherEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -199,24 +199,24 @@ $help = $client->Help();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Help()->load(["id" => "help_id"]);
+$result = $client->Help()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -225,7 +225,7 @@ Set the entity match criteria.
 Create a new `HelpEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -245,24 +245,24 @@ $location = $client->Location();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Location()->load(["id" => "location_id"]);
+$result = $client->Location()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -271,7 +271,7 @@ Set the entity match criteria.
 Create a new `LocationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

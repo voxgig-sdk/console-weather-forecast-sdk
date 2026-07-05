@@ -112,7 +112,7 @@ get_current_location_weather := client.GetCurrentLocationWeather(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetCurrentLocationWeather(nil).Load(map[string]any{"id": "get_current_location_weather_id"}, nil)
+result, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -192,7 +192,7 @@ help := client.Help(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Help(nil).Load(map[string]any{"id": "help_id"}, nil)
+result, err := client.Help(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ location := client.Location(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+result, err := client.Location(nil).Load(nil, nil)
 ```
 
 ### Common Methods

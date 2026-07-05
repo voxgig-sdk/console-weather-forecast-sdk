@@ -8,7 +8,8 @@
 export interface GetCurrentLocationWeather {
 }
 
-export type GetCurrentLocationWeatherLoadMatch = Partial<GetCurrentLocationWeather>
+export interface GetCurrentLocationWeatherLoadMatch {
+}
 
 export interface GetLocationWeather {
 }
@@ -20,7 +21,8 @@ export interface GetLocationWeatherLoadMatch {
 export interface Help {
 }
 
-export type HelpLoadMatch = Partial<Help>
+export interface HelpLoadMatch {
+}
 
 export interface Location {
 }

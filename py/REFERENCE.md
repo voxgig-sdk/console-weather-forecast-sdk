@@ -237,7 +237,7 @@ location = client.Location()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Location().load()
+result = client.Location().load({"location": "location"})
 ```
 
 ### Common Methods

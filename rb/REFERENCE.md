@@ -246,7 +246,7 @@ location = client.Location
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Location.load()
+result = client.Location.load({ "location" => "location" })
 ```
 
 ### Common Methods

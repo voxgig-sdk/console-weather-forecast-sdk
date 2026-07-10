@@ -388,7 +388,7 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load()
+const location = await client.Location().load({ location: 'location' })
 ```
 
 

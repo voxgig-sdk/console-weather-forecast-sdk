@@ -342,7 +342,7 @@ Create an instance: `location = client.Location`
 
 ```ruby
 # load returns the bare Location record (raises on error).
-location = client.Location.load()
+location = client.Location.load({ "location" => "location" })
 ```
 
 

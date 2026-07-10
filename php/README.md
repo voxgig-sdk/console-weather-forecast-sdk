@@ -352,7 +352,7 @@ Create an instance: `$location = $client->Location();`
 
 ```php
 // load() returns the bare Location record (throws on error).
-$location = $client->Location()->load();
+$location = $client->Location()->load(["location" => "location"]);
 ```
 
 

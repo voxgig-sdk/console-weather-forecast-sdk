@@ -329,7 +329,7 @@ Create an instance: `local location = client:Location(nil)`
 #### Example: Load
 
 ```lua
-local location, err = client:Location():load()
+local location, err = client:Location():load({ location = "location" })
 ```
 
 

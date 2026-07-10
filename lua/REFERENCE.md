@@ -243,7 +243,7 @@ local location = client:Location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location():load()
+local result, err = client:Location():load({ location = "location" })
 ```
 
 ### Common Methods

@@ -344,7 +344,7 @@ Create an instance: `location = client.Location()`
 #### Example: Load
 
 ```python
-location = client.Location().load()
+location = client.Location().load({"location": "location"})
 ```
 
 

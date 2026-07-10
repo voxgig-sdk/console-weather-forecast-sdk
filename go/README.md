@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single getcurrentlocationweather — the value is the loaded record.
-    getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
+    // Load a single getCurrentLocationWeather — the value is the loaded record.
+    getCurrentLocationWeather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(getcurrentlocationweather)
+    fmt.Println(getCurrentLocationWeather)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(
+getCurrentLocationWeather, err := client.GetCurrentLocationWeather(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getcurrentlocationweather) // the returned mock data
+fmt.Println(getCurrentLocationWeather) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -248,9 +248,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
+    getCurrentLocationWeather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getcurrentlocationweather is the returned record
+    // getCurrentLocationWeather is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -300,7 +300,7 @@ API path: `/{location}.png`
 
 ### GetCurrentLocationWeather
 
-Create an instance: `get_current_location_weather := client.GetCurrentLocationWeather(nil)`
+Create an instance: `getCurrentLocationWeather := client.GetCurrentLocationWeather(nil)`
 
 #### Operations
 
@@ -311,17 +311,17 @@ Create an instance: `get_current_location_weather := client.GetCurrentLocationWe
 #### Example: Load
 
 ```go
-get_current_location_weather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
+getCurrentLocationWeather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_current_location_weather) // the loaded record
+fmt.Println(getCurrentLocationWeather) // the loaded record
 ```
 
 
 ### GetLocationWeather
 
-Create an instance: `get_location_weather := client.GetLocationWeather(nil)`
+Create an instance: `getLocationWeather := client.GetLocationWeather(nil)`
 
 #### Operations
 
@@ -332,11 +332,11 @@ Create an instance: `get_location_weather := client.GetLocationWeather(nil)`
 #### Example: Load
 
 ```go
-get_location_weather, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "get_location_weather_id"}, nil)
+getLocationWeather, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "get_location_weather_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_location_weather) // the loaded record
+fmt.Println(getLocationWeather) // the loaded record
 ```
 
 
@@ -374,7 +374,7 @@ Create an instance: `location := client.Location(nil)`
 #### Example: Load
 
 ```go
-location, err := client.Location(nil).Load(nil, nil)
+location, err := client.Location(nil).Load(map[string]any{"location": "location"}, nil)
 if err != nil {
     panic(err)
 }

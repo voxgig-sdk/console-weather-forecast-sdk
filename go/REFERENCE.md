@@ -102,7 +102,8 @@ same parameters as `Direct()`.
 ## GetCurrentLocationWeatherEntity
 
 ```go
-get_current_location_weather := client.GetCurrentLocationWeather(nil)
+getCurrentLocationWeather := client.GetCurrentLocationWeather(nil)
+fmt.Println(getCurrentLocationWeather.GetName()) // "get_current_location_weather"
 ```
 
 ### Operations
@@ -113,6 +114,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -142,7 +147,8 @@ Return the entity name.
 ## GetLocationWeatherEntity
 
 ```go
-get_location_weather := client.GetLocationWeather(nil)
+getLocationWeather := client.GetLocationWeather(nil)
+fmt.Println(getLocationWeather.GetName()) // "get_location_weather"
 ```
 
 ### Operations
@@ -153,6 +159,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "get_location_weather_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -183,6 +193,7 @@ Return the entity name.
 
 ```go
 help := client.Help(nil)
+fmt.Println(help.GetName()) // "help"
 ```
 
 ### Operations
@@ -193,6 +204,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Help(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -223,6 +238,7 @@ Return the entity name.
 
 ```go
 location := client.Location(nil)
+fmt.Println(location.GetName()) // "location"
 ```
 
 ### Operations
@@ -232,7 +248,11 @@ location := client.Location(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Location(nil).Load(nil, nil)
+result, err := client.Location(nil).Load(map[string]any{"location": "location"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -287,7 +287,7 @@ const location = client.Location()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Location().load()
+const result = await client.Location().load({ location: 'location' })
 ```
 
 ### Common Methods

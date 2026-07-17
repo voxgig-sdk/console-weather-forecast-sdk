@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ConsoleWeatherForecast SDK exists test
 
 local sdk = require("console-weather-forecast_sdk")
 

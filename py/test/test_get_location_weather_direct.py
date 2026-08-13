@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from consoleweatherforecast_sdk.utility.voxgig_struct import voxgig_struct as vs
 from consoleweatherforecast_sdk import ConsoleWeatherForecastSDK
-from core import helpers
+from consoleweatherforecast_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _get_location_weather_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "CONSOLEWEATHERFORECAST_TEST_GET_LOCATION_WEATHER_ENTID": {},
-        "CONSOLEWEATHERFORECAST_TEST_LIVE": "FALSE",
+        "CONSOLE_WEATHER_FORECAST_TEST_GET_LOCATION_WEATHER_ENTID": {},
+        "CONSOLE_WEATHER_FORECAST_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("CONSOLEWEATHERFORECAST_TEST_LIVE") == "TRUE"
+    live = env.get("CONSOLE_WEATHER_FORECAST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

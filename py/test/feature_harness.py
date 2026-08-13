@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ConsoleWeatherForecastControl
-from core.error import ConsoleWeatherForecastError
-from core.result import ConsoleWeatherForecastResult
-from core.spec import ConsoleWeatherForecastSpec
+from consoleweatherforecast_sdk.config import make_config
+from consoleweatherforecast_sdk.features import _make_feature
+from consoleweatherforecast_sdk.core.control import ConsoleWeatherForecastControl
+from consoleweatherforecast_sdk.core.error import ConsoleWeatherForecastError
+from consoleweatherforecast_sdk.core.result import ConsoleWeatherForecastResult
+from consoleweatherforecast_sdk.core.spec import ConsoleWeatherForecastSpec
 
 
 # True when this SDK was generated with the named feature.

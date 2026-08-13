@@ -26,8 +26,8 @@ import {
 describe('GetLocationWeatherEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CONSOLEWEATHERFORECAST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CONSOLEWEATHERFORECAST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CONSOLE_WEATHER_FORECAST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CONSOLE_WEATHER_FORECAST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ConsoleWeatherForecastSDK.test()

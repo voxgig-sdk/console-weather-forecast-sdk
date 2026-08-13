@@ -65,11 +65,11 @@ function get_current_location_weather_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "CONSOLEWEATHERFORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID" => [],
-        "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
+        "CONSOLE_WEATHER_FORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID" => [],
+        "CONSOLE_WEATHER_FORECAST_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["CONSOLEWEATHERFORECAST_TEST_LIVE"] === "TRUE";
+    $live = $env["CONSOLE_WEATHER_FORECAST_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

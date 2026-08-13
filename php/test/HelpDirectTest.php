@@ -65,11 +65,11 @@ function help_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "CONSOLEWEATHERFORECAST_TEST_HELP_ENTID" => [],
-        "CONSOLEWEATHERFORECAST_TEST_LIVE" => "FALSE",
+        "CONSOLE_WEATHER_FORECAST_TEST_HELP_ENTID" => [],
+        "CONSOLE_WEATHER_FORECAST_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["CONSOLEWEATHERFORECAST_TEST_LIVE"] === "TRUE";
+    $live = $env["CONSOLE_WEATHER_FORECAST_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

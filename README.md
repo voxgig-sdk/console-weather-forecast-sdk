@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ConsoleWeatherForecastSDK.test()
-const getcurrentlocationweather = await client.GetCurrentLocationWeather().load()
-// getcurrentlocationweather is a bare GetCurrentLocationWeather populated with mock data
-console.log(getcurrentlocationweather)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ConsoleWeatherForecastSDK.test({
+  entity: {
+    get_location_weather: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const getlocationweather = await client.GetLocationWeather().load({ id: 'test01' })
+// getlocationweather is the GetLocationWeather entity, populated with mock data
+// — call getlocationweather.data() for the record itself
+console.log(getlocationweather)
 ```
 
 ### Python
 
 ```python
 client = ConsoleWeatherForecastSDK.test()
-getcurrentlocationweather = client.GetCurrentLocationWeather().load()
-print(getcurrentlocationweather)
+getlocationweather = client.GetLocationWeather().load({"id": "test01"})
+print(getlocationweather)
 ```
 
 ### PHP
@@ -57,17 +66,17 @@ print(getcurrentlocationweather)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ConsoleWeatherForecastSDK::test([
-    "entity" => ["getcurrentlocationweather" => ["test01" => []]],
+    "entity" => ["getlocationweather" => ["test01" => ["id" => "test01"]]],
 ]);
-$getcurrentlocationweather = $client->GetCurrentLocationWeather()->load();
+$getlocationweather = $client->GetLocationWeather()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.GetCurrentLocationWeather(nil).Load(
-    nil, nil,
+result, err := client.GetLocationWeather(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -76,16 +85,16 @@ result, err := client.GetCurrentLocationWeather(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ConsoleWeatherForecastSDK.test({
-  "entity" => { "getcurrentlocationweather" => { "test01" => {} } },
+  "entity" => { "getlocationweather" => { "test01" => { "id" => "test01" } } },
 })
-getcurrentlocationweather = client.GetCurrentLocationWeather.load()
+getlocationweather = client.GetLocationWeather.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:GetCurrentLocationWeather():load()
+local result, err = client:GetLocationWeather():load({ id = "test01" })
 ```
 
 ## Packages
@@ -185,7 +194,7 @@ require_once 'consoleweatherforecast_sdk.php';
 $client = new ConsoleWeatherForecastSDK();
 
 
-// Load a specific getcurrentlocationweather (returns the bare record; throws on error)
+// Load a specific getcurrentlocationweather (returns the ENTITY; call data_get() for the record; throws on error)
 $getcurrentlocationweather = $client->GetCurrentLocationWeather()->load();
 print_r($getcurrentlocationweather);
 ```
@@ -213,7 +222,7 @@ require_relative "ConsoleWeatherForecast_sdk"
 client = ConsoleWeatherForecastSDK.new
 
 
-# Load a specific getcurrentlocationweather (returns the bare record; raises on error)
+# Load a specific getcurrentlocationweather (returns the ENTITY; call data_get for the record)
 getcurrentlocationweather = client.GetCurrentLocationWeather.load()
 puts getcurrentlocationweather
 ```
@@ -347,6 +356,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/chubin/wttr.in](https://github.com/chubin/wttr.in)
 

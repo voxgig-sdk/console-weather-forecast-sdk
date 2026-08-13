@@ -34,7 +34,7 @@ client = ConsoleWeatherForecastSDK.new
 
 ```ruby
 begin
-  # load returns the bare GetCurrentLocationWeather record (raises on error).
+  # load returns the ENTITY — call data_get for the GetCurrentLocationWeather record (raises on error).
   getcurrentlocationweather = client.GetCurrentLocationWeather.load()
   puts getcurrentlocationweather
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  getcurrentlocationweather = client.GetCurrentLocationWeather.load()
+  getlocationweather = client.GetLocationWeather.load({ "id" => "example_id" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -112,14 +112,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ConsoleWeatherForecastSDK.test
+client = ConsoleWeatherForecastSDK.test({
+  "entity" => { "getlocationweather" => { "test01" => { "id" => "test01" } } },
+})
 
-# Entity ops return the bare mock record (raises on error).
-getcurrentlocationweather = client.GetCurrentLocationWeather.load()
-puts getcurrentlocationweather
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+getlocationweather = client.GetLocationWeather.load({ "id" => "test01" })
+puts getlocationweather
 ```
 
 ### Use a custom fetch function
@@ -287,7 +291,7 @@ Create an instance: `get_current_location_weather = client.GetCurrentLocationWea
 #### Example: Load
 
 ```ruby
-# load returns the bare GetCurrentLocationWeather record (raises on error).
+# load returns the ENTITY — call data_get for the GetCurrentLocationWeather record (raises on error).
 get_current_location_weather = client.GetCurrentLocationWeather.load()
 ```
 
@@ -305,7 +309,7 @@ Create an instance: `get_location_weather = client.GetLocationWeather`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetLocationWeather record (raises on error).
+# load returns the ENTITY — call data_get for the GetLocationWeather record (raises on error).
 get_location_weather = client.GetLocationWeather.load({ "id" => "get_location_weather_id" })
 ```
 
@@ -323,7 +327,7 @@ Create an instance: `help = client.Help`
 #### Example: Load
 
 ```ruby
-# load returns the bare Help record (raises on error).
+# load returns the ENTITY — call data_get for the Help record (raises on error).
 help = client.Help.load()
 ```
 
@@ -341,7 +345,7 @@ Create an instance: `location = client.Location`
 #### Example: Load
 
 ```ruby
-# load returns the bare Location record (raises on error).
+# load returns the ENTITY — call data_get for the Location record (raises on error).
 location = client.Location.load({ "location" => "location" })
 ```
 
@@ -422,11 +426,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getcurrentlocationweather = client.GetCurrentLocationWeather
-getcurrentlocationweather.load()
+getlocationweather = client.GetLocationWeather
+getlocationweather.load({ "id" => "example_id" })
 
-# getcurrentlocationweather.data_get now returns the getcurrentlocationweather data from the last load
-# getcurrentlocationweather.match_get returns the last match criteria
+# getlocationweather.data_get now returns the getlocationweather data from the last load
+# getlocationweather.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

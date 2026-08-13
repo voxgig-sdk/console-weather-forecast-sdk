@@ -16,11 +16,11 @@
 import pytest
 
 from consoleweatherforecast_sdk import ConsoleWeatherForecastSDK
-from core.error import ConsoleWeatherForecastError
-from core.result import ConsoleWeatherForecastResult
-from core.response import ConsoleWeatherForecastResponse
-from core.spec import ConsoleWeatherForecastSpec
-from feature.base_feature import ConsoleWeatherForecastBaseFeature
+from consoleweatherforecast_sdk.core.error import ConsoleWeatherForecastError
+from consoleweatherforecast_sdk.core.result import ConsoleWeatherForecastResult
+from consoleweatherforecast_sdk.core.response import ConsoleWeatherForecastResponse
+from consoleweatherforecast_sdk.core.spec import ConsoleWeatherForecastSpec
+from consoleweatherforecast_sdk.feature.base_feature import ConsoleWeatherForecastBaseFeature
 
 
 def _client():

@@ -106,6 +106,7 @@ module ConsoleWeatherForecastConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],
@@ -224,6 +225,7 @@ module ConsoleWeatherForecastConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}",
                   "parts" => [
@@ -271,6 +273,7 @@ module ConsoleWeatherForecastConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/:help",
                   "parts" => [
@@ -315,6 +318,7 @@ module ConsoleWeatherForecastConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}.png",
                   "parts" => [

@@ -23,8 +23,8 @@ module ConsoleWeatherForecastTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("CONSOLEWEATHERFORECAST_TEST_LIVE")
-    override = getenv("CONSOLEWEATHERFORECAST_TEST_OVERRIDE")
+    live = getenv("CONSOLE_WEATHER_FORECAST_TEST_LIVE")
+    override = getenv("CONSOLE_WEATHER_FORECAST_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ConsoleWeatherForecastTestRunner
       end
     end
 
-    explain = getenv("CONSOLEWEATHERFORECAST_TEST_EXPLAIN")
-    m["CONSOLEWEATHERFORECAST_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN")
+    m["CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

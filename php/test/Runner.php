@@ -43,8 +43,8 @@ class ConsoleWeatherForecastTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('CONSOLEWEATHERFORECAST_TEST_LIVE');
-        $override = self::getenv('CONSOLEWEATHERFORECAST_TEST_OVERRIDE');
+        $live = self::getenv('CONSOLE_WEATHER_FORECAST_TEST_LIVE');
+        $override = self::getenv('CONSOLE_WEATHER_FORECAST_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ConsoleWeatherForecastTestRunner
             }
         }
 
-        $explain = self::getenv('CONSOLEWEATHERFORECAST_TEST_EXPLAIN');
+        $explain = self::getenv('CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['CONSOLEWEATHERFORECAST_TEST_EXPLAIN'] = $explain;
+            $m['CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

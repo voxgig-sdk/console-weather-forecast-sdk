@@ -38,7 +38,7 @@ client = ConsoleWeatherForecastSDK()
 
 ### 3. Load a getcurrentlocationweather
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,8 +55,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    getcurrentlocationweather = client.GetCurrentLocationWeather().load()
-    print(getcurrentlocationweather)
+    getlocationweather = client.GetLocationWeather().load({"id": "example_id"})
+    print(getlocationweather)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ConsoleWeatherForecastSDK.test()
 
-# Entity ops return the bare record and raise on error.
-getcurrentlocationweather = client.GetCurrentLocationWeather().load()
-# getcurrentlocationweather contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+getlocationweather = client.GetLocationWeather().load({"id": "test01"})
+# getlocationweather contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -423,11 +424,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getcurrentlocationweather = client.GetCurrentLocationWeather()
-getcurrentlocationweather.load()
+getlocationweather = client.GetLocationWeather()
+getlocationweather.load({"id": "example_id"})
 
-# getcurrentlocationweather.data_get() now returns the getcurrentlocationweather data from the last load
-# getcurrentlocationweather.match_get() returns the last match criteria
+# getlocationweather.data_get() now returns the getlocationweather data from the last load
+# getlocationweather.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

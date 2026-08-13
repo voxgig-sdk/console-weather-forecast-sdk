@@ -60,11 +60,11 @@ function help_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["CONSOLEWEATHERFORECAST_TEST_HELP_ENTID"] = {},
-    ["CONSOLEWEATHERFORECAST_TEST_LIVE"] = "FALSE",
+    ["CONSOLE_WEATHER_FORECAST_TEST_HELP_ENTID"] = {},
+    ["CONSOLE_WEATHER_FORECAST_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["CONSOLEWEATHERFORECAST_TEST_LIVE"] == "TRUE"
+  local live = env["CONSOLE_WEATHER_FORECAST_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

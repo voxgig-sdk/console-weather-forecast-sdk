@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-getcurrentlocationweather, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
+getlocationweather, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "example_id"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = getcurrentlocationweather
+_ = getlocationweather
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getCurrentLocationWeather, err := client.GetCurrentLocationWeather(nil).Load(
-    nil, nil,
+getLocationWeather, err := client.GetLocationWeather(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getCurrentLocationWeather) // the returned mock data
+fmt.Println(getLocationWeather) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -455,11 +455,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-getcurrentlocationweather := client.GetCurrentLocationWeather(nil)
-getcurrentlocationweather.Load(nil, nil)
+getlocationweather := client.GetLocationWeather(nil)
+getlocationweather.Load(map[string]any{"id": "example_id"}, nil)
 
-// getcurrentlocationweather.Data() now returns the getcurrentlocationweather data from the last load
-// getcurrentlocationweather.Match() returns the last match criteria
+// getlocationweather.Data() now returns the getlocationweather data from the last load
+// getlocationweather.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local getcurrentlocationweather, err = client:GetCurrentLocationWeather():load()
+local getlocationweather, err = client:GetLocationWeather():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:GetCurrentLocationWeather():load()
+local result, err = client:GetLocationWeather():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -409,11 +409,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local getcurrentlocationweather = client:GetCurrentLocationWeather()
-getcurrentlocationweather:load()
+local getlocationweather = client:GetLocationWeather()
+getlocationweather:load({ id = "example_id" })
 
--- getcurrentlocationweather:data_get() now returns the getcurrentlocationweather data from the last load
--- getcurrentlocationweather:match_get() returns the last match criteria
+-- getlocationweather:data_get() now returns the getlocationweather data from the last load
+-- getlocationweather:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

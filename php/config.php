@@ -111,6 +111,7 @@ class ConsoleWeatherForecastConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
                   'parts' => [],
@@ -229,6 +230,7 @@ class ConsoleWeatherForecastConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{location}',
                   'parts' => [
@@ -276,6 +278,7 @@ class ConsoleWeatherForecastConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/:help',
                   'parts' => [
@@ -320,6 +323,7 @@ class ConsoleWeatherForecastConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{location}.png',
                   'parts' => [

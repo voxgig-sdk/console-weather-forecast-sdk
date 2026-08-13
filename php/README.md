@@ -35,7 +35,7 @@ $client = new ConsoleWeatherForecastSDK();
 
 ```php
 try {
-    // load() returns the bare GetCurrentLocationWeather record (throws on error).
+    // load() returns the ENTITY — call data_get() for the GetCurrentLocationWeather record (throws on error).
     $getcurrentlocationweather = $client->GetCurrentLocationWeather()->load();
     print_r($getcurrentlocationweather);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $getcurrentlocationweather = $client->GetCurrentLocationWeather()->load();
+    $getlocationweather = $client->GetLocationWeather()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -118,14 +118,18 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ConsoleWeatherForecastSDK::test();
+$client = ConsoleWeatherForecastSDK::test([
+    "entity" => ["getlocationweather" => ["test01" => ["id" => "test01"]]],
+]);
 
-// Entity ops return the bare mock record (throws on error).
-$getcurrentlocationweather = $client->GetCurrentLocationWeather()->load();
-print_r($getcurrentlocationweather);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$getlocationweather = $client->GetLocationWeather()->load(["id" => "test01"]);
+print_r($getlocationweather);
 ```
 
 ### Use a custom fetch function
@@ -225,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -297,7 +301,7 @@ Create an instance: `$get_current_location_weather = $client->GetCurrentLocation
 #### Example: Load
 
 ```php
-// load() returns the bare GetCurrentLocationWeather record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetCurrentLocationWeather record (throws on error).
 $get_current_location_weather = $client->GetCurrentLocationWeather()->load();
 ```
 
@@ -315,7 +319,7 @@ Create an instance: `$get_location_weather = $client->GetLocationWeather();`
 #### Example: Load
 
 ```php
-// load() returns the bare GetLocationWeather record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetLocationWeather record (throws on error).
 $get_location_weather = $client->GetLocationWeather()->load(["id" => "get_location_weather_id"]);
 ```
 
@@ -333,7 +337,7 @@ Create an instance: `$help = $client->Help();`
 #### Example: Load
 
 ```php
-// load() returns the bare Help record (throws on error).
+// load() returns the ENTITY — call data_get() for the Help record (throws on error).
 $help = $client->Help()->load();
 ```
 
@@ -351,7 +355,7 @@ Create an instance: `$location = $client->Location();`
 #### Example: Load
 
 ```php
-// load() returns the bare Location record (throws on error).
+// load() returns the ENTITY — call data_get() for the Location record (throws on error).
 $location = $client->Location()->load(["location" => "location"]);
 ```
 
@@ -432,11 +436,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getcurrentlocationweather = $client->GetCurrentLocationWeather();
-$getcurrentlocationweather->load();
+$getlocationweather = $client->GetLocationWeather();
+$getlocationweather->load(["id" => "example_id"]);
 
-// $getcurrentlocationweather->data_get() now returns the getcurrentlocationweather data from the last load
-// $getcurrentlocationweather->match_get() returns the last match criteria
+// $getlocationweather->data_get() now returns the getlocationweather data from the last load
+// $getlocationweather->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

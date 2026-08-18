@@ -40,7 +40,7 @@ class ConsoleWeatherForecastSDK
         $utility = new ConsoleWeatherForecastUtility();
         $this->_utility = $utility;
 
-        $config = ConsoleWeatherForecastConfig::make_config();
+        $config = ConsoleWeatherForecastConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

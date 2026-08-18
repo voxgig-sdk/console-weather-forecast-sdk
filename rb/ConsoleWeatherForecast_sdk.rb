@@ -28,7 +28,7 @@ class ConsoleWeatherForecastSDK
     utility = ConsoleWeatherForecastUtility.new
     @_utility = utility
 
-    config = ConsoleWeatherForecastConfig.make_config
+    config = ConsoleWeatherForecastConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

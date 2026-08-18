@@ -15,7 +15,7 @@ require_relative "../ConsoleWeatherForecast_sdk"
 module ConsoleWeatherForecastFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = ConsoleWeatherForecastConfig.make_config["feature"]
+    f = ConsoleWeatherForecastConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

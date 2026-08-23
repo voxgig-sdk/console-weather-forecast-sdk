@@ -19,6 +19,9 @@ module ConsoleWeatherForecastConfig
     {
       "main" => {
         "name" => "ConsoleWeatherForecast",
+        "slug" => "console-weather-forecast",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

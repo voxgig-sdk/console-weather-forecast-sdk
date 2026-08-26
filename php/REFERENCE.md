@@ -146,6 +146,12 @@ Return the entity name.
 $get_location_weather = $client->GetLocationWeather();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`

@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -163,7 +164,12 @@ class Config {
       }
     },
     "get_location_weather": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "get_location_weather",
       "op": {
         "load": {

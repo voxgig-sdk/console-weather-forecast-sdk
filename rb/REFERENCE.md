@@ -147,6 +147,12 @@ Return the entity name.
 get_location_weather = client.GetLocationWeather
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`

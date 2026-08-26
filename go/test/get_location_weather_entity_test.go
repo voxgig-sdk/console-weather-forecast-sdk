@@ -61,13 +61,19 @@ func TestGetLocationWeatherEntity(t *testing.T) {
 
 		// LOAD
 		getLocationWeatherRef01Ent := client.GetLocationWeather(nil)
-		getLocationWeatherRef01MatchDt0 := map[string]any{}
+		getLocationWeatherRef01MatchDt0 := map[string]any{
+			"id": getLocationWeatherRef01Data["id"],
+		}
 		getLocationWeatherRef01DataDt0Loaded, err := getLocationWeatherRef01Ent.Load(getLocationWeatherRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if getLocationWeatherRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		getLocationWeatherRef01DataDt0LoadResult := core.ToMapAny(entityData(getLocationWeatherRef01DataDt0Loaded))
+		if getLocationWeatherRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if getLocationWeatherRef01DataDt0LoadResult["id"] != getLocationWeatherRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

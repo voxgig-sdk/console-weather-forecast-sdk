@@ -25,6 +25,7 @@ class GetCurrentLocationWeatherLoadMatch
 /** GetLocationWeather entity data model. */
 class GetLocationWeather
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GetLocationWeather#load. */

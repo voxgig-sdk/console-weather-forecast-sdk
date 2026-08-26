@@ -12,6 +12,7 @@ export interface GetCurrentLocationWeatherLoadMatch {
 }
 
 export interface GetLocationWeather {
+  id?: string
 }
 
 export interface GetLocationWeatherLoadMatch {

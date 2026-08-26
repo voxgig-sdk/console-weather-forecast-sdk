@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const getlocationweather = await client.GetLocationWeather().load({ id: "example_id" })
-  console.log(getlocationweather)
+  const location = await client.Location().load({ location: "example" })
+  console.log(location)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,10 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ConsoleWeatherForecastSDK.test()
 
-const getlocationweather = await client.GetLocationWeather().load({ id: 'test01' })
-// getlocationweather is the entity, populated with mock response data
-// — call getlocationweather.data() for the record itself
-console.log(getlocationweather)
+const location = await client.Location().load({ location: 'example_location' })
+// location is the entity, populated with mock response data
+// — call location.data() for the record itself
+console.log(location)
 ```
 
 You can also use the instance method:
@@ -138,10 +138,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.GetLocationWeather()
+const entity = client.Location()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 'example' })
+await entity.load({ location: 'example_location' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -297,6 +297,7 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -351,6 +352,12 @@ Create an instance: `const get_location_weather = client.GetLocationWeather()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -462,11 +469,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const getlocationweather = client.GetLocationWeather()
-await getlocationweather.load({ id: "example_id" })
+const location = client.Location()
+await location.load({ location: "example" })
 
-// getlocationweather.data() now returns the getlocationweather data from the last `load`
-// getlocationweather.match() returns { id: "example_id" }
+// location.data() now returns the location data from the last `load`
+// location.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -4,6 +4,19 @@ main: kit: entity: get_location_weather: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "get_location_weather"
   op: {
     load: {

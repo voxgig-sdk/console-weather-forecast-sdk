@@ -144,6 +144,12 @@ Return the entity name.
 local get_location_weather = client:GetLocationWeather(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`

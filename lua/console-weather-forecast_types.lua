@@ -11,6 +11,7 @@
 ---@class GetCurrentLocationWeatherLoadMatch
 
 ---@class GetLocationWeather
+---@field id? string
 
 ---@class GetLocationWeatherLoadMatch
 ---@field id string

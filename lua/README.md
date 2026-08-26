@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local getlocationweather, err = client:GetLocationWeather():load({ id = "example_id" })
+local location, err = client:Location():load({ location = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:GetLocationWeather():load({ id = "test01" })
+local result, err = client:Location():load({ location = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -237,6 +237,7 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -291,6 +292,12 @@ Create an instance: `local get_location_weather = client:GetLocationWeather(nil)
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -409,11 +416,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local getlocationweather = client:GetLocationWeather()
-getlocationweather:load({ id = "example_id" })
+local location = client:Location()
+location:load({ location = "example" })
 
--- getlocationweather:data_get() now returns the getlocationweather data from the last load
--- getlocationweather:match_get() returns the last match criteria
+-- location:data_get() now returns the location data from the last load
+-- location:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

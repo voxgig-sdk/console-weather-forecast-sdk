@@ -192,6 +192,12 @@ Return a copy of the entity options.
 const get_location_weather = client.GetLocationWeather()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`

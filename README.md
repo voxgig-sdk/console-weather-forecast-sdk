@@ -42,23 +42,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = ConsoleWeatherForecastSDK.test({
   entity: {
-    get_location_weather: {
+    location: {
       test01: { id: 'test01' },
     },
   },
 })
-const getlocationweather = await client.GetLocationWeather().load({ id: 'test01' })
-// getlocationweather is the GetLocationWeather entity, populated with mock data
-// — call getlocationweather.data() for the record itself
-console.log(getlocationweather)
+const location = await client.Location().load({ location: 'example_location' })
+// location is the Location entity, populated with mock data
+// — call location.data() for the record itself
+console.log(location)
 ```
 
 ### Python
 
 ```python
 client = ConsoleWeatherForecastSDK.test()
-getlocationweather = client.GetLocationWeather().load({"id": "test01"})
-print(getlocationweather)
+location = client.Location().load({"location": "example"})
+print(location)
 ```
 
 ### PHP
@@ -66,17 +66,17 @@ print(getlocationweather)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ConsoleWeatherForecastSDK::test([
-    "entity" => ["getlocationweather" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["location" => ["test01" => []]],
 ]);
-$getlocationweather = $client->GetLocationWeather()->load(["id" => "test01"]);
+$location = $client->Location()->load(["location" => "example"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.GetLocationWeather(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+result, err := client.Location(nil).Load(
+    nil, nil,
 )
 ```
 
@@ -85,16 +85,16 @@ result, err := client.GetLocationWeather(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ConsoleWeatherForecastSDK.test({
-  "entity" => { "getlocationweather" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "location" => { "test01" => {} } },
 })
-getlocationweather = client.GetLocationWeather.load({ "id" => "test01" })
+location = client.Location.load({ "location" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:GetLocationWeather():load({ id = "test01" })
+local result, err = client:Location():load({ location = "example" })
 ```
 
 ## Packages

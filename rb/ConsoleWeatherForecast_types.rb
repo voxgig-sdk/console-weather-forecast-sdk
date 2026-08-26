@@ -17,8 +17,13 @@ class GetCurrentLocationWeatherLoadMatch
 end
 
 # GetLocationWeather entity data model.
-class GetLocationWeather
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GetLocationWeather = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GetLocationWeather#load.
 #

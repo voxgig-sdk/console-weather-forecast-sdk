@@ -55,8 +55,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    getlocationweather = client.GetLocationWeather().load({"id": "example_id"})
-    print(getlocationweather)
+    location = client.Location().load({"location": "example"})
+    print(location)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -124,8 +124,8 @@ client = ConsoleWeatherForecastSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-getlocationweather = client.GetLocationWeather().load({"id": "test01"})
-# getlocationweather contains the mock response record
+location = client.Location().load({"location": "example"})
+# location contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -253,6 +253,7 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -307,6 +308,12 @@ Create an instance: `get_location_weather = client.GetLocationWeather()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -424,11 +431,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getlocationweather = client.GetLocationWeather()
-getlocationweather.load({"id": "example_id"})
+location = client.Location()
+location.load({"location": "example"})
 
-# getlocationweather.data_get() now returns the getlocationweather data from the last load
-# getlocationweather.match_get() returns the last match criteria
+# location.data_get() now returns the location data from the last load
+# location.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

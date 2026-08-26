@@ -22,6 +22,7 @@ type GetCurrentLocationWeatherLoadMatch struct {
 
 // GetLocationWeather is the typed data model for the get_location_weather entity.
 type GetLocationWeather struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GetLocationWeatherLoadMatch is the typed request payload for GetLocationWeather.LoadTyped.

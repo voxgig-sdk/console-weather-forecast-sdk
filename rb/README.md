@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  getlocationweather = client.GetLocationWeather.load({ "id" => "example_id" })
+  location = client.Location.load({ "location" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -112,18 +112,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = ConsoleWeatherForecastSDK.test({
-  "entity" => { "getlocationweather" => { "test01" => { "id" => "test01" } } },
-})
+client = ConsoleWeatherForecastSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-getlocationweather = client.GetLocationWeather.load({ "id" => "test01" })
-puts getlocationweather
+location = client.Location.load({ "location" => "example" })
+puts location
 ```
 
 ### Use a custom fetch function
@@ -250,6 +247,7 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -305,6 +303,12 @@ Create an instance: `get_location_weather = client.GetLocationWeather`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
 
 #### Example: Load
 
@@ -426,11 +430,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getlocationweather = client.GetLocationWeather
-getlocationweather.load({ "id" => "example_id" })
+location = client.Location
+location.load({ "location" => "example" })
 
-# getlocationweather.data_get now returns the getlocationweather data from the last load
-# getlocationweather.match_get returns the last match criteria
+# location.data_get now returns the location data from the last load
+# location.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

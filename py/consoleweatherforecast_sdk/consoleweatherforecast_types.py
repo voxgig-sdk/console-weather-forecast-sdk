@@ -24,8 +24,8 @@ class GetCurrentLocationWeatherLoadMatch(TypedDict):
     pass
 
 
-class GetLocationWeather(TypedDict):
-    pass
+class GetLocationWeather(TypedDict, total=False):
+    id: str
 
 
 class GetLocationWeatherLoadMatch(TypedDict):

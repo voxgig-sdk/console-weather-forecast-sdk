@@ -28,6 +28,7 @@ module ConsoleWeatherForecastConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -134,7 +135,12 @@ module ConsoleWeatherForecastConfig
           },
         },
         "get_location_weather" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "get_location_weather",
           "op" => {
             "load" => {

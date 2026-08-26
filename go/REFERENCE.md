@@ -151,6 +151,12 @@ getLocationWeather := client.GetLocationWeather(nil)
 fmt.Println(getLocationWeather.GetName()) // "get_location_weather"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`

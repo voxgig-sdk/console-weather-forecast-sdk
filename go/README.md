@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-getlocationweather, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "example_id"}, nil)
+location, err := client.Location(nil).Load(map[string]any{"location": "example"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = getlocationweather
+_ = location
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getLocationWeather, err := client.GetLocationWeather(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+location, err := client.Location(nil).Load(
+    map[string]any{"location": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getLocationWeather) // the returned mock data
+fmt.Println(location) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -270,6 +270,7 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -328,6 +329,12 @@ Create an instance: `getLocationWeather := client.GetLocationWeather(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -455,11 +462,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-getlocationweather := client.GetLocationWeather(nil)
-getlocationweather.Load(map[string]any{"id": "example_id"}, nil)
+location := client.Location(nil)
+location.Load(map[string]any{"location": "example"}, nil)
 
-// getlocationweather.Data() now returns the getlocationweather data from the last load
-// getlocationweather.Match() returns the last match criteria
+// location.Data() now returns the location data from the last load
+// location.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -9,12 +9,26 @@
 ---@class GetCurrentLocationWeather
 
 ---@class GetCurrentLocationWeatherLoadMatch
+---@field d? string
+---@field format? string
+---@field lang? string
+---@field m? string
+---@field period? number
+---@field t? string
+---@field u? string
 
 ---@class GetLocationWeather
 ---@field id? string
 
 ---@class GetLocationWeatherLoadMatch
 ---@field id string
+---@field d? string
+---@field format? string
+---@field lang? string
+---@field m? string
+---@field period? number
+---@field t? string
+---@field u? string
 
 ---@class Help
 

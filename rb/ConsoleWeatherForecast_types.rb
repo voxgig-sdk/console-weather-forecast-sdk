@@ -13,8 +13,37 @@ class GetCurrentLocationWeather
 end
 
 # Request payload for GetCurrentLocationWeather#load.
-class GetCurrentLocationWeatherLoadMatch
-end
+#
+# @!attribute [rw] d
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] lang
+#   @return [String, nil]
+#
+# @!attribute [rw] m
+#   @return [String, nil]
+#
+# @!attribute [rw] period
+#   @return [Integer, nil]
+#
+# @!attribute [rw] t
+#   @return [String, nil]
+#
+# @!attribute [rw] u
+#   @return [String, nil]
+GetCurrentLocationWeatherLoadMatch = Struct.new(
+  :d,
+  :format,
+  :lang,
+  :m,
+  :period,
+  :t,
+  :u,
+  keyword_init: true
+)
 
 # GetLocationWeather entity data model.
 #
@@ -29,8 +58,36 @@ GetLocationWeather = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] d
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] lang
+#   @return [String, nil]
+#
+# @!attribute [rw] m
+#   @return [String, nil]
+#
+# @!attribute [rw] period
+#   @return [Integer, nil]
+#
+# @!attribute [rw] t
+#   @return [String, nil]
+#
+# @!attribute [rw] u
+#   @return [String, nil]
 GetLocationWeatherLoadMatch = Struct.new(
   :id,
+  :d,
+  :format,
+  :lang,
+  :m,
+  :period,
+  :t,
+  :u,
   keyword_init: true
 )
 

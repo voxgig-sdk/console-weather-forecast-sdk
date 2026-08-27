@@ -18,6 +18,13 @@ type GetCurrentLocationWeather struct {
 
 // GetCurrentLocationWeatherLoadMatch is the typed request payload for GetCurrentLocationWeather.LoadTyped.
 type GetCurrentLocationWeatherLoadMatch struct {
+	D *string `json:"d,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	M *string `json:"m,omitempty"`
+	Period *int `json:"period,omitempty"`
+	T *string `json:"t,omitempty"`
+	U *string `json:"u,omitempty"`
 }
 
 // GetLocationWeather is the typed data model for the get_location_weather entity.
@@ -28,6 +35,13 @@ type GetLocationWeather struct {
 // GetLocationWeatherLoadMatch is the typed request payload for GetLocationWeather.LoadTyped.
 type GetLocationWeatherLoadMatch struct {
 	Id string `json:"id"`
+	D *string `json:"d,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	M *string `json:"m,omitempty"`
+	Period *int `json:"period,omitempty"`
+	T *string `json:"t,omitempty"`
+	U *string `json:"u,omitempty"`
 }
 
 // Help is the typed data model for the help entity.

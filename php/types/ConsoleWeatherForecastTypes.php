@@ -20,6 +20,13 @@ class GetCurrentLocationWeather
 /** Request payload for GetCurrentLocationWeather#load. */
 class GetCurrentLocationWeatherLoadMatch
 {
+    public ?string $d = null;
+    public ?string $format = null;
+    public ?string $lang = null;
+    public ?string $m = null;
+    public ?int $period = null;
+    public ?string $t = null;
+    public ?string $u = null;
 }
 
 /** GetLocationWeather entity data model. */
@@ -32,6 +39,13 @@ class GetLocationWeather
 class GetLocationWeatherLoadMatch
 {
     public string $id;
+    public ?string $d = null;
+    public ?string $format = null;
+    public ?string $lang = null;
+    public ?string $m = null;
+    public ?int $period = null;
+    public ?string $t = null;
+    public ?string $u = null;
 }
 
 /** Help entity data model. */

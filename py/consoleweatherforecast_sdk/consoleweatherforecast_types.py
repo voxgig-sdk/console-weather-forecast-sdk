@@ -20,16 +20,32 @@ class GetCurrentLocationWeather(TypedDict):
     pass
 
 
-class GetCurrentLocationWeatherLoadMatch(TypedDict):
-    pass
+class GetCurrentLocationWeatherLoadMatch(TypedDict, total=False):
+    d: str
+    format: str
+    lang: str
+    m: str
+    period: int
+    t: str
+    u: str
 
 
 class GetLocationWeather(TypedDict, total=False):
     id: str
 
 
-class GetLocationWeatherLoadMatch(TypedDict):
+class GetLocationWeatherLoadMatchRequired(TypedDict):
     id: str
+
+
+class GetLocationWeatherLoadMatch(GetLocationWeatherLoadMatchRequired, total=False):
+    d: str
+    format: str
+    lang: str
+    m: str
+    period: int
+    t: str
+    u: str
 
 
 class Help(TypedDict):

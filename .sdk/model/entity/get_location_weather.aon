@@ -95,14 +95,16 @@ main: kit: entity: get_location_weather: {
           }
           method: "GET"
           orig: "/{location}"
-          parts: [
-            "{id}"
-          ]
           rename: {
             param: {
               location: "id"
             }
           }
+          segments: [
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "d"

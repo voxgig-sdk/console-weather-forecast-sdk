@@ -98,7 +98,7 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
-                ["parts"] = {},
+                ["segments"] = {},
                 ["select"] = {
                   ["exist"] = {
                     "d",
@@ -114,6 +114,7 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {},
               },
             },
           },
@@ -128,6 +129,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "get_location_weather",
         ["op"] = {
@@ -201,12 +206,14 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{location}",
-                ["parts"] = {
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["location"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -224,6 +231,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{id}",
                 },
               },
             },
@@ -246,13 +256,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/:help",
-                ["parts"] = {
-                  ":help",
+                ["segments"] = {
+                  {
+                    ["lit"] = ":help",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  ":help",
                 },
               },
             },
@@ -286,8 +301,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{location}.png",
-                ["parts"] = {
-                  "{location}.png",
+                ["segments"] = {
+                  {
+                    ["lit"] = "{location}.png",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -297,6 +314,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{location}.png",
                 },
               },
             },

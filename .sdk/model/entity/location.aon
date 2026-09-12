@@ -24,8 +24,10 @@ main: kit: entity: location: {
           }
           method: "GET"
           orig: "/{location}.png"
-          parts: [
-            "{location}.png"
+          segments: [
+            {
+              lit: "{location}.png"
+            }
           ]
           select: {
             exist: [

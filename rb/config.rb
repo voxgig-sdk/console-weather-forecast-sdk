@@ -110,7 +110,7 @@ module ConsoleWeatherForecastConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {
                     "exist" => [
                       "d",
@@ -126,6 +126,7 @@ module ConsoleWeatherForecastConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },
@@ -141,6 +142,10 @@ module ConsoleWeatherForecastConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "get_location_weather",
           "op" => {
             "load" => {
@@ -213,14 +218,16 @@ module ConsoleWeatherForecastConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}",
-                  "parts" => [
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "location" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "d",
@@ -237,6 +244,9 @@ module ConsoleWeatherForecastConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -258,14 +268,19 @@ module ConsoleWeatherForecastConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/:help",
-                  "parts" => [
-                    ":help",
+                  "segments" => [
+                    {
+                      "lit" => ":help",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    ":help",
+                  ],
                 },
               ],
             },
@@ -298,8 +313,10 @@ module ConsoleWeatherForecastConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}.png",
-                  "parts" => [
-                    "{location}.png",
+                  "segments" => [
+                    {
+                      "lit" => "{location}.png",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -310,6 +327,9 @@ module ConsoleWeatherForecastConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{location}.png",
+                  ],
                 },
               ],
             },

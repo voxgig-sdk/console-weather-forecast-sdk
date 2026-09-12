@@ -124,7 +124,7 @@ class ConsoleWeatherForecastConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [
                     'exist' => [
                       'd',
@@ -140,6 +140,7 @@ class ConsoleWeatherForecastConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],
@@ -154,6 +155,10 @@ class ConsoleWeatherForecastConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'get_location_weather',
           'op' => [
@@ -227,12 +232,14 @@ class ConsoleWeatherForecastConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{location}',
-                  'parts' => [
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'location' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -250,6 +257,9 @@ class ConsoleWeatherForecastConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{id}',
                   ],
                 ],
               ],
@@ -272,13 +282,18 @@ class ConsoleWeatherForecastConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/:help',
-                  'parts' => [
-                    ':help',
+                  'segments' => [
+                    [
+                      'lit' => ':help',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    ':help',
                   ],
                 ],
               ],
@@ -312,8 +327,10 @@ class ConsoleWeatherForecastConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{location}.png',
-                  'parts' => [
-                    '{location}.png',
+                  'segments' => [
+                    [
+                      'lit' => '{location}.png',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -323,6 +340,9 @@ class ConsoleWeatherForecastConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{location}.png',
                   ],
                 ],
               ],

@@ -12,8 +12,10 @@ main: kit: entity: help: {
         {
           method: "GET"
           orig: "/:help"
-          parts: [
-            ":help"
+          segments: [
+            {
+              lit: ":help"
+            }
           ]
           transform: {
             req: "`reqdata`"

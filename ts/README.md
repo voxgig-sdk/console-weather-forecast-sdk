@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast-sdk'
 
 const client = new ConsoleWeatherForecastSDK()
 ```
@@ -482,7 +482,7 @@ console-weather-forecast/
 Import the SDK from the package root:
 
 ```ts
-import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local result, err = client:Location():load({ location = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| TypeScript | `@voxgig-sdk/console-weather-forecast-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
 | Python | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
 | PHP | `voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/console-weather-forecast-sdk/go` | `go get github.com/voxgig-sdk/console-weather-forecast-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Location():load({ location = "example" })
 ### TypeScript
 
 ```ts
-import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast'
+import { ConsoleWeatherForecastSDK } from '@voxgig-sdk/console-weather-forecast-sdk'
 
 const client = new ConsoleWeatherForecastSDK()
 

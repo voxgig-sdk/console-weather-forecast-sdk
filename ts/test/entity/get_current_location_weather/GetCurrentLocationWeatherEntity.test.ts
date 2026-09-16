@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { ConsoleWeatherForecastSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('GetCurrentLocationWeatherEntity', async () => {
 
     const live = 'TRUE' === process.env.CONSOLE_WEATHER_FORECAST_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'get_current_location_weather.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'get_current_location_weather.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set CONSOLE_WEATHER_FORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"get_current_location_weather","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"d","orig":"d","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":"1","kind":"query","name":"format","orig":"format","reqd":false,"type":"`$STRING`","index$":1},{"active":true,"example":"fr","kind":"query","name":"lang","orig":"lang","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"kind":"query","name":"m","orig":"m","reqd":false,"type":"`$STRING`","index$":3},{"active":true,"kind":"query","name":"m","orig":"m","reqd":false,"type":"`$STRING`","index$":4},{"active":true,"kind":"query","name":"period","orig":"period","reqd":false,"type":"`$INTEGER`","index$":5},{"active":true,"kind":"query","name":"t","orig":"t","reqd":false,"type":"`$STRING`","index$":6},{"active":true,"kind":"query","name":"u","orig":"u","reqd":false,"type":"`$STRING`","index$":7}]},"contract":{"id":"GET /","json":"{\"operationId\":\"getCurrentLocationWeather\",\"parameters\":[{\"description\":\"Use USCS units (used by default in US)\",\"in\":\"query\",\"name\":\"u\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units (used by default everywhere except US)\",\"in\":\"query\",\"name\":\"m\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units, but show wind speed in m/s\",\"in\":\"query\",\"name\":\"M\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Output format for one-line display. Supports formats 1-4 or custom format using %-notation\",\"examples\":{\"custom\":{\"summary\":\"Custom format using %-notation\",\"value\":\"%l:+%c+%t\"},\"format1\":{\"summary\":\"Current weather: 🌦 +11⁰C\",\"value\":\"1\"},\"format2\":{\"summary\":\"Weather with details: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"2\"},\"format3\":{\"summary\":\"Location and weather: Nuremberg: 🌦 +11⁰C\",\"value\":\"3\"},\"format4\":{\"summary\":\"Location and weather with details: Nuremberg: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"4\"}},\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Force plain text output (disables colors)\",\"in\":\"query\",\"name\":\"T\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Restrict output to glyphs available in standard console fonts\",\"in\":\"query\",\"name\":\"d\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Language for the output\",\"examples\":{\"french\":{\"value\":\"fr\"},\"german\":{\"value\":\"de\"},\"ukrainian\":{\"value\":\"uk\"}},\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Update period in seconds for automatic queries\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"JSON-formatted weather data\",\"type\":\"object\"}},\"text/html\":{\"schema\":{\"description\":\"HTML-formatted weather forecast for web browsers\",\"type\":\"string\"}},\"text/plain\":{\"example\":\"Weather for City: Paris, France\\n\\n     \\\\   /     Clear\\n      .-.      10 – 11 °C\\n   ― (   ) ―   ↑ 11 km/h\\n      `-'      10 km\\n     /   \\\\     0.0 mm\",\"schema\":{\"description\":\"ANSI-formatted weather forecast for terminal display\",\"type\":\"string\"}}},\"description\":\"Successful weather forecast response\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/","segments":[],"select":{"exist":["d","format","lang","m","period","t","u"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"get_current_location_weather","name__orig":"get_current_location_weather","Name":"GetCurrentLocationWeather","name_":"get_current_location_weather","name-":"get-current-location-weather","NAME":"GET_CURRENT_LOCATION_WEATHER","index$":0}, {"active":true,"entity":"get_current_location_weather","key$":"BasicGetCurrentLocationWeatherFlow","kind":"basic","name":"BasicGetCurrentLocationWeatherFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"get_current_location_weather_ref01","srcdatavar":"get_current_location_weather_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-get_current_location_weather_ref01"}}],"index$":0}]}, 'GetCurrentLocationWeather')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['CONSOLE_WEATHER_FORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'CONSOLE_WEATHER_FORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID': idmap,
     'CONSOLE_WEATHER_FORECAST_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.CONSOLE_WEATHER_FORECAST_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['CONSOLE_WEATHER_FORECAST_TEST_GET_CURRENT_LOCATION_WEATHER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new ConsoleWeatherForecastSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.CONSOLE_WEATHER_FORECAST_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

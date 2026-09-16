@@ -16,5 +16,164 @@
     "get_current_location_weather": {
       "get_current_location_weather_ref01": {}
     }
+  },
+  "requests": {
+    "GET /": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCurrentLocationWeather",
+        "parameters": [
+          {
+            "description": "Use USCS units (used by default in US)",
+            "in": "query",
+            "name": "u",
+            "required": false,
+            "schema": {
+              "enum": [
+                ""
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Use metric (SI) units (used by default everywhere except US)",
+            "in": "query",
+            "name": "m",
+            "required": false,
+            "schema": {
+              "enum": [
+                ""
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Use metric (SI) units, but show wind speed in m/s",
+            "in": "query",
+            "name": "M",
+            "required": false,
+            "schema": {
+              "enum": [
+                ""
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format for one-line display. Supports formats 1-4 or custom format using %-notation",
+            "examples": {
+              "custom": {
+                "summary": "Custom format using %-notation",
+                "value": "%l:+%c+%t"
+              },
+              "format1": {
+                "summary": "Current weather: 🌦 +11⁰C",
+                "value": "1"
+              },
+              "format2": {
+                "summary": "Weather with details: 🌦 🌡️+11°C 🌬️↓4km/h",
+                "value": "2"
+              },
+              "format3": {
+                "summary": "Location and weather: Nuremberg: 🌦 +11⁰C",
+                "value": "3"
+              },
+              "format4": {
+                "summary": "Location and weather with details: Nuremberg: 🌦 🌡️+11°C 🌬️↓4km/h",
+                "value": "4"
+              }
+            },
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Force plain text output (disables colors)",
+            "in": "query",
+            "name": "T",
+            "required": false,
+            "schema": {
+              "enum": [
+                ""
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Restrict output to glyphs available in standard console fonts",
+            "in": "query",
+            "name": "d",
+            "required": false,
+            "schema": {
+              "enum": [
+                ""
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Language for the output",
+            "examples": {
+              "french": {
+                "value": "fr"
+              },
+              "german": {
+                "value": "de"
+              },
+              "ukrainian": {
+                "value": "uk"
+              }
+            },
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Update period in seconds for automatic queries",
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "JSON-formatted weather data",
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "description": "HTML-formatted weather forecast for web browsers",
+                  "type": "string"
+                }
+              },
+              "text/plain": {
+                "example": "Weather for City: Paris, France\n\n     \\   /     Clear\n      .-.      10 – 11 °C\n   ― (   ) ―   ↑ 11 km/h\n      `-'      10 km\n     /   \\     0.0 mm",
+                "schema": {
+                  "description": "ANSI-formatted weather forecast for terminal display",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful weather forecast response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

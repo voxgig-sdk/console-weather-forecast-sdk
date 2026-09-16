@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_current_location_weather": {
           "active": true,
@@ -109,6 +173,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /",
+                    "json": "{\"operationId\":\"getCurrentLocationWeather\",\"parameters\":[{\"description\":\"Use USCS units (used by default in US)\",\"in\":\"query\",\"name\":\"u\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units (used by default everywhere except US)\",\"in\":\"query\",\"name\":\"m\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units, but show wind speed in m/s\",\"in\":\"query\",\"name\":\"M\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Output format for one-line display. Supports formats 1-4 or custom format using %-notation\",\"examples\":{\"custom\":{\"summary\":\"Custom format using %-notation\",\"value\":\"%l:+%c+%t\"},\"format1\":{\"summary\":\"Current weather: 🌦 +11⁰C\",\"value\":\"1\"},\"format2\":{\"summary\":\"Weather with details: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"2\"},\"format3\":{\"summary\":\"Location and weather: Nuremberg: 🌦 +11⁰C\",\"value\":\"3\"},\"format4\":{\"summary\":\"Location and weather with details: Nuremberg: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"4\"}},\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Force plain text output (disables colors)\",\"in\":\"query\",\"name\":\"T\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Restrict output to glyphs available in standard console fonts\",\"in\":\"query\",\"name\":\"d\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Language for the output\",\"examples\":{\"french\":{\"value\":\"fr\"},\"german\":{\"value\":\"de\"},\"ukrainian\":{\"value\":\"uk\"}},\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Update period in seconds for automatic queries\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"JSON-formatted weather data\",\"type\":\"object\"}},\"text/html\":{\"schema\":{\"description\":\"HTML-formatted weather forecast for web browsers\",\"type\":\"string\"}},\"text/plain\":{\"example\":\"Weather for City: Paris, France\\n\\n     \\\\   /     Clear\\n      .-.      10 – 11 °C\\n   ― (   ) ―   ↑ 11 km/h\\n      `-'      10 km\\n     /   \\\\     0.0 mm\",\"schema\":{\"description\":\"ANSI-formatted weather forecast for terminal display\",\"type\":\"string\"}}},\"description\":\"Successful weather forecast response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -241,6 +311,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{location}",
+                    "json": "{\"operationId\":\"getLocationWeather\",\"parameters\":[{\"description\":\"Location name (e.g., 'London', 'Salt+Lake+City'), airport code (e.g., 'muc', 'ham'), IP address, domain name (e.g., '@github.com'), or special location (e.g., '~Eiffel+Tower')\",\"examples\":{\"airport\":{\"summary\":\"Airport IATA code\",\"value\":\"muc\"},\"city\":{\"summary\":\"City name\",\"value\":\"London\"},\"domain\":{\"summary\":\"Domain name\",\"value\":\"@github.com\"},\"multiple\":{\"summary\":\"Multiple locations separated by colon\",\"value\":\"Nuremberg:Hamburg:Berlin\"},\"multiword\":{\"summary\":\"Multi-word city name\",\"value\":\"Salt+Lake+City\"},\"special\":{\"summary\":\"Special location/landmark\",\"value\":\"~Eiffel+Tower\"}},\"in\":\"path\",\"name\":\"location\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Use USCS units (used by default in US)\",\"in\":\"query\",\"name\":\"u\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units (used by default everywhere except US)\",\"in\":\"query\",\"name\":\"m\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units, but show wind speed in m/s\",\"in\":\"query\",\"name\":\"M\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Output format for one-line display. Supports formats 1-4 or custom format using %-notation (c=condition, C=condition name, x=plain symbol, h=humidity, t=temperature, f=feels like, w=wind, l=location, m=moon phase, M=moon day, p=precipitation, P=pressure, u=UV index, D=dawn, S=sunrise, z=zenith, s=sunset, d=dusk, T=current time, Z=timezone)\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Force plain text output (disables colors)\",\"in\":\"query\",\"name\":\"T\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Restrict output to glyphs available in standard console fonts\",\"in\":\"query\",\"name\":\"d\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Language for the output\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Update period in seconds for automatic queries with multiple locations\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"JSON-formatted weather data\",\"type\":\"object\"}},\"text/html\":{\"schema\":{\"description\":\"HTML-formatted weather forecast for web browsers\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"ANSI-formatted weather forecast for terminal display\",\"type\":\"string\"}}},\"description\":\"Successful weather forecast response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{location}",
@@ -293,6 +369,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /:help",
+                    "json": "{\"operationId\":\"getHelp\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/html\":{\"schema\":{\"description\":\"HTML-formatted help documentation\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"Detailed help text\",\"type\":\"string\"}}},\"description\":\"Help documentation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/:help",
@@ -341,6 +423,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{location}.png",
+                    "json": "{\"operationId\":\"getLocationWeatherPNG\",\"parameters\":[{\"description\":\"Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language\",\"examples\":{\"simple\":{\"summary\":\"Simple PNG for Paris\",\"value\":\"Paris.png\"},\"transparent\":{\"summary\":\"Transparent PNG\",\"value\":\"Oymyakon_tqp0.png\"},\"withOptions\":{\"summary\":\"PNG with options\",\"value\":\"Paris_0tqp_lang=fr.png\"}},\"in\":\"path\",\"name\":\"location\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"PNG image of weather forecast\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{location}.png",
@@ -368,13 +456,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -464,6 +762,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -628,6 +1022,48 @@
         "website": "https://github.com/chubin/wttr.in"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1182,6 +1618,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1223,7 +1660,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

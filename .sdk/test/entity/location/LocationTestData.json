@@ -19,5 +19,56 @@
     "location": {
       "location_ref01": {}
     }
+  },
+  "requests": {
+    "GET /{location}.png": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLocationWeatherPNG",
+        "parameters": [
+          {
+            "description": "Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language",
+            "examples": {
+              "simple": {
+                "summary": "Simple PNG for Paris",
+                "value": "Paris.png"
+              },
+              "transparent": {
+                "summary": "Transparent PNG",
+                "value": "Oymyakon_tqp0.png"
+              },
+              "withOptions": {
+                "summary": "PNG with options",
+                "value": "Paris_0tqp_lang=fr.png"
+              }
+            },
+            "in": "path",
+            "name": "location",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "PNG image of weather forecast"
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

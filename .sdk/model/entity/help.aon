@@ -10,6 +10,12 @@ main: kit: entity: help: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /:help"
+            json: "{\"operationId\":\"getHelp\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/html\":{\"schema\":{\"description\":\"HTML-formatted help documentation\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"Detailed help text\",\"type\":\"string\"}}},\"description\":\"Help documentation\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/:help"
           segments: [

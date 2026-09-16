@@ -1,12 +1,18 @@
 # ConsoleWeatherForecast SDK feature factory
 
 from consoleweatherforecast_sdk.feature.base_feature import ConsoleWeatherForecastBaseFeature
+from consoleweatherforecast_sdk.feature.ratelimit_feature import ConsoleWeatherForecastRatelimitFeature
+from consoleweatherforecast_sdk.feature.retry_feature import ConsoleWeatherForecastRetryFeature
 from consoleweatherforecast_sdk.feature.test_feature import ConsoleWeatherForecastTestFeature
+from consoleweatherforecast_sdk.feature.timeout_feature import ConsoleWeatherForecastTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ConsoleWeatherForecastBaseFeature(),
+    "ratelimit": lambda: ConsoleWeatherForecastRatelimitFeature(),
+    "retry": lambda: ConsoleWeatherForecastRetryFeature(),
     "test": lambda: ConsoleWeatherForecastTestFeature(),
+    "timeout": lambda: ConsoleWeatherForecastTimeoutFeature(),
 }
 
 

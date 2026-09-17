@@ -105,12 +105,12 @@ local result, err = client:Location():load({ location = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/console-weather-forecast-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
-| Python | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
-| PHP | `voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| TypeScript | `@voxgig-sdk/console-weather-forecast-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/tags) |
+| Python | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/tags) |
+| PHP | `voxgig-sdk/console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/console-weather-forecast-sdk/go` | `go get github.com/voxgig-sdk/console-weather-forecast-sdk/go@latest` |
-| Ruby | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
-| Lua | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/releases) |
+| Ruby | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/tags) |
+| Lua | `voxgig-sdk-console-weather-forecast` | publish pending — [install from git tag](https://github.com/voxgig-sdk/console-weather-forecast-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/console-weather-forecast-sdk/go-cli` | `go install github.com/voxgig-sdk/console-weather-forecast-sdk/go-cli/cmd/console-weather-forecast@latest` |
 | Go MCP server | `github.com/voxgig-sdk/console-weather-forecast-sdk/go-mcp` | `go get github.com/voxgig-sdk/console-weather-forecast-sdk/go-mcp@latest` |
 

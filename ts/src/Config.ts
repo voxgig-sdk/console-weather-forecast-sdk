@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      get_current_location_weather: {
-      },
-
-      get_location_weather: {
-      },
-
-      help: {
-      },
-
-      location: {
-      },
-
+        get_current_location_weather: {
+        },
+  
+        get_location_weather: {
+        },
+  
+        help: {
+        },
+  
+        location: {
+        },
+  
     }
   }
 

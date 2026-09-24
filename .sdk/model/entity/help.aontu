@@ -1,0 +1,39 @@
+# Entity: help
+
+main: kit: entity: help: {
+
+  alias: field: {}
+
+  name: "help"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /:help"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/:help"
+          s: [
+            {
+              lit: ":help"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

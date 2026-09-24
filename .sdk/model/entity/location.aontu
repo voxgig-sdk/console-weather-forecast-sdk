@@ -1,0 +1,56 @@
+# Entity: location
+
+main: kit: entity: location: {
+
+  alias: field: {}
+
+  name: "location"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /{location}.png"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "Paris.png"
+                k: "param"
+                n: "location"
+                or: "location"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{location}.png"
+          q: {
+            exist: [
+              "location"
+            ]
+          }
+          s: [
+            {
+              lit: "{location}.png"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

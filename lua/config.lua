@@ -95,64 +95,70 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "d",
-                      ["orig"] = "d",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "1",
-                      ["kind"] = "query",
-                      ["name"] = "format",
-                      ["orig"] = "format",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "fr",
-                      ["kind"] = "query",
-                      ["name"] = "lang",
-                      ["orig"] = "lang",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "m",
-                      ["orig"] = "m",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "m",
-                      ["orig"] = "m",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "period",
-                      ["orig"] = "period",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "t",
-                      ["orig"] = "t",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "u",
-                      ["orig"] = "u",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["segments"] = {},
+                ["parts"] = {},
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "d",
+                      ["orig"] = "d",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "format",
+                      ["orig"] = "format",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "1",
+                    },
+                    {
+                      ["name"] = "lang",
+                      ["orig"] = "lang",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "fr",
+                    },
+                    {
+                      ["name"] = "m",
+                      ["orig"] = "m",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "m",
+                      ["orig"] = "m",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "period",
+                      ["orig"] = "period",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "t",
+                      ["orig"] = "t",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "u",
+                      ["orig"] = "u",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "d",
@@ -164,11 +170,6 @@ local function make_config()
                     "u",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {},
               },
             },
           },
@@ -181,6 +182,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
         },
@@ -195,79 +197,86 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "London",
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "location",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "d",
-                      ["orig"] = "d",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "format",
-                      ["orig"] = "format",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "lang",
-                      ["orig"] = "lang",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "m",
-                      ["orig"] = "m",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "m",
-                      ["orig"] = "m",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "period",
-                      ["orig"] = "period",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "t",
-                      ["orig"] = "t",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "u",
-                      ["orig"] = "u",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{location}",
+                ["segments"] = {
+                  {
+                    ["var"] = "id",
+                  },
+                },
+                ["parts"] = {
+                  "{id}",
+                },
                 ["rename"] = {
                   ["param"] = {
                     ["location"] = "id",
                   },
                 },
-                ["segments"] = {
-                  {
-                    ["var"] = "id",
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "location",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "London",
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "d",
+                      ["orig"] = "d",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "format",
+                      ["orig"] = "format",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "lang",
+                      ["orig"] = "lang",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "m",
+                      ["orig"] = "m",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "m",
+                      ["orig"] = "m",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "period",
+                      ["orig"] = "period",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "t",
+                      ["orig"] = "t",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "u",
+                      ["orig"] = "u",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -281,13 +290,6 @@ local function make_config()
                     "t",
                     "u",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "{id}",
                 },
               },
             },
@@ -306,7 +308,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/:help",
@@ -315,14 +316,16 @@ local function make_config()
                     ["lit"] = ":help",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  ":help",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  ":help",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -340,18 +343,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "Paris.png",
-                      ["kind"] = "param",
-                      ["name"] = "location",
-                      ["orig"] = "location",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{location}.png",
@@ -360,17 +351,30 @@ local function make_config()
                     ["lit"] = "{location}.png",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "location",
-                  },
+                ["parts"] = {
+                  "{location}.png",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "{location}.png",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "location",
+                      ["orig"] = "location",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "Paris.png",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "location",
+                  },
                 },
               },
             },

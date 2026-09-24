@@ -44,10 +44,6 @@ const live_runner_1 = require("../../live-runner");
 const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
 (0, node_test_1.describe)('HelpEntity', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
@@ -66,7 +62,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [], "name": "help", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": {}, "contract": { "id": "GET /:help", "json": "{\"operationId\":\"getHelp\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/html\":{\"schema\":{\"description\":\"HTML-formatted help documentation\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"Detailed help text\",\"type\":\"string\"}}},\"description\":\"Help documentation\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/:help", "segments": [{ "lit": ":help" }], "select": {}, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "help", "name__orig": "help", "Name": "Help", "name_": "help", "name-": "help", "NAME": "HELP", "index$": 2 }, { "active": true, "entity": "help", "key$": "BasicHelpFlow", "kind": "basic", "name": "BasicHelpFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "help_ref01", "srcdatavar": "help_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-help_ref01" } }], "index$": 0 }] }, 'Help');
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "help", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /:help", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/:help", "q": {}, "r": {}, "s": [{ "lit": ":help" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "help", "name__orig": "help", "Name": "Help", "name_": "help", "name-": "help", "NAME": "HELP", "index$": 2 }, { "active": true, "entity": "help", "key$": "BasicHelpFlow", "kind": "basic", "name": "BasicHelpFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "help_ref01", "srcdatavar": "help_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-help_ref01" } }], "index$": 0 }] }, 'Help', { "GET /:help": { "protocol": "http", "operationId": "getHelp", "responses": { "200": { "description": "Help documentation", "content": { "text/plain": { "schema": { "type": "string", "description": "Detailed help text" } }, "text/html": { "schema": { "type": "string", "description": "HTML-formatted help documentation" } } } } }, "parameters": [], "securitySource": "unspecified" } });
         }
         const client = setup.client;
         const struct = setup.struct;

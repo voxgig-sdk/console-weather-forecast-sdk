@@ -20,31 +20,8 @@
   "requests": {
     "GET /:help": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getHelp",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "text/html": {
-                "schema": {
-                  "description": "HTML-formatted help documentation",
-                  "type": "string"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "description": "Detailed help text",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "Help documentation"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

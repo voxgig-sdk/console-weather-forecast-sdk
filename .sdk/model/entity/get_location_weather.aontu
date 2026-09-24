@@ -1,0 +1,137 @@
+# Entity: get_location_weather
+
+main: kit: entity: get_location_weather: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "get_location_weather"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /{location}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "London"
+                k: "param"
+                n: "id"
+                or: "location"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "d"
+                or: "d"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "lang"
+                or: "lang"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "m"
+                or: "m"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "m"
+                or: "m"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "period"
+                or: "period"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "t"
+                or: "t"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "u"
+                or: "u"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{location}"
+          q: {
+            exist: [
+              "d"
+              "format"
+              "id"
+              "lang"
+              "m"
+              "period"
+              "t"
+              "u"
+            ]
+          }
+          r: {
+            param: {
+              location: "id"
+            }
+          }
+          s: [
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,107 @@
+# Entity: get_current_location_weather
+
+main: kit: entity: get_current_location_weather: {
+
+  alias: field: {}
+
+  name: "get_current_location_weather"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "d"
+                or: "d"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "fr"
+                k: "query"
+                n: "lang"
+                or: "lang"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "m"
+                or: "m"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "m"
+                or: "m"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "period"
+                or: "period"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "t"
+                or: "t"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "u"
+                or: "u"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/"
+          q: {
+            exist: [
+              "d"
+              "format"
+              "lang"
+              "m"
+              "period"
+              "t"
+              "u"
+            ]
+          }
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

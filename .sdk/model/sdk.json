@@ -24,13 +24,79 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_current_location_weather": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "get_current_location_weather",
           "op": {
             "load": {
@@ -38,88 +104,86 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "d",
-                        "orig": "d",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "d",
+                        "or": "d",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "1",
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "1",
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "fr",
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "fr",
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "m",
-                        "orig": "m",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "m",
+                        "or": "m",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "m",
-                        "orig": "m",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "m",
+                        "or": "m",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "period",
-                        "orig": "period",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "period",
+                        "or": "period",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "t",
-                        "orig": "t",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "t",
+                        "or": "t",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "u",
-                        "orig": "u",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "u",
+                        "or": "u",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /",
-                    "json": "{\"operationId\":\"getCurrentLocationWeather\",\"parameters\":[{\"description\":\"Use USCS units (used by default in US)\",\"in\":\"query\",\"name\":\"u\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units (used by default everywhere except US)\",\"in\":\"query\",\"name\":\"m\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units, but show wind speed in m/s\",\"in\":\"query\",\"name\":\"M\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Output format for one-line display. Supports formats 1-4 or custom format using %-notation\",\"examples\":{\"custom\":{\"summary\":\"Custom format using %-notation\",\"value\":\"%l:+%c+%t\"},\"format1\":{\"summary\":\"Current weather: 🌦 +11⁰C\",\"value\":\"1\"},\"format2\":{\"summary\":\"Weather with details: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"2\"},\"format3\":{\"summary\":\"Location and weather: Nuremberg: 🌦 +11⁰C\",\"value\":\"3\"},\"format4\":{\"summary\":\"Location and weather with details: Nuremberg: 🌦 🌡️+11°C 🌬️↓4km/h\",\"value\":\"4\"}},\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Force plain text output (disables colors)\",\"in\":\"query\",\"name\":\"T\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Restrict output to glyphs available in standard console fonts\",\"in\":\"query\",\"name\":\"d\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Language for the output\",\"examples\":{\"french\":{\"value\":\"fr\"},\"german\":{\"value\":\"de\"},\"ukrainian\":{\"value\":\"uk\"}},\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Update period in seconds for automatic queries\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"JSON-formatted weather data\",\"type\":\"object\"}},\"text/html\":{\"schema\":{\"description\":\"HTML-formatted weather forecast for web browsers\",\"type\":\"string\"}},\"text/plain\":{\"example\":\"Weather for City: Paris, France\\n\\n     \\\\   /     Clear\\n      .-.      10 – 11 °C\\n   ― (   ) ―   ↑ 11 km/h\\n      `-'      10 km\\n     /   \\\\     0.0 mm\",\"schema\":{\"description\":\"ANSI-formatted weather forecast for terminal display\",\"type\":\"string\"}}},\"description\":\"Successful weather forecast response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/",
-                  "segments": [],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/",
+                  "q": {
                     "exist": [
                       "d",
                       "format",
@@ -130,7 +194,9 @@
                       "u"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -147,14 +213,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -166,106 +233,95 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{location}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "London",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "location",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "London",
+                        "k": "param",
+                        "n": "id",
+                        "or": "location",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "d",
-                        "orig": "d",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "d",
+                        "or": "d",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "m",
-                        "orig": "m",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "m",
+                        "or": "m",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "m",
-                        "orig": "m",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "m",
+                        "or": "m",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "period",
-                        "orig": "period",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "period",
+                        "or": "period",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "t",
-                        "orig": "t",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "t",
+                        "or": "t",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "u",
-                        "orig": "u",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "u",
+                        "or": "u",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{location}",
-                    "json": "{\"operationId\":\"getLocationWeather\",\"parameters\":[{\"description\":\"Location name (e.g., 'London', 'Salt+Lake+City'), airport code (e.g., 'muc', 'ham'), IP address, domain name (e.g., '@github.com'), or special location (e.g., '~Eiffel+Tower')\",\"examples\":{\"airport\":{\"summary\":\"Airport IATA code\",\"value\":\"muc\"},\"city\":{\"summary\":\"City name\",\"value\":\"London\"},\"domain\":{\"summary\":\"Domain name\",\"value\":\"@github.com\"},\"multiple\":{\"summary\":\"Multiple locations separated by colon\",\"value\":\"Nuremberg:Hamburg:Berlin\"},\"multiword\":{\"summary\":\"Multi-word city name\",\"value\":\"Salt+Lake+City\"},\"special\":{\"summary\":\"Special location/landmark\",\"value\":\"~Eiffel+Tower\"}},\"in\":\"path\",\"name\":\"location\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Use USCS units (used by default in US)\",\"in\":\"query\",\"name\":\"u\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units (used by default everywhere except US)\",\"in\":\"query\",\"name\":\"m\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Use metric (SI) units, but show wind speed in m/s\",\"in\":\"query\",\"name\":\"M\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Output format for one-line display. Supports formats 1-4 or custom format using %-notation (c=condition, C=condition name, x=plain symbol, h=humidity, t=temperature, f=feels like, w=wind, l=location, m=moon phase, M=moon day, p=precipitation, P=pressure, u=UV index, D=dawn, S=sunrise, z=zenith, s=sunset, d=dusk, T=current time, Z=timezone)\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Force plain text output (disables colors)\",\"in\":\"query\",\"name\":\"T\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Restrict output to glyphs available in standard console fonts\",\"in\":\"query\",\"name\":\"d\",\"required\":false,\"schema\":{\"enum\":[\"\"],\"type\":\"string\"}},{\"description\":\"Language for the output\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Update period in seconds for automatic queries with multiple locations\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"JSON-formatted weather data\",\"type\":\"object\"}},\"text/html\":{\"schema\":{\"description\":\"HTML-formatted weather forecast for web browsers\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"ANSI-formatted weather forecast for terminal display\",\"type\":\"string\"}}},\"description\":\"Successful weather forecast response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{location}",
-                  "rename": {
-                    "param": {
-                      "location": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{location}",
+                  "q": {
                     "exist": [
                       "d",
                       "format",
@@ -277,7 +333,17 @@
                       "u"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "location": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -294,7 +360,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "help",
           "op": {
             "load": {
@@ -302,24 +368,24 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /:help",
-                    "json": "{\"operationId\":\"getHelp\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/html\":{\"schema\":{\"description\":\"HTML-formatted help documentation\",\"type\":\"string\"}},\"text/plain\":{\"schema\":{\"description\":\"Detailed help text\",\"type\":\"string\"}}},\"description\":\"Help documentation\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/:help",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/:help",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": ":help"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -336,7 +402,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "location",
           "op": {
             "load": {
@@ -344,40 +410,40 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{location}.png",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "Paris.png",
-                        "kind": "param",
-                        "name": "location",
-                        "orig": "location",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Paris.png",
+                        "k": "param",
+                        "n": "location",
+                        "or": "location",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{location}.png",
-                    "json": "{\"operationId\":\"getLocationWeatherPNG\",\"parameters\":[{\"description\":\"Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language\",\"examples\":{\"simple\":{\"summary\":\"Simple PNG for Paris\",\"value\":\"Paris.png\"},\"transparent\":{\"summary\":\"Transparent PNG\",\"value\":\"Oymyakon_tqp0.png\"},\"withOptions\":{\"summary\":\"PNG with options\",\"value\":\"Paris_0tqp_lang=fr.png\"}},\"in\":\"path\",\"name\":\"location\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"PNG image of weather forecast\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{location}.png",
-                  "segments": [
-                    {
-                      "lit": "{location}.png"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{location}.png",
+                  "q": {
                     "exist": [
                       "location"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "{location}.png"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -806,17 +872,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_current_location_weather_ref01",
                 "srcdatavar": "get_current_location_weather_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -836,19 +902,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_location_weather_ref01",
                 "srcdatavar": "get_location_weather_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "get_location_weather01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -868,17 +934,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "help_ref01",
                 "srcdatavar": "help_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -898,19 +964,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "location_ref01",
                 "srcdatavar": "location_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "location": "location01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

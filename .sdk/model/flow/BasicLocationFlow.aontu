@@ -1,0 +1,32 @@
+# BasicLocationFlow
+
+main: kit: flow: BasicLocationFlow:
+{
+  entity: "location",
+  kind: "basic",
+  name: "BasicLocationFlow",
+  step: [
+    {
+      i: {
+        ref: "location_ref01",
+        srcdatavar: "location_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        location: "location01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-location_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLocationFlow"
+}

@@ -107,64 +107,70 @@ module ConsoleWeatherForecastConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "d",
-                        "orig" => "d",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "1",
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "fr",
-                        "kind" => "query",
-                        "name" => "lang",
-                        "orig" => "lang",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "m",
-                        "orig" => "m",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "m",
-                        "orig" => "m",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "period",
-                        "orig" => "period",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "t",
-                        "orig" => "t",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "u",
-                        "orig" => "u",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "segments" => [],
+                  "parts" => [],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "d",
+                        "orig" => "d",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "1",
+                      },
+                      {
+                        "name" => "lang",
+                        "orig" => "lang",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "fr",
+                      },
+                      {
+                        "name" => "m",
+                        "orig" => "m",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "m",
+                        "orig" => "m",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "period",
+                        "orig" => "period",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "t",
+                        "orig" => "t",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "u",
+                        "orig" => "u",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "d",
@@ -176,11 +182,6 @@ module ConsoleWeatherForecastConfig
                       "u",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [],
                 },
               ],
             },
@@ -193,6 +194,7 @@ module ConsoleWeatherForecastConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -207,81 +209,88 @@ module ConsoleWeatherForecastConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "London",
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "location",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "d",
-                        "orig" => "d",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "lang",
-                        "orig" => "lang",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "m",
-                        "orig" => "m",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "m",
-                        "orig" => "m",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "period",
-                        "orig" => "period",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "t",
-                        "orig" => "t",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "u",
-                        "orig" => "u",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}",
-                  "rename" => {
-                    "param" => {
-                      "location" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "location" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "location",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => "London",
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "d",
+                        "orig" => "d",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "lang",
+                        "orig" => "lang",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "m",
+                        "orig" => "m",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "m",
+                        "orig" => "m",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "period",
+                        "orig" => "period",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "t",
+                        "orig" => "t",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "u",
+                        "orig" => "u",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "d",
@@ -294,13 +303,6 @@ module ConsoleWeatherForecastConfig
                       "u",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -318,7 +320,6 @@ module ConsoleWeatherForecastConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/:help",
@@ -327,14 +328,16 @@ module ConsoleWeatherForecastConfig
                       "lit" => ":help",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    ":help",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    ":help",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -352,18 +355,6 @@ module ConsoleWeatherForecastConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "Paris.png",
-                        "kind" => "param",
-                        "name" => "location",
-                        "orig" => "location",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{location}.png",
@@ -372,18 +363,31 @@ module ConsoleWeatherForecastConfig
                       "lit" => "{location}.png",
                     },
                   ],
+                  "parts" => [
+                    "{location}.png",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "location",
+                        "orig" => "location",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => "Paris.png",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "location",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "{location}.png",
-                  ],
                 },
               ],
             },

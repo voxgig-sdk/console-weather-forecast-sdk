@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -153,64 +146,70 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "d",
-                    "orig": "d",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "1",
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "fr",
-                    "kind": "query",
-                    "name": "lang",
-                    "orig": "lang",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "m",
-                    "orig": "m",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "m",
-                    "orig": "m",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "period",
-                    "orig": "period",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "t",
-                    "orig": "t",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "u",
-                    "orig": "u",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/",
               "segments": [],
+              "parts": [],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "d",
+                    "orig": "d",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "1"
+                  },
+                  {
+                    "name": "lang",
+                    "orig": "lang",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "fr"
+                  },
+                  {
+                    "name": "m",
+                    "orig": "m",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "m",
+                    "orig": "m",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "period",
+                    "orig": "period",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "t",
+                    "orig": "t",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "u",
+                    "orig": "u",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "d",
@@ -221,12 +220,7 @@ class Config {
                   "t",
                   "u"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": []
+              }
             }
           ]
         }
@@ -239,6 +233,7 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         }
       ],
@@ -253,81 +248,88 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "London",
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "location",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "d",
-                    "orig": "d",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "lang",
-                    "orig": "lang",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "m",
-                    "orig": "m",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "m",
-                    "orig": "m",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "period",
-                    "orig": "period",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "t",
-                    "orig": "t",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "u",
-                    "orig": "u",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/{location}",
-              "rename": {
-                "param": {
-                  "location": "id"
-                }
-              },
               "segments": [
                 {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "location": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "location",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "London"
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "d",
+                    "orig": "d",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "lang",
+                    "orig": "lang",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "m",
+                    "orig": "m",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "m",
+                    "orig": "m",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "period",
+                    "orig": "period",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "t",
+                    "orig": "t",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "u",
+                    "orig": "u",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "d",
@@ -339,14 +341,7 @@ class Config {
                   "t",
                   "u"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "{id}"
-              ]
+              }
             }
           ]
         }
@@ -364,7 +359,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/:help",
@@ -373,14 +367,16 @@ class Config {
                   "lit": ":help"
                 }
               ],
-              "select": {},
+              "parts": [
+                ":help"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                ":help"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -398,18 +394,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "Paris.png",
-                    "kind": "param",
-                    "name": "location",
-                    "orig": "location",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/{location}.png",
@@ -418,18 +402,31 @@ class Config {
                   "lit": "{location}.png"
                 }
               ],
-              "select": {
-                "exist": [
-                  "location"
-                ]
-              },
+              "parts": [
+                "{location}.png"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "{location}.png"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "location",
+                    "orig": "location",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "Paris.png"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "location"
+                ]
+              }
             }
           ]
         }

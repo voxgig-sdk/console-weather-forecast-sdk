@@ -50,7 +50,7 @@ main: kit: entity: get_current_location_weather: {
               {
                 k: "query"
                 n: "m"
-                or: "m"
+                or: "M"
                 r: false
                 t: "`$STRING`"
               }
@@ -64,7 +64,7 @@ main: kit: entity: get_current_location_weather: {
               {
                 k: "query"
                 n: "t"
-                or: "t"
+                or: "T"
                 r: false
                 t: "`$STRING`"
               }

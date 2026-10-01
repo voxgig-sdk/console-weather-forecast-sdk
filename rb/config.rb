@@ -147,7 +147,7 @@ module ConsoleWeatherForecastConfig
                       },
                       {
                         "name" => "m",
-                        "orig" => "m",
+                        "orig" => "M",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -159,7 +159,7 @@ module ConsoleWeatherForecastConfig
                       },
                       {
                         "name" => "t",
-                        "orig" => "t",
+                        "orig" => "T",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -267,7 +267,7 @@ module ConsoleWeatherForecastConfig
                       },
                       {
                         "name" => "m",
-                        "orig" => "m",
+                        "orig" => "M",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },
@@ -279,7 +279,7 @@ module ConsoleWeatherForecastConfig
                       },
                       {
                         "name" => "t",
-                        "orig" => "t",
+                        "orig" => "T",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },

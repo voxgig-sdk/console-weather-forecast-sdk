@@ -161,7 +161,7 @@ class ConsoleWeatherForecastConfig
                       ],
                       [
                         'name' => 'm',
-                        'orig' => 'm',
+                        'orig' => 'M',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                       ],
@@ -173,7 +173,7 @@ class ConsoleWeatherForecastConfig
                       ],
                       [
                         'name' => 't',
-                        'orig' => 't',
+                        'orig' => 'T',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                       ],
@@ -281,7 +281,7 @@ class ConsoleWeatherForecastConfig
                       ],
                       [
                         'name' => 'm',
-                        'orig' => 'm',
+                        'orig' => 'M',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                       ],
@@ -293,7 +293,7 @@ class ConsoleWeatherForecastConfig
                       ],
                       [
                         'name' => 't',
-                        'orig' => 't',
+                        'orig' => 'T',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                       ],

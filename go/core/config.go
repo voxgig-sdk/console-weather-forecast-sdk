@@ -139,7 +139,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "m",
-											"orig": "m",
+											"orig": "M",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -151,7 +151,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "t",
-											"orig": "t",
+											"orig": "T",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -259,7 +259,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "m",
-											"orig": "m",
+											"orig": "M",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
@@ -271,7 +271,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "t",
-											"orig": "t",
+											"orig": "T",
 											"type": "`$STRING`",
 											"kind": "query",
 										},

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ConsoleWeatherForecastUtility.registrar = ->(u) {
   u.clean = ConsoleWeatherForecastUtilities::Clean
+  u.clean_add = ConsoleWeatherForecastUtilities::CleanAdd
+  u.clean_explain = ConsoleWeatherForecastUtilities::CleanExplain
   u.done = ConsoleWeatherForecastUtilities::Done
   u.make_error = ConsoleWeatherForecastUtilities::MakeError
   u.feature_add = ConsoleWeatherForecastUtilities::FeatureAdd

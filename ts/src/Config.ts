@@ -186,7 +186,7 @@ class Config {
                   },
                   {
                     "name": "m",
-                    "orig": "m",
+                    "orig": "M",
                     "type": "`$STRING`",
                     "kind": "query"
                   },
@@ -198,7 +198,7 @@ class Config {
                   },
                   {
                     "name": "t",
-                    "orig": "t",
+                    "orig": "T",
                     "type": "`$STRING`",
                     "kind": "query"
                   },
@@ -306,7 +306,7 @@ class Config {
                   },
                   {
                     "name": "m",
-                    "orig": "m",
+                    "orig": "M",
                     "type": "`$STRING`",
                     "kind": "query"
                   },
@@ -318,7 +318,7 @@ class Config {
                   },
                   {
                     "name": "t",
-                    "orig": "t",
+                    "orig": "T",
                     "type": "`$STRING`",
                     "kind": "query"
                   },

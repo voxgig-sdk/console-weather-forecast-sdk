@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ConsoleWeatherForecastUtility::setRegistrar(function (ConsoleWeatherForecastUtility $u): void {
     $u->clean = [ConsoleWeatherForecastClean::class, 'call'];
+    $u->clean_add = [ConsoleWeatherForecastClean::class, 'add'];
+    $u->clean_explain = [ConsoleWeatherForecastDone::class, 'clean_explain'];
     $u->done = [ConsoleWeatherForecastDone::class, 'call'];
     $u->make_error = [ConsoleWeatherForecastMakeError::class, 'call'];
     $u->feature_add = [ConsoleWeatherForecastFeatureAdd::class, 'call'];

@@ -164,7 +164,7 @@ def make_config():
                     },
                     {
                       "name": "m",
-                      "orig": "m",
+                      "orig": "M",
                       "type": "`$STRING`",
                       "kind": "query",
                     },
@@ -176,7 +176,7 @@ def make_config():
                     },
                     {
                       "name": "t",
-                      "orig": "t",
+                      "orig": "T",
                       "type": "`$STRING`",
                       "kind": "query",
                     },
@@ -284,7 +284,7 @@ def make_config():
                     },
                     {
                       "name": "m",
-                      "orig": "m",
+                      "orig": "M",
                       "type": "`$STRING`",
                       "kind": "query",
                     },
@@ -296,7 +296,7 @@ def make_config():
                     },
                     {
                       "name": "t",
-                      "orig": "t",
+                      "orig": "T",
                       "type": "`$STRING`",
                       "kind": "query",
                     },

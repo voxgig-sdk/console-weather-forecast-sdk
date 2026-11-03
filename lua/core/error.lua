@@ -18,6 +18,7 @@ function ConsoleWeatherForecastError.new(code, msg, ctx)
   self.msg = msg or ""
   self.result = nil
   self.spec = nil
+  self.status = -1
   CONTEXT[self] = ctx
   return self
 end
@@ -30,6 +31,11 @@ end
 
 function ConsoleWeatherForecastError:error()
   return self.msg
+end
+
+
+function ConsoleWeatherForecastError:not_found()
+  return 404 == self.status
 end
 
 

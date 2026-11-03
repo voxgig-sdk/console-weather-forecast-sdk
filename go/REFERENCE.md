@@ -47,19 +47,19 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `GetCurrentLocationWeather(data map[string]any) ConsoleWeatherForecastEntity`
+#### `GetCurrentLocationWeather(data map[string]any) ConsoleWeatherForecastEntityBase`
 
 Create a new `GetCurrentLocationWeather` entity instance. Pass `nil` for no initial data.
 
-#### `GetLocationWeather(data map[string]any) ConsoleWeatherForecastEntity`
+#### `GetLocationWeather(data map[string]any) ConsoleWeatherForecastEntityBase`
 
 Create a new `GetLocationWeather` entity instance. Pass `nil` for no initial data.
 
-#### `Help(data map[string]any) ConsoleWeatherForecastEntity`
+#### `Help(data map[string]any) ConsoleWeatherForecastEntityBase`
 
 Create a new `Help` entity instance. Pass `nil` for no initial data.
 
-#### `Location(data map[string]any) ConsoleWeatherForecastEntity`
+#### `Location(data map[string]any) ConsoleWeatherForecastEntityBase`
 
 Create a new `Location` entity instance. Pass `nil` for no initial data.
 
@@ -110,14 +110,14 @@ fmt.Println(getCurrentLocationWeather.GetName()) // "get_current_location_weathe
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.GetCurrentLocationWeather(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -136,6 +136,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `GetCurrentLocationWeatherEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -161,14 +169,14 @@ fmt.Println(getLocationWeather.GetName()) // "get_location_weather"
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.GetLocationWeather(nil).Load(map[string]any{"id": "get_location_weather_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -188,6 +196,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 Create a new `GetLocationWeatherEntity` instance with the same client and
 options.
 
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
 #### `GetName() string`
 
 Return the entity name.
@@ -206,14 +222,14 @@ fmt.Println(help.GetName()) // "help"
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.Help(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -233,6 +249,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 Create a new `HelpEntity` instance with the same client and
 options.
 
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
 #### `GetName() string`
 
 Return the entity name.
@@ -251,14 +275,14 @@ fmt.Println(location.GetName()) // "location"
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
 result, err := client.Location(nil).Load(map[string]any{"location": "location"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -277,6 +301,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `LocationEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -442,6 +474,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

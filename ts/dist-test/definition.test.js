@@ -17,14 +17,20 @@ const PLAN = [
         "args": [],
         "select": {
             "d": "v1",
-            "format": "v1",
-            "lang": "v1",
+            "format": "1",
+            "lang": "fr",
             "m": "v1",
             "period": "v1",
             "t": "v1",
             "u": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/plain",
+            "text/html",
+            "application/json"
+        ],
         "query": [
             "u",
             "m",
@@ -34,6 +40,40 @@ const PLAN = [
             "d",
             "lang",
             "period"
+        ],
+        "queryArgs": [
+            {
+                "name": "d",
+                "wire": "d"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            },
+            {
+                "name": "m",
+                "wire": "m"
+            },
+            {
+                "name": "m",
+                "wire": "M"
+            },
+            {
+                "name": "period",
+                "wire": "period"
+            },
+            {
+                "name": "t",
+                "wire": "T"
+            },
+            {
+                "name": "u",
+                "wire": "u"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -63,6 +103,12 @@ const PLAN = [
             "u": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/plain",
+            "text/html",
+            "application/json"
+        ],
         "query": [
             "u",
             "m",
@@ -72,6 +118,40 @@ const PLAN = [
             "d",
             "lang",
             "period"
+        ],
+        "queryArgs": [
+            {
+                "name": "d",
+                "wire": "d"
+            },
+            {
+                "name": "format",
+                "wire": "format"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            },
+            {
+                "name": "m",
+                "wire": "m"
+            },
+            {
+                "name": "m",
+                "wire": "M"
+            },
+            {
+                "name": "period",
+                "wire": "period"
+            },
+            {
+                "name": "t",
+                "wire": "T"
+            },
+            {
+                "name": "u",
+                "wire": "u"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -87,7 +167,13 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/plain",
+            "text/html"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": null,
@@ -108,7 +194,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "image/png"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": null,

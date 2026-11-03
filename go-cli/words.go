@@ -75,7 +75,7 @@ func runOp(client *sdk.ConsoleWeatherForecastSDK, op string, query *eng.Value, e
 
 // entityFor dispatches on the lowercase entity name. The generator
 // emits one `case "<name>":` per entity defined in the SDK model.
-func entityFor(client *sdk.ConsoleWeatherForecastSDK, name string) (sdk.ConsoleWeatherForecastEntity, error) {
+func entityFor(client *sdk.ConsoleWeatherForecastSDK, name string) (sdk.ConsoleWeatherForecastEntityBase, error) {
 	switch strings.ToLower(name) {
 	case "get_current_location_weather":
 		return client.GetCurrentLocationWeather(nil), nil

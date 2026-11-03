@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ConsoleWeatherForecastSDK, BaseFeature, stdutil } from '../../..'
+import { ConsoleWeatherForecastSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('HelpEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.CONSOLE_WEATHER_FORECAST_TEST_LIVE
@@ -51,7 +53,7 @@ describe('HelpEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"help","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /:help","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/:help","q":{},"r":{},"s":[{"lit":":help"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"help","name__orig":"help","Name":"Help","name_":"help","name-":"help","NAME":"HELP","index$":2}, {"active":true,"entity":"help","key$":"BasicHelpFlow","kind":"basic","name":"BasicHelpFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"help_ref01","srcdatavar":"help_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-help_ref01"}}],"index$":0}]}, 'Help', {"GET /:help":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"help","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /:help","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/:help","q":{},"r":{},"rs":{"alternatives":[{"kind":"raw","media":"text/plain"}],"kind":"raw","media":"text/html"},"s":[{"lit":":help"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"help","name__orig":"help","Name":"Help","name_":"help","name-":"help","NAME":"HELP","index$":2}, {"active":true,"entity":"help","key$":"BasicHelpFlow","kind":"basic","name":"BasicHelpFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"help_ref01","srcdatavar":"help_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-help_ref01"}}],"index$":0}]}, 'Help', {"GET /:help":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('HelpEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

@@ -79,6 +79,7 @@ module ConsoleWeatherForecastConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -171,16 +172,20 @@ module ConsoleWeatherForecastConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "d",
-                      "format",
-                      "lang",
-                      "m",
-                      "period",
-                      "t",
-                      "u",
+                  "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "text/html",
+                      },
+                      {
+                        "kind" => "raw",
+                        "media" => "text/plain",
+                      },
                     ],
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -293,15 +298,22 @@ module ConsoleWeatherForecastConfig
                   },
                   "select" => {
                     "exist" => [
-                      "d",
-                      "format",
                       "id",
-                      "lang",
-                      "m",
-                      "period",
-                      "t",
-                      "u",
                     ],
+                  },
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "text/html",
+                      },
+                      {
+                        "kind" => "raw",
+                        "media" => "text/plain",
+                      },
+                    ],
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -338,6 +350,16 @@ module ConsoleWeatherForecastConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "text/plain",
+                      },
+                    ],
+                    "kind" => "raw",
+                    "media" => "text/html",
+                  },
                 },
               ],
             },
@@ -387,6 +409,11 @@ module ConsoleWeatherForecastConfig
                     "exist" => [
                       "location",
                     ],
+                  },
+                  "response" => {
+                    "binary" => true,
+                    "kind" => "raw",
+                    "media" => "image/png",
                   },
                 },
               ],

@@ -79,16 +79,19 @@ main: kit: entity: get_current_location_weather: {
           }
           m: "GET"
           o: "/"
-          q: {
-            exist: [
-              "d"
-              "format"
-              "lang"
-              "m"
-              "period"
-              "t"
-              "u"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/html"
+              }
+              {
+                kind: "raw"
+                media: "text/plain"
+              }
             ]
+            kind: "json"
+            media: "application/json"
           }
           t: {
             req: "`reqdata`"

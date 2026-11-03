@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Location();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ConsoleWeatherForecastSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Location().load({ "location": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.CONSOLE_WEATHER_FORECAST_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,18 +70,26 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "location", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /{location}.png", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "Paris.png", "k": "param", "n": "location", "or": "location", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/{location}.png", "q": { "exist": ["location"] }, "r": {}, "s": [{ "lit": "{location}.png" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "location", "name__orig": "location", "Name": "Location", "name_": "location", "name-": "location", "NAME": "LOCATION", "index$": 3 }, { "active": true, "entity": "location", "key$": "BasicLocationFlow", "kind": "basic", "name": "BasicLocationFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "location_ref01", "srcdatavar": "location_ref01_data", "suffix": "_dt0" }, "m": { "location": "location01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-location_ref01" } }], "index$": 0 }] }, 'Location', { "GET /{location}.png": { "protocol": "http", "parameters": [{ "name": "location", "in": "path", "description": "Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language", "required": true, "schema": { "type": "string" }, "examples": { "simple": { "value": "Paris.png", "summary": "Simple PNG for Paris" }, "withOptions": { "value": "Paris_0tqp_lang=fr.png", "summary": "PNG with options" }, "transparent": { "value": "Oymyakon_tqp0.png", "summary": "Transparent PNG" } }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "location", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /{location}.png", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "Paris.png", "k": "param", "n": "location", "or": "location", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/{location}.png", "q": { "exist": ["location"] }, "r": {}, "rs": { "binary": true, "kind": "raw", "media": "image/png" }, "s": [{ "lit": "{location}.png" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "location", "name__orig": "location", "Name": "Location", "name_": "location", "name-": "location", "NAME": "LOCATION", "index$": 3 }, { "active": true, "entity": "location", "key$": "BasicLocationFlow", "kind": "basic", "name": "BasicLocationFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "location_ref01", "srcdatavar": "location_ref01_data", "suffix": "_dt0" }, "m": { "location": "location01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-location_ref01" } }], "index$": 0 }] }, 'Location', { "GET /{location}.png": { "protocol": "http", "parameters": [{ "name": "location", "in": "path", "description": "Location name with options separated by underscores (e.g., 'Paris_0tqp_lang=fr'). Options include: t=transparency, 0=no frame, q=quiet, p=no-precipitation, lang=language", "required": true, "schema": { "type": "string" }, "examples": { "simple": { "value": "Paris.png", "summary": "Simple PNG for Paris" }, "withOptions": { "value": "Paris_0tqp_lang=fr.png", "summary": "PNG with options" }, "transparent": { "value": "Oymyakon_tqp0.png", "summary": "Transparent PNG" } }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         let location_ref01_data = Object.values(setup.data.existing.location)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const location_ref01_ent = client.Location();
+        const location_ref01_match_dt0 = {};
+        location_ref01_match_dt0['location'] = setup.idmap['location'] ?? setup.idmap['location01'];
+        const location_ref01_data_dt0 = (await location_ref01_ent.load(location_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(null != location_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -17,6 +17,16 @@ main: kit: entity: help: {
           }
           m: "GET"
           o: "/:help"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/plain"
+              }
+            ]
+            kind: "raw"
+            media: "text/html"
+          }
           s: [
             {
               lit: ":help"

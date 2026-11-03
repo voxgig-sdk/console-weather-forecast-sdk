@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -188,16 +189,20 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "d",
-                    "format",
-                    "lang",
-                    "m",
-                    "period",
-                    "t",
-                    "u",
+                "select": {},
+                "response": {
+                  "alternatives": [
+                    {
+                      "kind": "raw",
+                      "media": "text/html",
+                    },
+                    {
+                      "kind": "raw",
+                      "media": "text/plain",
+                    },
                   ],
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -310,15 +315,22 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "d",
-                    "format",
                     "id",
-                    "lang",
-                    "m",
-                    "period",
-                    "t",
-                    "u",
                   ],
+                },
+                "response": {
+                  "alternatives": [
+                    {
+                      "kind": "raw",
+                      "media": "text/html",
+                    },
+                    {
+                      "kind": "raw",
+                      "media": "text/plain",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -355,6 +367,16 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "response": {
+                  "alternatives": [
+                    {
+                      "kind": "raw",
+                      "media": "text/plain",
+                    },
+                  ],
+                  "kind": "raw",
+                  "media": "text/html",
+                },
               },
             ],
           },
@@ -404,6 +426,11 @@ def make_config():
                   "exist": [
                     "location",
                   ],
+                },
+                "response": {
+                  "binary": True,
+                  "kind": "raw",
+                  "media": "image/png",
                 },
               },
             ],

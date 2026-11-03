@@ -10,6 +10,19 @@ import { ConsoleWeatherForecastEntityBase } from './ConsoleWeatherForecastEntity
 import { Utility } from './utility/Utility';
 import { BaseFeature } from './feature/base/BaseFeature';
 declare const stdutil: Utility;
+type DirectResult = {
+    ok: false;
+    err: any;
+    status?: undefined;
+    headers?: undefined;
+    data?: undefined;
+} | {
+    ok: boolean;
+    status: number;
+    headers: any;
+    data: any;
+    err?: any;
+};
 declare class ConsoleWeatherForecastSDK {
     _mode: string;
     _options: any;
@@ -20,32 +33,8 @@ declare class ConsoleWeatherForecastSDK {
     options(): any;
     utility(): any;
     prepare(fetchargs?: any): Promise<any>;
-    direct(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
-    _rawRequest(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
+    direct(fetchargs?: any): Promise<DirectResult>;
+    _rawRequest(fetchargs?: any): Promise<DirectResult>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     GetCurrentLocationWeather(entopts?: Record<string, any>): GetCurrentLocationWeatherEntity;
     GetLocationWeather(entopts?: Record<string, any>): GetLocationWeatherEntity;
@@ -61,3 +50,4 @@ declare class ConsoleWeatherForecastSDK {
 }
 declare const SDK: typeof ConsoleWeatherForecastSDK;
 export { stdutil, config, BaseFeature, ConsoleWeatherForecastEntityBase, ConsoleWeatherForecastSDK, SDK, };
+export type { DirectResult };

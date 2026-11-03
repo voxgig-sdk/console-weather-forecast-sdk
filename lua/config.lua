@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -159,16 +160,20 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "d",
-                    "format",
-                    "lang",
-                    "m",
-                    "period",
-                    "t",
-                    "u",
+                ["select"] = {},
+                ["response"] = {
+                  ["alternatives"] = {
+                    {
+                      ["kind"] = "raw",
+                      ["media"] = "text/html",
+                    },
+                    {
+                      ["kind"] = "raw",
+                      ["media"] = "text/plain",
+                    },
                   },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -281,15 +286,22 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "d",
-                    "format",
                     "id",
-                    "lang",
-                    "m",
-                    "period",
-                    "t",
-                    "u",
                   },
+                },
+                ["response"] = {
+                  ["alternatives"] = {
+                    {
+                      ["kind"] = "raw",
+                      ["media"] = "text/html",
+                    },
+                    {
+                      ["kind"] = "raw",
+                      ["media"] = "text/plain",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -326,6 +338,16 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["alternatives"] = {
+                    {
+                      ["kind"] = "raw",
+                      ["media"] = "text/plain",
+                    },
+                  },
+                  ["kind"] = "raw",
+                  ["media"] = "text/html",
+                },
               },
             },
           },
@@ -375,6 +397,11 @@ local function make_config()
                   ["exist"] = {
                     "location",
                   },
+                },
+                ["response"] = {
+                  ["binary"] = true,
+                  ["kind"] = "raw",
+                  ["media"] = "image/png",
                 },
               },
             },

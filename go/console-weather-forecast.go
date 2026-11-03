@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type ConsoleWeatherForecastEntity = core.ConsoleWeatherForecastEntity
+type ConsoleWeatherForecastEntityBase = core.ConsoleWeatherForecastEntityBase
+
+// Deprecated: use ConsoleWeatherForecastEntityBase.
+type ConsoleWeatherForecastEntity = core.ConsoleWeatherForecastEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,16 +46,16 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewGetCurrentLocationWeatherEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntity {
+	core.NewGetCurrentLocationWeatherEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntityBase {
 		return entity.NewGetCurrentLocationWeatherEntity(client, entopts)
 	}
-	core.NewGetLocationWeatherEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntity {
+	core.NewGetLocationWeatherEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntityBase {
 		return entity.NewGetLocationWeatherEntity(client, entopts)
 	}
-	core.NewHelpEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntity {
+	core.NewHelpEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntityBase {
 		return entity.NewHelpEntity(client, entopts)
 	}
-	core.NewLocationEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntity {
+	core.NewLocationEntityFunc = func(client *core.ConsoleWeatherForecastSDK, entopts map[string]any) core.ConsoleWeatherForecastEntityBase {
 		return entity.NewLocationEntity(client, entopts)
 	}
 }

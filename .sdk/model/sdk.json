@@ -183,18 +183,22 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/",
-                  "q": {
-                    "exist": [
-                      "d",
-                      "format",
-                      "lang",
-                      "m",
-                      "period",
-                      "t",
-                      "u"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "alternatives": [
+                      {
+                        "kind": "raw",
+                        "media": "text/html"
+                      },
+                      {
+                        "kind": "raw",
+                        "media": "text/plain"
+                      }
+                    ],
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [],
                   "t": {
                     "req": "`reqdata`",
@@ -323,20 +327,27 @@
                   "o": "/{location}",
                   "q": {
                     "exist": [
-                      "d",
-                      "format",
-                      "id",
-                      "lang",
-                      "m",
-                      "period",
-                      "t",
-                      "u"
+                      "id"
                     ]
                   },
                   "r": {
                     "param": {
                       "location": "id"
                     }
+                  },
+                  "rs": {
+                    "alternatives": [
+                      {
+                        "kind": "raw",
+                        "media": "text/html"
+                      },
+                      {
+                        "kind": "raw",
+                        "media": "text/plain"
+                      }
+                    ],
+                    "kind": "json",
+                    "media": "application/json"
                   },
                   "s": [
                     {
@@ -380,6 +391,16 @@
                   "o": "/:help",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "alternatives": [
+                      {
+                        "kind": "raw",
+                        "media": "text/plain"
+                      }
+                    ],
+                    "kind": "raw",
+                    "media": "text/html"
+                  },
                   "s": [
                     {
                       "lit": ":help"
@@ -438,6 +459,11 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "binary": true,
+                    "kind": "raw",
+                    "media": "image/png"
+                  },
                   "s": [
                     {
                       "lit": "{location}.png"
@@ -778,6 +804,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -1021,7 +1048,7 @@
             "url": "https://v2n.wttr.in"
           }
         ],
-        "summary": "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for graph…",
+        "summary": "wttr.in is a console-oriented weather forecast service that supports various information representation methods like terminal-oriented ANSI-sequences for console HTTP clients (curl, httpie, or wget), HTML for web browsers, or PNG for…",
         "title": "Console Weather Forecast",
         "version": "1.0.0",
         "website": "https://github.com/chubin/wttr.in"
@@ -1030,7 +1057,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1083,6 +1110,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1313,7 +1345,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1690,6 +1725,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

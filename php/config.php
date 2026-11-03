@@ -93,6 +93,7 @@ class ConsoleWeatherForecastConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -185,16 +186,20 @@ class ConsoleWeatherForecastConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'd',
-                      'format',
-                      'lang',
-                      'm',
-                      'period',
-                      't',
-                      'u',
+                  'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'text/html',
+                      ],
+                      [
+                        'kind' => 'raw',
+                        'media' => 'text/plain',
+                      ],
                     ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -307,15 +312,22 @@ class ConsoleWeatherForecastConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'd',
-                      'format',
                       'id',
-                      'lang',
-                      'm',
-                      'period',
-                      't',
-                      'u',
                     ],
+                  ],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'text/html',
+                      ],
+                      [
+                        'kind' => 'raw',
+                        'media' => 'text/plain',
+                      ],
+                    ],
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -352,6 +364,16 @@ class ConsoleWeatherForecastConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'alternatives' => [
+                      [
+                        'kind' => 'raw',
+                        'media' => 'text/plain',
+                      ],
+                    ],
+                    'kind' => 'raw',
+                    'media' => 'text/html',
+                  ],
                 ],
               ],
             ],
@@ -401,6 +423,11 @@ class ConsoleWeatherForecastConfig
                     'exist' => [
                       'location',
                     ],
+                  ],
+                  'response' => [
+                    'binary' => true,
+                    'kind' => 'raw',
+                    'media' => 'image/png',
                   ],
                 ],
               ],
